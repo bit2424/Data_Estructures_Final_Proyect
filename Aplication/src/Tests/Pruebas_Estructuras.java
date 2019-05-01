@@ -1,4 +1,4 @@
-package Estructures;
+package Tests;
 
 import Estructures.linear_Structures.HashMap;
 import Estructures.linear_Structures.Queue;
