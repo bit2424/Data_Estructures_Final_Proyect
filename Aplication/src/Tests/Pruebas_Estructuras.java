@@ -6,7 +6,7 @@ import Estructures.linear_Structures.Stack;
 import Estructures.trees.AVLTree;
 import Estructures.trees.Binary_tree;
 import Estructures.trees.RBTree;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -19,7 +19,7 @@ class Pruebas_Estructuras {
 	@Test
 	void testQueue1() {
 		Queue<Integer> Q = new Queue<>();
-		Q.offer(3);
+		Q.offer(3); 
 		Q.offer(4);
 
 		Q.offer(5);

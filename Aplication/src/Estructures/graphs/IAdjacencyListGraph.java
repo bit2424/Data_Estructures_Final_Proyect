@@ -1,4 +1,4 @@
-package Estructures.graphs;
+package Estructures.Graphs;
 
 
 import java.util.ArrayList;

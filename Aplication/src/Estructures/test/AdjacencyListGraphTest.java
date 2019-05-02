@@ -1,8 +1,8 @@
 package Estructures.test;
 
-import Estructures.graphs.AdjacencyListGraph;
-import Estructures.graphs.Edge;
-import Estructures.graphs.Vertex;
+import Estructures.Graphs.AdjacencyListGraph;
+import Estructures.Graphs.Edge;
+import Estructures.Graphs.Vertex;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

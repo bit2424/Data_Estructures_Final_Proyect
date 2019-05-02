@@ -1,4 +1,4 @@
-package Estructures.graphs;
+package Estructures.Graphs;
 
 public class UnderflowException extends Exception {
 
