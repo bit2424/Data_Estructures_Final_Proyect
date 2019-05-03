@@ -10,7 +10,7 @@ public class AdjacencyListGraph<T> implements IAdjacencyListGraph<T> {
     private int time;
     private ArrayList<Vertex<T>> vertices;
 
-    public AdjacencyListGraph(boolean derected, boolean weighted, Vertex<T> vertex){
+    public AdjacencyListGraph(boolean directed, boolean weighted, Vertex<T> vertex){
         this.directed = directed;
         this.weighted = weighted;
         vertices = new ArrayList<>();
@@ -73,23 +73,38 @@ public class AdjacencyListGraph<T> implements IAdjacencyListGraph<T> {
     }
 
     @Override
-    public void deleteEdge(Vertex<T> u, int i) throws IndexOutOfBoundsException {
-        Vertex<T> v = u.getAdjacencyList().get(i).getVertex();
-        int edgeIndex = findEdge(v, u, u.getAdjacencyList().get(i).getWeight());
-        if(edgeIndex >= 0){
-            if(!isDirected()){
-                v.getAdjacencyList().remove(findEdge(v, u, u.getAdjacencyList().get(i).getWeight()));
+    public void deleteEdge(Vertex<T> u, Vertex<T> v, int weight) throws IndexOutOfBoundsException {
+        if(!isDirected()){
+            u.getAdjacencyList().remove(findEdge(u, v, weight));
+            if(!u.equals(v)) {
+                v.getAdjacencyList().remove(findEdge(v, u, weight));
             }
-            u.getAdjacencyList().remove(i);
+        }
+        else{
+            u.getAdjacencyList().remove(findEdge(u, v, weight));
+        }
+    }
+
+    private void deleteEdges(Vertex<T> u, Vertex<T> v){
+        for(int i = u.getAdjacencyList().size() - 1; i >= 0; i--){
+            if(v.equals(u.getAdjacencyList().get(i).getVertex())){
+                u.getAdjacencyList().remove(i);
+            }
         }
     }
 
     @Override
     public Vertex<T> deleteVertex(int index) throws IndexOutOfBoundsException {
         Vertex<T> u = vertices.get(index);
-        for(int i = 0; i < u.getAdjacencyList().size(); i++){
-            Vertex<T> v = u.getAdjacencyList().get(i).getVertex();
-            v.getAdjacencyList().remove(findEdge( v, u, u.getAdjacencyList().get(i).getWeight()));
+        if(!isDirected()){
+            for(int i = 0; i < u.getAdjacencyList().size(); i++){
+                deleteEdges(u.getAdjacencyList().get(i).getVertex(), u);
+            }
+        }
+        else{
+            for(int i = 0; i < vertices.size(); i++){
+                deleteEdges(vertices.get(i), u);
+            }
         }
         return vertices.remove(index);
     }
