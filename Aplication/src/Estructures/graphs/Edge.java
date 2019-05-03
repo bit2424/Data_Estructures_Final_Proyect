@@ -25,4 +25,6 @@ public class Edge<T> {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+
 }
