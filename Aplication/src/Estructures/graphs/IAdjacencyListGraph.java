@@ -1,6 +1,5 @@
 package Estructures.Graphs;
 
-
 import java.util.ArrayList;
 
 public interface IAdjacencyListGraph <T> {
@@ -11,7 +10,7 @@ public interface IAdjacencyListGraph <T> {
     void addEdge(Vertex<T> u, Vertex<T> v, int weight);
     void deleteEdge(Vertex<T> u, int i);
     Vertex<T> deleteVertex(int index);
-    Vertex<T> BFS(int index) throws UnderflowException;
-    ArrayList<Vertex<T>> DFS();
+    ArrayList<Vertex<T>> BFS(int initialVertexIndex, int targetVertexIndex);
+    ArrayList<ArrayList<Vertex<T>>> DFS();
 
 }
