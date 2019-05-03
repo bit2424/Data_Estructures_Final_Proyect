@@ -1,4 +1,4 @@
-package Estructures.graphs;
+package Estructures.Graphs;
 
 import java.util.ArrayList;
 
@@ -33,11 +33,11 @@ public class Vertex<T> {
     }
 
     public int getDegree() {
-        return degree = adjacencyList.size();
+        return degree;
     }
 
-    public void setDegree(int degree) {
-        this.degree = degree;
+    public void setDegree() {
+        degree = adjacencyList.size();
     }
 
     public int getDistance() {
