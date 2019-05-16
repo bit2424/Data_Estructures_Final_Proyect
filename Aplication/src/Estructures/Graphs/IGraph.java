@@ -9,6 +9,7 @@ public interface IGraph<V,E extends Comparable<E>> {
     void deleteEdge( int position1, int position2, E conection);
     void deleteAllEdge( int position1, int position2);
     ArrayList<Vertex<V>> getVertex();
+    ArrayList<VertexM<V>> getVertexM();
     ArrayList<Integer> BFS(int startPosition);
     ArrayList<Integer> DFS(int startPosition);
     ArrayList<ArrayList<Integer>> DFS();
