@@ -8,6 +8,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     private boolean weighted;
     private  boolean directed;
     private EdgeM matrixAdyacency[][];
+    private boolean visitedG[];
 
     public AdjacencyMatrixGraph(ArrayList<VertexM<V>> elementsReference, boolean weighted, boolean directed) {
         this.elementsReference = elementsReference;
@@ -23,17 +24,18 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
         this.directed = directed;
         matrixAdyacency = new EdgeM[1000][1000];
         nVertex = 0;
+
     }
 
     @Override
     public void insertVertex(V value) {
-        elementsReference.add(nVertex,new VertexM<>(value));
+        elementsReference.add(new VertexM<>(value));
         nVertex++;
+        visitedG = new boolean[nVertex];
     }
 
     @Override
     public void insertEdge(int position1, int position2, E conection) {
-
         if(directed){
             matrixAdyacency[position1][position2] = new EdgeM(conection);
         }else{
@@ -46,6 +48,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     @Override
     public void deleteVertex(int positionVertex) {
         elementsReference.set(positionVertex,null);
+        nVertex--;
         for (int I = 0; I<matrixAdyacency[0].length ;I++){
             matrixAdyacency[positionVertex][I] = null;
         }
@@ -90,25 +93,98 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     //Veloza
     @Override
     public ArrayList<Integer> BFS(int startPosition) {
+
+        if(elementsReference.get(startPosition) == null){
+            return null;
+        }
+
+        int s = startPosition;
+        ArrayList<Integer> Solution = new ArrayList<>();
+
+        boolean visited[] = new boolean[elementsReference.size()];
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+
+        visited[s]=true;
+        queue.add(s);
+
+        while(queue.size() != 0){
+            s = queue.poll();
+
+            Solution.add(s);
+
+            for (int I = 0; I< matrixAdyacency[s].length ; I++){
+                if(matrixAdyacency[s][I] != null && !visited[I]){
+                    visited[I] = true;
+                    queue.add(I);
+                }
+            }
+        }
+
+
+        return Solution;
+    }
+
+    public ArrayList<int[]> BFS_freedomDegrees(int startPosition) {
+
         return null;
     }
 
-    //Fabio
     @Override
     public ArrayList<Integer> DFS(int startPosition) {
-        return null;
+        if(elementsReference.get(startPosition) == null){
+            return null;
+        }
+
+        int s = startPosition;
+        ArrayList<Integer> Solution = new ArrayList<>();
+
+
+        Stack<Integer> stack = new Stack<>();
+
+        boolean visited[] = new boolean[elementsReference.size()];
+
+        visited[s]=true;
+        stack.add(s);
+        visitedG[s] = true;
+
+        while(stack.size() != 0){
+            s = stack.pop();
+
+            Solution.add(s);
+
+            for (int I = 0; I< matrixAdyacency[s].length ; I++){
+                if(matrixAdyacency[s][I] != null && !visited[I]){
+                    visited[I] = true;
+                    visitedG[I] = true;
+                    stack.add(I);
+                }
+            }
+        }
+
+
+        return Solution;
     }
 
     //Fabio
     @Override
     public ArrayList<ArrayList<Integer>> DFS() {
-        return null;
+        ArrayList<ArrayList<Integer>> Solution = new ArrayList<>();
+        visitedG = new boolean[elementsReference.size()];
+
+        for(int I = 0; I< elementsReference.size() ; I++){
+            if(visitedG[I] = false && elementsReference.get(I) != null){
+                Solution.add(DFS(I));
+            }
+        }
+
+        return Solution;
     }
 
     //Nelson
     @Override
     public ArrayList<Integer> Prim(int startPosition) {
-        return null;
+        ArrayList<Integer> Solution = new ArrayList<>();
+        return Solution;
     }
 
     //Nelson
