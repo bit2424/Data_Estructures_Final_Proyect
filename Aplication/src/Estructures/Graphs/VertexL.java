@@ -2,42 +2,48 @@ package Estructures.Graphs;
 
 import java.util.ArrayList;
 
-public class Vertex<T> {
+public class VertexL<V, E extends Comparable<E>> implements Comparable<VertexL<V, E>>{
 
-    private T value;
+    private V value;
+    private E key;
     private int degree;
     private int distance;
     private byte color;
-    private Vertex predecessor;
+    private int predecessor;
     private int initialTime;
     private int finalTime;
-    private ArrayList<Edge<T>> adjacencyList;
+    private ArrayList<EdgeL<V, E>> adjacencyList;
 
-    public Vertex(T value){
+    public VertexL(V value){
         this.value = value;
+        key = null;
         degree = 0;
         distance = -1;
         color = 0;
-        predecessor = null;
+        predecessor = -1;
         initialTime = 0;
         finalTime = 0;
         adjacencyList = new ArrayList<>();
     }
 
-    public T getValue() {
+    public V getValue() {
         return value;
     }
 
-    public void setValue(T value) {
+    public void setValue(V value) {
         this.value = value;
+    }
+
+    public E getKey(){
+        return key;
+    }
+
+    public void setKey(E key){
+        this.key = key;
     }
 
     public int getDegree() {
         return degree;
-    }
-
-    public void setDegree() {
-        degree = adjacencyList.size();
     }
 
     public int getDistance() {
@@ -56,11 +62,11 @@ public class Vertex<T> {
         this.color = color;
     }
 
-    public Vertex getPredecessor() {
+    public int getPredecessor() {
         return predecessor;
     }
 
-    public void setPredecessor(Vertex predecessor) {
+    public void setPredecessor(int predecessor) {
         this.predecessor = predecessor;
     }
 
@@ -80,24 +86,39 @@ public class Vertex<T> {
         this.finalTime = finalTime;
     }
 
-    public ArrayList<Edge<T>> getAdjacencyList(){
+    public ArrayList<EdgeL<V, E>> getAdjacencyList(){
         return adjacencyList;
     }
 
-    public void addAdjacentVertex(Edge<T> adjacent){
+    public void addAdjacentVertex(EdgeL<V, E> adjacent){
         adjacencyList.add(adjacent);
+        degree = adjacencyList.size();
     }
 
-    public void addAdjacencyList(ArrayList<Edge<T>> adjacencyList){
+    public void addAdjacencyList(ArrayList<EdgeL<V, E>> adjacencyList){
         this.adjacencyList = adjacencyList;
+        degree = this.adjacencyList.size();
     }
 
-    public void deleteFromAdjacencyList(int index){
+    public void deleteFromAdjacencyList(int index) throws IndexOutOfBoundsException{
         adjacencyList.remove(index);
+        degree = adjacencyList.size();
     }
 
     public void deleteAdjacencyList(){
         adjacencyList = null;
+        degree = 0;
     }
 
+    @Override
+    public int compareTo(VertexL<V, E> o) {
+        if(key == null && o.getKey() == null)
+            return 0;
+        else if(o.getKey() == null)
+            return -1;
+        else if(key == null)
+            return 1;
+        else
+            return key.compareTo(o.getKey());
+    }
 }

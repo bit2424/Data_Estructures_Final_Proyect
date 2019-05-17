@@ -1,167 +1,168 @@
 package Estructures.Graphs;
 
 import java.util.ArrayList;
-import Estructures.linear_Structures.Queue;
+import Estructures.auxiliary_estructures.MinPriorityQueue;
+import Estructures.auxiliary_estructures.Queue;
+import Estructures.auxiliary_estructures.GreaterKeyException;
+import Estructures.auxiliary_estructures.HeapUnderFlowException;
+import Estructures.auxiliary_estructures.UnderflowException;
 
-public class AdjacencyListGraph<T> implements IAdjacencyListGraph<T> {
+public class AdjacencyListGraph<V, E extends Comparable<E>> implements IGraph<V, E> {
 
     private boolean directed;
     private boolean weighted;
     private int time;
-    private ArrayList<Vertex<T>> vertices;
+    private int nVertices;
+    private ArrayList<VertexL<V, E>> vertices;
 
-    public AdjacencyListGraph(boolean directed, boolean weighted, Vertex<T> vertex){
+    public AdjacencyListGraph(boolean directed, boolean weighted, VertexL<V, E> vertexL){
         this.directed = directed;
         this.weighted = weighted;
         vertices = new ArrayList<>();
-        vertices.add(vertex);
+        vertices.add(vertexL);
+        nVertices = vertices.size();
     }
 
     @Override
-    public void insertVertex(T value){
-        Vertex<T> u = new Vertex<>(value);
+    public void insertVertex(V value){
+        VertexL<V, E> u = new VertexL<>(value);
         vertices.add(u);
+        nVertices = vertices.size();
     }
 
     @Override
-    public void insertVertex(T value, Edge<T> edgeToU){
-        Vertex<T> u = new Vertex<>(value);
-        ArrayList<Edge<T>> adjacencyList = new ArrayList<>();
-        adjacencyList.add(edgeToU);
-        connectVertex(u, adjacencyList);
-        vertices.add(u);
+    public void insertEdge(int position1, int position2, E connection) {
+        vertices.get(position1).addAdjacentVertex(new EdgeL<>(vertices.get(position2), connection));
+        if(!isDirected() && position1 != position2)
+            vertices.get(position2).addAdjacentVertex(new EdgeL<>(vertices.get(position1), connection));
     }
 
-    @Override
-    public void insertVertex(T value, ArrayList<Edge<T>> adjacentVertices) {
-        Vertex<T> u = new Vertex<>(value);
-        connectVertex(u, adjacentVertices);
-        vertices.add(u);
-    }
-
-
-    private void connectVertex(Vertex<T> u, ArrayList<Edge<T>> adjacentVertices) {
-        u.addAdjacencyList(adjacentVertices);
-        if(!isDirected()){
-            for(int i = 0; i < u.getAdjacencyList().size(); i++){
-                Vertex<T> v = u.getAdjacencyList().get(i).getVertex();
-                Edge<T> edge = new Edge<>(u, u.getAdjacencyList().get(i).getWeight());
-                v.addAdjacentVertex(edge);
+    private boolean deleteIncidentEdgesToAVertex(VertexL<V, E> u, VertexL<V, E> v){
+        boolean oneVertexHasBeenDeleted = false;
+        for(int i = u.getAdjacencyList().size() - 1; i >= 0; i--){
+            if(v.equals(u.getAdjacencyList().get(i).getVertex())) {
+                u.deleteFromAdjacencyList(i);
+                oneVertexHasBeenDeleted = true;
             }
         }
+        return oneVertexHasBeenDeleted;
     }
 
     @Override
-    public void addEdge(Vertex<T> u, Vertex<T> v, int weight) {
-        Edge<T> edgeToV = new Edge<>(v, weight);
-        u.addAdjacentVertex(edgeToV);
-        if(!isDirected()){
-            if(!u.equals(v)) {
-                Edge<T> edgeToU = new Edge<>(u, weight);
-                v.addAdjacentVertex(edgeToU);
-            }
-        }
+    public void deleteVertex(int index) throws IndexOutOfBoundsException {
+        VertexL<V, E> u = vertices.get(index);
+        if(!isDirected())
+            for(int i = 0; i < u.getAdjacencyList().size(); i++)
+                deleteIncidentEdgesToAVertex(u.getAdjacencyList().get(i).getVertex(), u);
+        else
+            for(int i = 0; i < vertices.size(); i++)
+                deleteIncidentEdgesToAVertex(vertices.get(i), u);
+        vertices.remove(index);
+        nVertices = vertices.size();
     }
 
-    private int findEdge(Vertex<T> u, Vertex<T> v, int weight){
-        for(int i = 0; i < u.getAdjacencyList().size(); i++){
-            if(v.equals(u.getAdjacencyList().get(i).getVertex()) && weight == u.getAdjacencyList().get(i).getWeight()){
+    private int findEdge(VertexL<V, E> u, VertexL<V, E> v, E weight){
+        for(int i = 0; i < u.getAdjacencyList().size(); i++)
+            if(v.equals(u.getAdjacencyList().get(i).getVertex()) && weight.equals(u.getAdjacencyList().get(i).getWeight()))
                 return i;
-            }
-        }
         return -1;
     }
 
     @Override
-    public void deleteEdge(Vertex<T> u, Vertex<T> v, int weight) throws IndexOutOfBoundsException {
-        if(!isDirected()){
-            u.getAdjacencyList().remove(findEdge(u, v, weight));
-            if(!u.equals(v)) {
-                v.getAdjacencyList().remove(findEdge(v, u, weight));
-            }
-        }
-        else{
-            u.getAdjacencyList().remove(findEdge(u, v, weight));
-        }
-    }
-
-    private void deleteEdges(Vertex<T> u, Vertex<T> v){
-        for(int i = u.getAdjacencyList().size() - 1; i >= 0; i--){
-            if(v.equals(u.getAdjacencyList().get(i).getVertex())){
-                u.getAdjacencyList().remove(i);
-            }
-        }
+    public void deleteEdge(int position1, int position2, E weight) throws IndexOutOfBoundsException {
+        VertexL<V, E> u = vertices.get(position1);
+        VertexL<V, E> v = vertices.get(position2);
+        u.deleteFromAdjacencyList(findEdge(u, v, weight));
+        if (!isDirected() && position1 != position2)
+            v.deleteFromAdjacencyList(findEdge(v, u, weight));
     }
 
     @Override
-    public Vertex<T> deleteVertex(int index) throws IndexOutOfBoundsException {
-        Vertex<T> u = vertices.get(index);
-        if(!isDirected()){
-            for(int i = 0; i < u.getAdjacencyList().size(); i++){
-                deleteEdges(u.getAdjacencyList().get(i).getVertex(), u);
-            }
-        }
-        else{
-            for(int i = 0; i < vertices.size(); i++){
-                deleteEdges(vertices.get(i), u);
-            }
-        }
-        return vertices.remove(index);
+    public void deleteAllEdge(int position1, int position2){
+        VertexL<V, E> u = vertices.get(position1);
+        VertexL<V, E> v = vertices.get(position2);
+        if(!isDirected() && position1 != position2)
+            deleteIncidentEdgesToAVertex(v, u);
+        deleteIncidentEdgesToAVertex(u, v);
     }
 
     @Override
-    public ArrayList<Vertex<T>> BFS(int initialVertexIndex, int targetVertexIndex) {
-        for(int i = 0; i < vertices.size(); i++){
-            vertices.get(i).setColor((byte)0);
-            vertices.get(i).setDistance(-1);
-            vertices.get(i).setPredecessor(null);
-        }
-        Vertex<T> initialVertex = vertices.get(initialVertexIndex);
-        Vertex<T> targetVertex = vertices.get(targetVertexIndex);
-        initialVertex.setColor((byte)1);
-        initialVertex.setDistance(0);
-        Queue<Vertex<T>> nextToVisit = new Queue<>();
-        ArrayList<Vertex<T>> visited = new ArrayList<>();
-        nextToVisit.offer(initialVertex);
-        visited.add(initialVertex);
-        while(nextToVisit.peek() != null){
-            Vertex<T> u = nextToVisit.poll();
-            for(int i = 0; i < u.getAdjacencyList().size(); i++){
-                Vertex<T> v = u.getAdjacencyList().get(i).getVertex();
-                if (v.getColor() == 0){
-                    visited.add(v);
-                    v.setColor((byte)1);
-                    v.setDistance(u.getDistance() + 1);
-                    v.setPredecessor(u);
-                    nextToVisit.offer(v);
-                }
-            }
-            u.setColor((byte)2);
-        }
-        ArrayList<Vertex<T>> path = new ArrayList<>();
-        if(visited.contains(targetVertex)){
-            Vertex<T> currentVertex = targetVertex;
-            while(currentVertex != null){
-                path.add(0, currentVertex);
-                currentVertex = currentVertex.getPredecessor();
-            }
-            return path;
-        }
+    public ArrayList<VertexL<V, E>> getVerticesL(){
+        return vertices;
+    }
+
+    @Override
+    public ArrayList<VertexM<V>> getVertexM() {
         return null;
     }
 
     @Override
-    public ArrayList<ArrayList<Vertex<T>>> DFS() {
-        ArrayList<ArrayList<Vertex<T>>> forest = new ArrayList<>();
-        for(int i = 0; i < vertices.size(); i++){
+    public ArrayList<Integer> BFS(int initialVertexIndex) throws UnderflowException {
+        for(int i = 0; i < nVertices; i++){
             vertices.get(i).setColor((byte)0);
-            vertices.get(i).setPredecessor(null);
+            vertices.get(i).setDistance(Integer.MAX_VALUE);
+            vertices.get(i).setPredecessor(-1);
         }
-        time = 0;
+        return BFS_algorithm(initialVertexIndex);
+    }
+
+    private ArrayList<Integer> BFS_algorithm(int initialVertexIndex) throws UnderflowException {
+        VertexL<V, E> initialVertexL = vertices.get(initialVertexIndex);
+        initialVertexL.setColor((byte)1);
+        initialVertexL.setDistance(0);
+        Queue<VertexL<V, E>> nextToVisit = new Queue<>();
+        ArrayList<Integer> visited = new ArrayList<>();
+        nextToVisit.enqueue(initialVertexL);
+        visited.add(initialVertexIndex);
+        while(!nextToVisit.isEmpty()){
+            VertexL<V, E> u = nextToVisit.dequeue();
+            for(int i = 0; i < u.getDegree(); i++){
+                VertexL<V, E> v = u.getAdjacencyList().get(i).getVertex();
+                if(v.getColor() == 0){
+                    v.setPredecessor(vertices.indexOf(u));
+                    v.setDistance(u.getDistance() + 1);
+                    v.setColor((byte)1);
+                    visited.add(vertices.indexOf(v));
+                    nextToVisit.enqueue(v);
+                }
+            }
+            u.setColor((byte)2);
+        }
+        return visited;
+    }
+
+
+    public ArrayList<ArrayList<Integer>> BFS() throws UnderflowException {
+        ArrayList<ArrayList<Integer>> forest = new ArrayList<>();
+        for(int i = 0; i < nVertices; i++){
+            boolean alreadyInForest = false;
+            for(int j = 0; j < forest.size() && !alreadyInForest; j++){
+                if(forest.get(j).contains(i))
+                    alreadyInForest = true;
+            }
+            if(!alreadyInForest)
+                forest.add(BFS_algorithm(i));
+        }
+        return forest;
+    }
+
+    @Override
+    public ArrayList<Integer> DFS(int initialVertexIndex){
+        ArrayList<Integer> tree = new ArrayList<>();
+        DFS_restart();
+        tree.add(initialVertexIndex);
+        DFS_Visit(tree, initialVertexIndex);
+        return tree;
+    }
+
+    @Override
+    public ArrayList<ArrayList<Integer>> DFS() {
+        ArrayList<ArrayList<Integer>> forest = new ArrayList<>();
+        DFS_restart();
         for(int i = 0; i < vertices.size(); i++){
             if(vertices.get(i).getColor() == 0){
-                ArrayList<Vertex<T>> tree = new ArrayList<>();
-                tree.add(vertices.get(i));
+                ArrayList<Integer> tree = new ArrayList<>();
+                tree.add(i);
                 DFS_Visit(tree, i);
                 forest.add(tree);
             }
@@ -169,16 +170,24 @@ public class AdjacencyListGraph<T> implements IAdjacencyListGraph<T> {
         return forest;
     }
 
-    private void DFS_Visit(ArrayList<Vertex<T>> tree, int i){
+    private void DFS_restart(){
+        for(int i = 0; i < vertices.size(); i++){
+            vertices.get(i).setColor((byte)0);
+            vertices.get(i).setPredecessor(-1);
+        }
+        time = 0;
+    }
+
+    private void DFS_Visit(ArrayList<Integer> tree, int i){
         time ++;
-        Vertex<T> u = vertices.get(i);
+        VertexL<V, E> u = vertices.get(i);
         u.setInitialTime(time);
         u.setColor((byte)1);
         for(int j = 0; j < u.getAdjacencyList().size(); j++){
-            Vertex<T> v = u.getAdjacencyList().get(j).getVertex();
+            VertexL<V, E> v = u.getAdjacencyList().get(j).getVertex();
             if(v.getColor() == 0){
-                tree.add(v);
-                v.setPredecessor(u);
+                tree.add(vertices.indexOf(v));
+                v.setPredecessor(vertices.indexOf(u));
                 DFS_Visit(tree, vertices.indexOf(v));
             }
         }
@@ -187,8 +196,60 @@ public class AdjacencyListGraph<T> implements IAdjacencyListGraph<T> {
         u.setFinalTime(time);
     }
 
-    public ArrayList<Vertex<T>> getVertices(){
-        return vertices;
+    @Override
+    public ArrayList<Integer> Prim(int initialVertexIndex) throws GreaterKeyException, HeapUnderFlowException, IndexOutOfBoundsException {
+        VertexL<V, E> r = vertices.get(initialVertexIndex);
+        ArrayList<Integer> tree = new ArrayList<>();
+        for(int i = 0; i < nVertices; i++){
+            vertices.get(i).setColor((byte)0);
+            vertices.get(i).setKey(null);
+            vertices.get(i).setPredecessor(-1);
+        }
+        r.setKey(r.getAdjacencyList().get(0).getWeight());
+        ArrayList<VertexL<V, E>> heap = new ArrayList<>();
+        MinPriorityQueue<VertexL<V, E>> minQueue = new MinPriorityQueue<>(heap, 0);
+        minQueue.insert(r);
+        for(int i = 0; i < nVertices; i++){
+            if(i != initialVertexIndex)
+                minQueue.insert(vertices.get(i));
+        }
+        while(!minQueue.isEmpty()){
+            VertexL<V, E> u = minQueue.extract_min();
+            for(int i = 0; i < u.getDegree(); i++){
+                VertexL<V, E> v = u.getAdjacencyList().get(i).getVertex();
+                EdgeL<V, E> edgeLToV = u.getAdjacencyList().get(i);
+                if(v.getColor() == 0 && v.getKey() == null){
+                    v.setKey(edgeLToV.getWeight());
+                    minQueue.decrease_key(v, v);
+                    v.setPredecessor(vertices.indexOf(u));
+                }
+                else if(v.getColor() == 0 && edgeLToV.getWeight().compareTo(v.getKey()) < 0){
+                    v.setKey(edgeLToV.getWeight());
+                    minQueue.decrease_key(v, v);
+                    v.setPredecessor(vertices.indexOf(u));
+                }
+            }
+            u.setColor((byte)1);
+            tree.add(vertices.indexOf(u));
+        }
+        r.setKey(null);
+        return tree;
+    }
+
+    @Override
+    public ArrayList<Integer> Kruskal(int initialVertexIndex){
+
+        return null;
+    }
+
+    @Override
+    public ArrayList<int[]> Dijsktra(int startPosition) {
+        return null;
+    }
+
+    @Override
+    public int[][] Floyd_Warshal() {
+        return new int[0][];
     }
 
     public boolean isDirected() {
@@ -197,5 +258,9 @@ public class AdjacencyListGraph<T> implements IAdjacencyListGraph<T> {
 
     public boolean isWeighted() {
         return weighted;
+    }
+
+    public int getNumberOfVertices(){
+        return nVertices;
     }
 }

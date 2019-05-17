@@ -125,6 +125,7 @@ public class AdjacencyListNoDirectedGraphTest {
         assertTrue(noDirectedGraph.getVertices().get(3).getAdjacencyList().size() == 0);
     }
 
+
     @Test
     void addEdgeTest(){
         setupScene2();
@@ -161,6 +162,9 @@ public class AdjacencyListNoDirectedGraphTest {
         assertTrue(noDirectedGraph.getVertices().get(0).getAdjacencyList().size() == 2);
         assertTrue(noDirectedGraph.getVertices().get(0).getAdjacencyList().get(1).getVertex().getValue() == 2);
         assertTrue(noDirectedGraph.getVertices().get(0).getAdjacencyList().get(1).getWeight() == 40);
+
+        // Case 4: Adds an edge between two vertices that are already connected by another edge but in the opposite direction.
+
     }
 
     @Test

@@ -86,7 +86,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
 
     @Override
-    public ArrayList<Vertex<V>> getVertex() {
+    public ArrayList<VertexL<V, E>> getVerticesL() {
         return null;
     }
 
