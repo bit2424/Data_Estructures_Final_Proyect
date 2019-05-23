@@ -25,6 +25,7 @@ class AdjacencyMatrixGraphTest {
         noDirectedGraph.insertVertex(2);
         noDirectedGraph.insertVertex(1);
         noDirectedGraph.insertVertex(3);
+        noDirectedGraph.insertVertex(4);
     }
 
     private void setupScene3(){
@@ -44,6 +45,8 @@ class AdjacencyMatrixGraphTest {
             if(contains) break;
         }
         assertTrue(contains);
+
+        assertEquals(3,noDirectedGraph.getElementsReference().get(3));
     }
 
     @Test
@@ -51,14 +54,19 @@ class AdjacencyMatrixGraphTest {
 
         setupScene2();
 
-        noDirectedGraph.insertEdge(1,2,4);
+        noDirectedGraph.insertEdge(0,3,4);
+        noDirectedGraph.insertEdge(0,0,2);
+        assertEquals(4,noDirectedGraph.getElementsReference().get(4));
+        noDirectedGraph.deleteEdge(0,3,4);
+        noDirectedGraph.deleteEdge(0,0,2);
+
 
     }
 
     @Test
     public void deleteVertexTest(){
-
-
+        noDirectedGraph.deleteVertex(2);
+        assertEquals(2,noDirectedGraph.getElementsReference().get(2));
     }
 
     @Test
