@@ -258,7 +258,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
                 // graph[u][v] is non zero only for adjacent vertices of m
                 // mstSet[v] is false for vertices not yet included in MST
-                // Update the key only if graph[u][v] is smaller than key[v]
+                // Update the key only if graph[u][v] is smaller than key[v] l
                 if (matrixAdyacency[u][v]!=null && mstSet[v] == false &&
                         (double)matrixAdyacency[u][v].getValue() < key[v])
                 {
