@@ -211,6 +211,62 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     @Override
     public ArrayList<Integer> Prim(int startPosition) {
         ArrayList<Integer> Solution = new ArrayList<>();
+        int V = nVertex;
+
+        TreeMap<Double,Integer> minDistance = new TreeMap<>();
+
+        // Array to store constructed MST
+        int parent[] = new int[V];
+
+        // Key values used to pick minimum weight edge in cut
+        double key[] = new double [V];
+
+        // To represent set of vertices not yet included in MST
+        Boolean mstSet[] = new Boolean[V];
+
+        // Initialize all keys as INFINITE
+        for (int i = 0; i < V; i++)
+        {
+            key[i] = Double.MAX_VALUE;
+            minDistance.put(Double.MAX_VALUE,i);
+            mstSet[i] = false;
+        }
+
+        minDistance.replace(0d,startPosition);
+        // Always include first 1st vertex in MST.
+        //key[0] = 0;     // Make key 0 so that this vertex is
+        // picked as first vertex
+        parent[0] = -1; // First node is always root of MST
+
+        // The MST will have V vertices
+        for (int count = 0; count < V-1; count++)
+        {
+            // Pick thd minimum key vertex from the set of vertices
+            // not yet included in MST
+
+                int u = minDistance.lowerEntry(Double.MAX_VALUE).getValue();
+
+
+            // Add the picked vertex to the MST Set
+            mstSet[u] = true;
+            minDistance.remove(minDistance.lowerEntry(Double.MAX_VALUE).getKey(),u);
+
+            // Update key value and parent index of the adjacent
+            // vertices of the picked vertex. Consider only those
+            // vertices which are not yet included in MST
+            for (int v = 0; v < V; v++)
+
+                // graph[u][v] is non zero only for adjacent vertices of m
+                // mstSet[v] is false for vertices not yet included in MST
+                // Update the key only if graph[u][v] is smaller than key[v]
+                if (matrixAdyacency[u][v]!=null && mstSet[v] == false &&
+                        (double)matrixAdyacency[u][v].getValue() < key[v])
+                {
+                    parent[v] = u;
+                    key[v] = (double)matrixAdyacency[u][v].getValue();
+                    minDistance.replace((double)matrixAdyacency[u][v].getValue(),v);
+                }
+        }
         return Solution;
     }
 
@@ -333,5 +389,13 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
     public void setDirected(boolean directed) {
         this.directed = directed;
+    }
+
+    public ArrayList<VertexM<V>> getElementsReference() {
+        return elementsReference;
+    }
+
+    public void setElementsReference(ArrayList<VertexM<V>> elementsReference) {
+        this.elementsReference = elementsReference;
     }
 }
