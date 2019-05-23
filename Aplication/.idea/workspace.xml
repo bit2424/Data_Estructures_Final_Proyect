@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Estructures/Graphs/EdgeL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Estructures/Graphs/VertexL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estructures/graphs/AdjacencyListGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estructures/graphs/AdjacencyListGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estructures/graphs/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estructures/graphs/IAdjacencyListGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estructures/graphs/IAdjacencyListGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estructures/graphs/Vertex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estructures/test/AdjacencyListDirectedGraphTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estructures/test/AdjacencyListNoDirectedGraphTest.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +13,50 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="315" column="5" lean-forward="true" selection-start-line="315" selection-start-column="5" selection-end-line="315" selection-end-column="5" />
+              <folding>
+                <element signature="e#3216#3217#0" expanded="true" />
+                <element signature="e#3312#3313#0" expanded="true" />
+                <element signature="e#8751#8752#0" expanded="true" />
+                <element signature="e#8832#8833#0" expanded="true" />
+                <element signature="e#8898#8899#0" expanded="true" />
+                <element signature="e#8987#8988#0" expanded="true" />
+                <element signature="e#9053#9054#0" expanded="true" />
+                <element signature="e#9142#9143#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="230" column="1" lean-forward="true" selection-start-line="230" selection-start-column="1" selection-end-line="230" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -44,13 +78,18 @@
         <option value="$PROJECT_DIR$/src/Estructures/Graphs/IAdjacencyListGraph.java" />
         <option value="$PROJECT_DIR$/src/Estructures/Graphs/Vertex.java" />
         <option value="$PROJECT_DIR$/src/Estructures/Graphs/Edge.java" />
-        <option value="$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java" />
-        <option value="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" />
-        <option value="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java" />
         <option value="$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.java" />
         <option value="$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_DirectedGraph.java" />
+        <option value="$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java" />
+        <option value="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java" />
+        <option value="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" />
       </list>
     </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -60,7 +99,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -79,12 +117,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Estructures" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aplication" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Estructures" type="462c0819:PsiDirectoryNode" />
+              <item name="Graphs" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -163,6 +212,19 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="" />
+      <created>1558131825958</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558131825958</updated>
+    </task>
+    <servers />
+  </component>
   <component name="TestHistory">
     <history-entry file="AdjacencyListGraphTest_NonDirectedGraph_deleteAllEdge - 2019.05.17 at 05h 04m 29s.xml">
       <configuration name="AdjacencyListGraphTest_NonDirectedGraph.deleteAllEdge" configurationId="JUnit" />
@@ -196,15 +258,16 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1818758" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28668684" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.43607" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.06594886" />
@@ -212,10 +275,18 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.43607" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Maven" order="7" />
     </layout>
   </component>
   <component name="editorHistoryManager">
@@ -286,20 +357,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/EdgeL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListDirectedGraphTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/EdgeL.java" />
+    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListDirectedGraphTest.java" />
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -307,20 +366,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="557" column="41" selection-start-line="557" selection-start-column="41" selection-end-line="557" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_DirectedGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8670">
-          <caret line="517" column="37" lean-forward="true" selection-start-line="517" selection-start-column="37" selection-end-line="517" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.java" />
+    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_DirectedGraph.java" />
     <entry file="file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/GreaterKeyException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -335,24 +382,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java">
+    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        <state relative-caret-position="63">
+          <caret line="230" column="1" lean-forward="true" selection-start-line="230" selection-start-column="1" selection-end-line="230" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="84" column="13" lean-forward="true" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
+        <state relative-caret-position="330">
+          <caret line="315" column="5" lean-forward="true" selection-start-line="315" selection-start-column="5" selection-end-line="315" selection-end-column="5" />
+          <folding>
+            <element signature="e#3216#3217#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+            <element signature="e#8751#8752#0" expanded="true" />
+            <element signature="e#8832#8833#0" expanded="true" />
+            <element signature="e#8898#8899#0" expanded="true" />
+            <element signature="e#8987#8988#0" expanded="true" />
+            <element signature="e#9053#9054#0" expanded="true" />
+            <element signature="e#9142#9143#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java">
+    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="89" column="45" lean-forward="true" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
+        <state relative-caret-position="272">
+          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
         </state>
       </provider>
     </entry>

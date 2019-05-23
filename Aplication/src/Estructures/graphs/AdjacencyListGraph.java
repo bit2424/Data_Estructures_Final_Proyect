@@ -243,13 +243,13 @@ public class AdjacencyListGraph<V, E extends Comparable<E>> implements IGraph<V,
     }
 
     @Override
-    public ArrayList<int[]> Dijsktra(int startPosition) {
+    public ArrayList<Double> Dijsktra(int startPosition) {
         return null;
     }
 
     @Override
-    public int[][] Floyd_Warshal() {
-        return new int[0][];
+    public double[][] Floyd_Warshal() {
+        return new  double[0][];
     }
 
     public boolean isDirected() {

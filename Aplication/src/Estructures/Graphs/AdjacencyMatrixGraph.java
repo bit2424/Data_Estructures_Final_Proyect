@@ -47,14 +47,40 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
     @Override
     public void deleteVertex(int positionVertex) {
-        elementsReference.set(positionVertex,null);
+        elementsReference.remove(positionVertex);
         nVertex--;
-        for (int I = 0; I<matrixAdyacency[0].length ;I++){
-            matrixAdyacency[positionVertex][I] = null;
+
+
+        for (int I = 0; I < positionVertex;I++ ){
+            for(int J = positionVertex; J<matrixAdyacency.length ; J++){
+
+                matrixAdyacency[I][J] = matrixAdyacency[I][J+1] ;
+
+                if(matrixAdyacency[I][J+1] == null){
+                    break;
+                }
+
+            }
         }
 
-        for (int I = 0; I<matrixAdyacency.length ;I++){
-            matrixAdyacency[I][positionVertex] = null;
+        for (int J = 0; J < positionVertex; J++){
+            for( int I = positionVertex; I < matrixAdyacency.length;I++ ){
+
+                matrixAdyacency[I][J] = matrixAdyacency[I+1][J] ;
+
+                if(matrixAdyacency[I+1][J] == null){
+                    break;
+                }
+
+            }
+        }
+
+        for (int I = positionVertex; I < matrixAdyacency.length ;I++ ){
+            for(int J = positionVertex; J<matrixAdyacency.length ; J++){
+
+                matrixAdyacency[I][J] = matrixAdyacency[I+1][J+1] ;
+
+            }
         }
 
     }
@@ -67,6 +93,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             matrixAdyacency[position1][position2] = null;
             matrixAdyacency[position2][position1] = null;
         }
+
     }
 
     @Override
@@ -190,19 +217,97 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     //Nelson
     @Override
     public ArrayList<Integer> Kruskal(int startPosition) {
+
+
         return null;
     }
 
     //Nelson
     @Override
-    public ArrayList<int[]> Dijsktra(int startPosition) {
-        return null;
+    public ArrayList<Double> Dijsktra(int startPosition) {
+        int V = nVertex;
+        double dist[] = new double[V];
+        Boolean sptSet[] = new Boolean[V];
+
+        PriorityQueue<VertexM> minDistance = new PriorityQueue<>();
+
+
+
+        for (int i = 0; i < V; i++)
+        {
+            dist[i] = Double.MAX_VALUE;
+            minDistance.add(elementsReference.get(i));
+        }
+
+        dist[startPosition] = 0;
+
+
+        for (int count = 0; count < V-1; count++)
+        {
+            // Pick the minimum distance vertex from the set of vertices
+            // not yet processed. u is always equal to src in first
+            // iteration.
+            int u = (int)minDistance.poll().getValue();
+
+            // Mark the picked vertex as processed
+            sptSet[u] = true;
+
+            // Update dist value of the adjacent vertices of the
+            // picked vertex.
+            for (int v = 0; v < V; v++)
+
+                // Update dist[v] only if is not in sptSet, there is an
+                // edge from u to v, and total weight of path from src to
+                // v through u is smaller than current value of dist[v]
+                if (!sptSet[v] && matrixAdyacency[u][v]!=null &&
+                        dist[u] != Double.MAX_VALUE &&
+                        dist[u]+(double)matrixAdyacency[u][v].getValue() < dist[v])
+                    dist[v] = dist[u] + (double)matrixAdyacency[u][v].getValue();
+        }
+
+        ArrayList<Double> result = new ArrayList<>();
+
+        for(int I = 0; I< dist.length; I++){
+            result.add(dist[I]);
+        }
+
+        return result;
     }
 
     //Veloza
     @Override
-    public int[][] Floyd_Warshal() {
-        return new int[0][];
+    public double[][] Floyd_Warshal() {
+        int V = matrixAdyacency.length;
+        double dist[][] = new double[matrixAdyacency.length][matrixAdyacency.length];
+        int i, j, k;
+
+        for (i = 0; i < matrixAdyacency.length; i++)
+            for (j = 0; j < matrixAdyacency.length; j++)
+                if(matrixAdyacency[i][j] == null){
+                    dist[i][j] = (double)matrixAdyacency[i][j].getValue();
+                }else{
+                    dist[i][j] = Double.MAX_VALUE;
+                }
+
+        for (k = 0; k < V; k++)
+        {
+            // Pick all vertices as source one by one
+            for (i = 0; i < V; i++)
+            {
+                // Pick all vertices as destination for the
+                // above picked source
+                for (j = 0; j < V; j++)
+                {
+                    // If vertex k is on the shortest path from
+                    // i to j, then update the value of dist[i][j]
+                    if (dist[i][k] != Double.MAX_VALUE && dist[k][j] != Double.MAX_VALUE && dist[i][k] + dist[k][j] < dist[i][j])
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                }
+            }
+        }
+
+
+        return dist;
     }
 
 
