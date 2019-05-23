@@ -267,7 +267,13 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
                     minDistance.replace((double)matrixAdyacency[u][v].getValue(),v);
                 }
         }
-        return Solution;
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for(int I = 0; I< parent.length; I++){
+            result.add(parent[I]);
+        }
+
+        return result;
     }
 
     //Nelson
