@@ -281,8 +281,6 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     //Nelson
     @Override
     public ArrayList<Integer> Kruskal(int startPosition) {
-
-
         return null;
     }
 
