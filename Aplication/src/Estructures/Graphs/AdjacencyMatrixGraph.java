@@ -258,7 +258,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
                 // graph[u][v] is non zero only for adjacent vertices of m
                 // mstSet[v] is false for vertices not yet included in MST
-                // Update the key only if graph[u][v] is smaller than key[v]
+                // Update the key only if graph[u][v] is smaller than key[v] l
                 if (matrixAdyacency[u][v]!=null && mstSet[v] == false &&
                         (double)matrixAdyacency[u][v].getValue() < key[v])
                 {
@@ -267,16 +267,25 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
                     minDistance.replace((double)matrixAdyacency[u][v].getValue(),v);
                 }
         }
-        return Solution;
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for(int I = 0; I< parent.length; I++){
+            result.add(parent[I]);
+        }
+
+        return result;
     }
+
+
 
     //Nelson
     @Override
     public ArrayList<Integer> Kruskal(int startPosition) {
-
-
         return null;
     }
+
+
+
 
     //Nelson
     @Override
@@ -397,5 +406,13 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
     public void setElementsReference(ArrayList<VertexM<V>> elementsReference) {
         this.elementsReference = elementsReference;
+    }
+
+    public EdgeM[][] getMatrixAdyacency() {
+        return matrixAdyacency;
+    }
+
+    public void setMatrixAdyacency(EdgeM[][] matrixAdyacency) {
+        this.matrixAdyacency = matrixAdyacency;
     }
 }
