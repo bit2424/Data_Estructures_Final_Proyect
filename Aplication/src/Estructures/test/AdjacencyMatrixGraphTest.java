@@ -37,30 +37,52 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     public void insertVertexTest() {
-        setupScene1();
-
-
-        assertEquals(3,noDirectedGraph.getElementsReference().get(3));
+        setupScene2();
+        noDirectedGraph.insertVertex("4");
+        assertEquals(5,noDirectedGraph.getnVertex());
+        assertEquals("4",noDirectedGraph.getElementsReference().get(4).getValue());
     }
 
     @Test
     public void insertEdgeTest(){
 
         setupScene2();
-
+        // Case 1: Connect a vertex to another which were not connected previously.
         noDirectedGraph.insertEdge(0,3,4);
+
+        assertEquals(4, noDirectedGraph.getMatrixAdyacency()[0][3].getValue());
+
+        //Case 2: Add an edge form one vertex to the same one.
+
         noDirectedGraph.insertEdge(0,0,2);
-        assertEquals(4,noDirectedGraph.getElementsReference().get(4));
-        noDirectedGraph.deleteEdge(0,3,4);
-        noDirectedGraph.deleteEdge(0,0,2);
-
-
+        assertEquals(2,noDirectedGraph.getMatrixAdyacency()[0][0].getValue());
     }
 
     @Test
     public void deleteVertexTest(){
-        noDirectedGraph.deleteVertex(2);
-        assertEquals(2,noDirectedGraph.getElementsReference().get(2));
+        setupScene2();
+        assertEquals(4, noDirectedGraph.getnVertex()); // Number of vertices in the graph
+
+        // Case 1: Delete a vertex which does not exist.
+        try{
+            noDirectedGraph.deleteVertex(3);
+            fail();
+        }
+        catch (IndexOutOfBoundsException e){
+            assertTrue(true);
+        }
+
+        //Case 2: Case 2: Delete a vertex with no connection to any of the others.
+
+        setupScene2();
+
+        noDirectedGraph.insertVertex("6");
+        noDirectedGraph.insertVertex("7");
+
+        assertEquals(6, noDirectedGraph.getnVertex()); // Number of vertices in the graph
+
+        noDirectedGraph.deleteVertex(5);
+        assertEquals(5, noDirectedGraph.getnVertex());
     }
 
     @Test
