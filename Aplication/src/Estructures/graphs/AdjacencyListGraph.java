@@ -243,7 +243,8 @@ public class AdjacencyListGraph<V, E extends Comparable<E>> implements IGraph<V,
     }
 
     @Override
-    public ArrayList<Double> Dijsktra(int startPosition) {
+    public Object[] Dijsktra(int startPosition) {
+
         return null;
     }
 

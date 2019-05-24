@@ -19,6 +19,6 @@ public interface IGraph<V,E extends Comparable<E>> {
     ArrayList<ArrayList<Integer>> DFS();
     ArrayList<Integer> Prim(int startPosition) throws GreaterKeyException, HeapUnderFlowException;
     ArrayList<Integer> Kruskal(int startPosition);
-    ArrayList<Double> Dijsktra(int startPosition);
+    Object[] Dijsktra(int startPosition);
     double[][] Floyd_Warshal();
 }
