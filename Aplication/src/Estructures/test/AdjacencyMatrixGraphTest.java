@@ -10,22 +10,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AdjacencyMatrixGraphTest {
 
-    private AdjacencyMatrixGraph<Integer, Integer> noDirectedGraph;
+    private AdjacencyMatrixGraph<String, Integer> noDirectedGraph;
 
     //Build scenes
     private void setupScene1(){
 
-        noDirectedGraph = new AdjacencyMatrixGraph<>( true, false );
+        noDirectedGraph = new AdjacencyMatrixGraph<String, Integer>( true, false );
 
     }
 
     private void setupScene2(){
         setupScene1();
-        EdgeM<Integer> edge = new EdgeM<Integer>(3);
-        noDirectedGraph.insertVertex(2);
-        noDirectedGraph.insertVertex(1);
-        noDirectedGraph.insertVertex(3);
-        noDirectedGraph.insertVertex(4);
+        noDirectedGraph.insertVertex("0");
+        noDirectedGraph.insertVertex("1");
+        noDirectedGraph.insertVertex("2");
+        noDirectedGraph.insertVertex("3");
+        noDirectedGraph.insertEdge(0,1,3);
     }
 
     private void setupScene3(){
