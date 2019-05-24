@@ -209,10 +209,30 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     }
 
     //Nelson
+
+    class pair implements Comparable<pair>{
+
+        int objeto;
+        double distancia;
+
+        public pair(int objeto, double distancia) {
+            this.objeto = objeto;
+            this.distancia = distancia;
+        }
+
+        @Override
+        public int compareTo(pair pair) {
+            return (int)(this.distancia-pair.distancia);
+        }
+    }
+
+
     @Override
     public ArrayList<Integer> Prim(int startPosition) {
         ArrayList<Integer> Solution = new ArrayList<>();
         int V = nVertex;
+
+        PriorityQueue<pair> minD = new PriorityQueue<>();
 
         TreeMap<Double, Integer> minDistance = new TreeMap<>();
 
@@ -226,16 +246,21 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
         Boolean mstSet[] = new Boolean[V];
 
         // Initialize all keys as INFINITE
+        ArrayList<pair> elements = new ArrayList<>();
         for (int i = 0; i < V; i++)
         {
             key[i] = Double.MAX_VALUE;
-            minDistance.put(Double.MAX_VALUE,i);
+            elements.add(new pair(i,Double.MAX_VALUE));
+            minD.offer(elements.get(i));
             mstSet[i] = false;
         }
         // Always include first 1st vertex in MST.
         //key[0] = 0;     // Make key 0 so that this vertex is
         // picked as first vertex
+        key[0] = 0;
         parent[0] = -1; // First node is always root of MST
+        minD.offer(new pair(0,Double.MAX_VALUE));
+        minD.remove(elements.get(0));
 
         // The MST will have V vertices
         for (int count = 0; count < V-1; count++)
@@ -243,7 +268,9 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             // Pick thd minimum key vertex from the set of vertices
             // not yet included in MST
 
-            int u = minKey(key,mstSet);
+            pair ref = minD.poll();
+
+            int u = ref.objeto;
 
 
             // Add the picked vertex to the MST Set
@@ -252,17 +279,27 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             // Update key value and parent index of the adjacent
             // vertices of the picked vertex. Consider only those
             // vertices which are not yet included in MST
-            for (int v = 0; v < V; v++)
-
+            for (int v = 0; v < V; v++) {
                 // graph[u][v] is non zero only for adjacent vertices of m
                 // mstSet[v] is false for vertices not yet included in MST
                 // Update the key only if graph[u][v] is smaller than key[v] l
-                if (matrixAdyacency[u][v]!=null && mstSet[v] == false &&
-                        (double)matrixAdyacency[u][v].getValue() < key[v])
-                {
-                    parent[v] = u;
-                    key[v] = (double)matrixAdyacency[u][v].getValue();
+
+                double c = -1;
+
+                if (matrixAdyacency[u][v] != null){
+
+                    c = new Double((int)matrixAdyacency[u][v].getValue());
                 }
+
+                if (matrixAdyacency[u][v] != null && mstSet[v] == false &&
+                        c < key[v]) {
+                    parent[v] = u;
+                    key[v] = c;
+                    minD.offer(new pair(v,c));
+                    minD.remove(elements.get(v));
+
+                }
+            }
         }
         ArrayList<Integer> result = new ArrayList<>();
 
@@ -300,7 +337,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
     //Nelson
     @Override
-    public ArrayList<Double> Dijsktra(int startPosition) {
+    public Object[] Dijsktra(int startPosition) {
         int V = nVertex;
         double dist[] = new double[V];
         Boolean sptSet[] = new Boolean[V];
@@ -336,7 +373,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
                 // edge from u to v, and total weight of path from src to
                 // v through u is smaller than current value of dist[v]
 
-                double c = Double.parseDouble(String.valueOf(matrixAdyacency[u][v].getValue()));
+                double c = new Double((int)matrixAdyacency[u][v].getValue());
 
                 if (!sptSet[v] && matrixAdyacency[u][v] != null &&
                         dist[u] != Double.MAX_VALUE &&
@@ -351,7 +388,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             result.add(dist[I]);
         }
 
-        return result;
+        return null;
     }
 
     //Veloza
@@ -365,7 +402,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             for (j = 0; j < matrixAdyacency.length; j++)
                 if(matrixAdyacency[i][j] != null){
                     if (!(matrixAdyacency[i][j].getValue() instanceof Double)){
-                        dist[i][j] = Double.parseDouble(String.valueOf(matrixAdyacency[i][j].getValue()));
+                        dist[i][j] = new Double((int)matrixAdyacency[i][j].getValue());
                     }else{
                         dist[i][j] = (double)matrixAdyacency[i][j].getValue();
                     }
@@ -446,7 +483,8 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
         g.insertEdge(0,1,10);
         g.insertEdge(0,2,10);
         g.insertEdge(1,3,20);
-
+        g.insertEdge(1,4,20);
+        g.insertEdge(3,4,5);
 
         System.out.println(g.getElementsReference().get(1).getValue());
 
@@ -477,7 +515,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
         ArrayList<Integer> lol3 = g.Prim(0);
         for(int I = 0; I< lol.size(); I++){
-            System.out.print(" " + lol.get(I));
+            System.out.print(" " + lol3.get(I));
         }
     }
 

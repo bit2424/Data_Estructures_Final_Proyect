@@ -38,13 +38,7 @@ class AdjacencyMatrixGraphTest {
     @Test
     public void insertVertexTest() {
         setupScene1();
-        noDirectedGraph.insertVertex(2);
-        boolean contains = false;
-        for (VertexM<Integer> e : noDirectedGraph.getVertexM()) {
-            contains = e.getValue() == 2;
-            if(contains) break;
-        }
-        assertTrue(contains);
+
 
         assertEquals(3,noDirectedGraph.getElementsReference().get(3));
     }
