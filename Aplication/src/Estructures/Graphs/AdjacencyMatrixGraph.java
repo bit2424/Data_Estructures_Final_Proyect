@@ -1,8 +1,9 @@
 package Estructures.Graphs;
 
+
 import java.util.*;
 
-public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V,E>{
+public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V,E> {
     private ArrayList<VertexM<V>> elementsReference;
     private int nVertex;
     private boolean weighted;
@@ -37,10 +38,10 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     @Override
     public void insertEdge(int position1, int position2, E conection) {
         if(directed){
-            matrixAdyacency[position1][position2] = new EdgeM(conection);
+            matrixAdyacency[position1][position2] = new EdgeM(conection,elementsReference.get(position1),elementsReference.get(position2));
         }else{
-            matrixAdyacency[position1][position2] = new EdgeM(conection);
-            matrixAdyacency[position2][position1] = new EdgeM(conection);
+            matrixAdyacency[position1][position2] = new EdgeM(conection,elementsReference.get(position1),elementsReference.get(position2));
+            matrixAdyacency[position2][position1] = new EdgeM(conection,elementsReference.get(position2),elementsReference.get(position1));
         }
 
     }
@@ -213,7 +214,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
         ArrayList<Integer> Solution = new ArrayList<>();
         int V = nVertex;
 
-        TreeMap<Double,Integer> minDistance = new TreeMap<>();
+        TreeMap<Double, Integer> minDistance = new TreeMap<>();
 
         // Array to store constructed MST
         int parent[] = new int[V];
@@ -231,8 +232,6 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             minDistance.put(Double.MAX_VALUE,i);
             mstSet[i] = false;
         }
-
-        minDistance.replace(0d,startPosition);
         // Always include first 1st vertex in MST.
         //key[0] = 0;     // Make key 0 so that this vertex is
         // picked as first vertex
@@ -244,12 +243,11 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             // Pick thd minimum key vertex from the set of vertices
             // not yet included in MST
 
-                int u = minDistance.lowerEntry(Double.MAX_VALUE).getValue();
+            int u = minKey(key,mstSet);
 
 
             // Add the picked vertex to the MST Set
             mstSet[u] = true;
-            minDistance.remove(minDistance.lowerEntry(Double.MAX_VALUE).getKey(),u);
 
             // Update key value and parent index of the adjacent
             // vertices of the picked vertex. Consider only those
@@ -264,7 +262,6 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
                 {
                     parent[v] = u;
                     key[v] = (double)matrixAdyacency[u][v].getValue();
-                    minDistance.replace((double)matrixAdyacency[u][v].getValue(),v);
                 }
         }
         ArrayList<Integer> result = new ArrayList<>();
@@ -276,7 +273,21 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
         return result;
     }
 
+    int minKey(double key[], Boolean mstSet[])
+    {
+        // Initialize min value
+        double min = Integer.MAX_VALUE;
+        int min_index=-1;
 
+        for (int v = 0; v < mstSet.length; v++)
+            if (mstSet[v] == false && key[v] < min)
+            {
+                min = key[v];
+                min_index = v;
+            }
+
+        return min_index;
+    }
 
     //Nelson
     @Override
@@ -301,7 +312,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
         for (int i = 0; i < V; i++)
         {
             dist[i] = Double.MAX_VALUE;
-            minDistance.add(elementsReference.get(i));
+            minDistance.offer(elementsReference.get(i));
         }
 
         dist[startPosition] = 0;
@@ -319,15 +330,19 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
             // Update dist value of the adjacent vertices of the
             // picked vertex.
-            for (int v = 0; v < V; v++)
+            for (int v = 0; v < V; v++) {
 
                 // Update dist[v] only if is not in sptSet, there is an
                 // edge from u to v, and total weight of path from src to
                 // v through u is smaller than current value of dist[v]
-                if (!sptSet[v] && matrixAdyacency[u][v]!=null &&
+
+                double c = Double.parseDouble(String.valueOf(matrixAdyacency[u][v].getValue()));
+
+                if (!sptSet[v] && matrixAdyacency[u][v] != null &&
                         dist[u] != Double.MAX_VALUE &&
-                        dist[u]+(double)matrixAdyacency[u][v].getValue() < dist[v])
-                    dist[v] = dist[u] + (double)matrixAdyacency[u][v].getValue();
+                        dist[u] + c < dist[v])
+                    dist[v] = dist[u] + c;
+            }
         }
 
         ArrayList<Double> result = new ArrayList<>();
@@ -348,8 +363,12 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
         for (i = 0; i < matrixAdyacency.length; i++)
             for (j = 0; j < matrixAdyacency.length; j++)
-                if(matrixAdyacency[i][j] == null){
-                    dist[i][j] = (double)matrixAdyacency[i][j].getValue();
+                if(matrixAdyacency[i][j] != null){
+                    if (!(matrixAdyacency[i][j].getValue() instanceof Double)){
+                        dist[i][j] = Double.parseDouble(String.valueOf(matrixAdyacency[i][j].getValue()));
+                    }else{
+                        dist[i][j] = (double)matrixAdyacency[i][j].getValue();
+                    }
                 }else{
                     dist[i][j] = Double.MAX_VALUE;
                 }
@@ -415,4 +434,52 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     public void setMatrixAdyacency(EdgeM[][] matrixAdyacency) {
         this.matrixAdyacency = matrixAdyacency;
     }
+
+    public static void main(String args[]){
+
+        AdjacencyMatrixGraph<Integer,Integer> g = new AdjacencyMatrixGraph<>(true, false);
+        g.insertVertex(8);
+        g.insertVertex(9);
+        g.insertVertex(10);
+        g.insertVertex(11);
+        g.insertVertex(12);
+        g.insertEdge(0,1,10);
+        g.insertEdge(0,2,10);
+        g.insertEdge(1,3,20);
+
+
+        System.out.println(g.getElementsReference().get(1).getValue());
+
+        ArrayList<Integer> lol = g.BFS(0);
+        for(int I = 0; I< lol.size(); I++){
+            System.out.print(" " + lol.get(I));
+        }
+
+        System.out.println();
+
+        lol = g.DFS(0);
+        for(int I = 0; I< lol.size(); I++){
+            System.out.print(" " + lol.get(I));
+        }
+
+        System.out.println();
+
+        double[][] lol2 = g.Floyd_Warshal();
+
+        for(int I = 0; I<5 ; I++){
+            for(int k = 0; k<5 ; k++){
+                System.out.print(" " + lol2[I][k]);
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+
+        ArrayList<Integer> lol3 = g.Prim(0);
+        for(int I = 0; I< lol.size(); I++){
+            System.out.print(" " + lol.get(I));
+        }
+    }
+
+
 }
