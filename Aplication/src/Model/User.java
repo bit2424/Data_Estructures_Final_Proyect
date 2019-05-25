@@ -5,17 +5,17 @@ import Estructures.linear_Structures.HashMap;
 public class User {
 	
 	private String name;
-	//[0] ciencia, [1] deprte, [2] Tecnologia
+	//[0] Tecnology [1] Sports [2] Politics
 	private int[] points;
 	private HashMap<String, Integer> hashtag;
 	private HashMap<String, Integer> at;
 	
-	public User(String name, int c, int d, int t,HashMap hashtag,HashMap at){
+	public User(String name, int[] points_a,HashMap hashtag,HashMap at){
 		this.name = name;
 		points = new int[3];
-		points[0] = c;
-		points[1] = d;
-		points[2] = t;
+		points[0] = points_a[0];
+		points[1] = points_a[1];
+		points[2] = points_a[2];
 		this.hashtag = hashtag;
 		this.at = at;
 	}
