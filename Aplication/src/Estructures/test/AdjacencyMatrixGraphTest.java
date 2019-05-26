@@ -99,12 +99,13 @@ class AdjacencyMatrixGraphTest {
         setupScene3();
         assertEquals(5, noDirectedGraph.getMatrixAdyacency()[1][3].getValue());
         noDirectedGraph.deleteEdge(1, 3, 5);
-        //assertEquals(0, noDirectedGraph.getMatrixAdyacency()[1][3].getValue());
+        assertEquals(0, noDirectedGraph.getMatrixAdyacency()[1][3].getValue());
+
 
         noDirectedGraph.insertVertex("6");
         noDirectedGraph.insertEdge(4,4,6);
         noDirectedGraph.deleteEdge(4,4,6);
-        //assertEquals(0, noDirectedGraph.getMatrixAdyacency()[4][4]);
+        assertEquals(0, noDirectedGraph.getMatrixAdyacency()[4][4]);
 
     }
 
