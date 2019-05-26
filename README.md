@@ -3,5 +3,5 @@ FInal project application.
 Authors:
 - Nelson Quiñones
 - Fabio Mejia
-- Jhoan Camilo
+- Johan Camilo Cortés
 - Paola Veloza

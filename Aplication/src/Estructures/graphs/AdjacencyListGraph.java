@@ -15,6 +15,13 @@ public class AdjacencyListGraph<V, E extends Comparable<E>> implements IGraph<V,
     private int nVertices;
     private ArrayList<VertexL<V, E>> vertices;
 
+    public AdjacencyListGraph(boolean directed, boolean weighted){
+        this.directed = directed;
+        this.weighted = weighted;
+        vertices = new ArrayList<>();
+        nVertices = vertices.size();
+    }
+
     public AdjacencyListGraph(boolean directed, boolean weighted, VertexL<V, E> vertexL){
         this.directed = directed;
         this.weighted = weighted;
@@ -243,9 +250,48 @@ public class AdjacencyListGraph<V, E extends Comparable<E>> implements IGraph<V,
     }
 
     @Override
-    public Object[] Dijsktra(int startPosition) {
+    public Object[] Dijsktra(int startPosition) throws IndexOutOfBoundsException {
+        Object[] arrays = new Object[2];
+        double[] distances = new double[nVertices];
+        int[] predecessors = new int[nVertices];
+        boolean[] visited = new  boolean[nVertices];
+        for(int i = 0; i < nVertices; i++){
+            distances[i] = Integer.MAX_VALUE;
+            predecessors[i] = -1;
+            visited[i] = false;
+        }
+        distances[startPosition] = 0;
+        int minimum = getMinimumVertex(distances, visited);
+        while(minimum >= 0){
+            VertexL<V, E> u = vertices.get(minimum);
+            int indexOfU = vertices.indexOf(u);
+            for(int i = 0; i < u.getDegree(); i++){
+                VertexL<V, E> v = u.getAdjacencyList().get(i).getVertex();
+                int indexOfV = vertices.indexOf(v);
+                double sum = (distances[indexOfU] + Double.parseDouble(String.valueOf(u.getAdjacencyList().get(i).getWeight())));
+                if(!visited[indexOfV] && sum < distances[indexOfV]){
+                    distances[indexOfV] = sum;
+                    predecessors[indexOfV] = indexOfU;
+                }
+            }
+            visited[indexOfU] = true;
+            minimum = getMinimumVertex(distances, visited);
+        }
+        arrays[0] = distances;
+        arrays[1] = predecessors;
+        return arrays;
+    }
 
-        return null;
+    private int getMinimumVertex(double[] dist, boolean[] visited){
+        int u = -1;
+        double value = Integer.MAX_VALUE;
+        for(int i = 0; i < dist.length; i++){
+            if(!visited[i] && dist[i] < value){
+                value = dist[i];
+                u = i;
+            }
+        }
+        return u;
     }
 
     @Override
