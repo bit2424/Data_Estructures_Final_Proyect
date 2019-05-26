@@ -88,7 +88,26 @@ class AdjacencyMatrixGraphTest {
     }
 
     @Test
-    public void deleteEdgeTest(){
+    public void deleteEdgeTest() {
+        // Case 1: Delete an edge which does not exist.
+        try {
+            noDirectedGraph.deleteEdge(1, 0, 9);
+            fail();
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
+            assertTrue(true);
+        }
+
+        // Case 2: Delete an edge between two vertices in a simple graph.
+        setupScene3();
+        assertEquals(5, noDirectedGraph.getMatrixAdyacency()[1][3].getValue());
+        noDirectedGraph.deleteEdge(1, 3, 5);
+        assertEquals(0, noDirectedGraph.getMatrixAdyacency()[1][3].getValue());
+
+
+        noDirectedGraph.insertVertex("6");
+        noDirectedGraph.insertEdge(4,4,6);
+        noDirectedGraph.deleteEdge(4,4,6);
+        assertEquals(0, noDirectedGraph.getMatrixAdyacency()[4][4]);
 
     }
 
@@ -112,6 +131,16 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     public void primTest(){
+
+
+    }
+    @Test
+    public void dikstraTest(){
+
+    }
+
+    @Test
+    public void floydTest(){
 
 
     }
