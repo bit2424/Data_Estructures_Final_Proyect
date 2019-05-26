@@ -78,9 +78,11 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
         for (int I = positionVertex; I < matrixAdyacency.length ;I++ ){
             for(int J = positionVertex; J<matrixAdyacency.length ; J++){
-
-                matrixAdyacency[I][J] = matrixAdyacency[I+1][J+1] ;
-
+                if(I+1 < matrixAdyacency.length && J+1 < matrixAdyacency.length) {
+                    matrixAdyacency[I][J] = matrixAdyacency[I + 1][J + 1];
+                }else{
+                    matrixAdyacency[I][J] = null;
+                }
             }
         }
 

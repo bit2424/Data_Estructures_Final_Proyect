@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AdjacencyListGraphTest_DirectedGraph {
 
     private AdjacencyListGraph<Integer, Integer> directedGraph;
+    private AdjacencyListGraph<String, Integer> directedGraph2;
 
     private void setupScene1(){
         directedGraph = new AdjacencyListGraph<>(true, true, new VertexL<Integer, Integer>(1)); // First vertex (1)
@@ -111,6 +112,54 @@ public class AdjacencyListGraphTest_DirectedGraph {
         directedGraph.insertEdge(3, 4, 12);
     }
 
+    /**
+     * Simple connected graph for Dijkstra.
+     */
+    private void setupScene12(){
+        directedGraph2 = new AdjacencyListGraph<>(true, true);
+        directedGraph2.insertVertex("A");
+        directedGraph2.insertVertex("B");
+        directedGraph2.insertVertex("C");
+        directedGraph2.insertVertex("D");
+        directedGraph2.insertVertex("E");
+        directedGraph2.insertVertex("F");
+        directedGraph2.insertEdge(0, 1, 3);
+        directedGraph2.insertEdge(0, 2, 2);
+        directedGraph2.insertEdge(1, 3, 1);
+        directedGraph2.insertEdge(2, 1, 1);
+        directedGraph2.insertEdge(2, 4, 5);
+        directedGraph2.insertEdge(4, 1, 1);
+        directedGraph2.insertEdge(4, 5, 3);
+        directedGraph2.insertEdge(3, 4, 2);
+        directedGraph2.insertEdge(3, 5, 2);
+    }
+
+    /**
+     * A multigraph for Dijkstra.
+     */
+    private void setupScene13(){
+        directedGraph2 = new AdjacencyListGraph<>(true, true);
+        directedGraph2.insertVertex("A");
+        directedGraph2.insertVertex("B");
+        directedGraph2.insertVertex("C");
+        directedGraph2.insertVertex("D");
+        directedGraph2.insertVertex("E");
+        directedGraph2.insertVertex("F");
+        directedGraph2.insertEdge(0, 1, 3);
+        directedGraph2.insertEdge(0, 2, 1);
+        directedGraph2.insertEdge(0, 2, 2);
+        directedGraph2.insertEdge(0, 3, 2);
+        directedGraph2.insertEdge(0, 3, 2);
+        directedGraph2.insertEdge(1, 3, 4);
+        directedGraph2.insertEdge(1, 4, 1);
+        directedGraph2.insertEdge(4, 1, 1);
+        directedGraph2.insertEdge(3, 4, 3);
+        directedGraph2.insertEdge(3, 4, 2);
+        directedGraph2.insertEdge(3, 4, 1);
+        directedGraph2.insertEdge(3, 5, 7);
+        directedGraph2.insertEdge(4, 5, 1);
+    }
+
     @Test
     void constructorMethodTest(){
         setupScene1();
@@ -195,13 +244,13 @@ public class AdjacencyListGraphTest_DirectedGraph {
         }
 
         // Case 2: Delete a vertex with no connection to any of the others.
-        setupScene2();
+        setupScene1();
 
-        assertEquals(3, directedGraph.getNumberOfVertices()); // Number of vertices in the graph
+        assertEquals(1, directedGraph.getNumberOfVertices()); // Number of vertices in the graph
 
-        directedGraph.deleteVertex(2);
+        directedGraph.deleteVertex(0);
 
-        assertTrue(directedGraph.getVerticesL().size() == 2); // Number of vertices in the graph
+        assertEquals(0, directedGraph.getVerticesL().size()); // Number of vertices in the graph
 
         // Case 3: Delete a vertex with an edge pointing to another vertex.
         setupScene2();
@@ -533,5 +582,96 @@ public class AdjacencyListGraphTest_DirectedGraph {
         printDFSTree(forest.get(0));
         System.out.println("\n--------Second tree-------");
         printDFSTree(forest.get(1));
+    }
+
+    @Test
+    void DijkstraTest(){
+        Object[] a;
+        double[] dist;
+        int[] pred;
+
+        // Case 1: A graph with one vertex
+        setupScene1();
+        a = directedGraph.Dijsktra(0);
+        dist = (double[])a[0];
+        pred = (int[])a[1];
+        assertEquals(1, dist.length);
+        assertEquals(0, dist[0]);
+        assertEquals(1, pred.length);
+        assertEquals(-1, pred[0]);
+
+        // Case 2: A simple connected graph
+        setupScene12();
+        a = directedGraph2.Dijsktra(0);
+        dist = (double[])a[0];
+        pred = (int[])a[1];
+
+        assertEquals(6, dist.length);
+        assertEquals(0, dist[0]);
+        assertEquals(3, dist[1]);
+        assertEquals(2, dist[2]);
+        assertEquals(4, dist[3]);
+        assertEquals(6, dist[4]);
+        assertEquals(6, dist[5]);
+
+        assertEquals(6, pred.length);
+        assertEquals(-1, pred[0]);
+        assertEquals(0, pred[1]);
+        assertEquals(0, pred[2]);
+        assertEquals(1, pred[3]);
+        assertEquals(3, pred[4]);
+        assertEquals(3, pred[5]);
+
+        a = directedGraph2.Dijsktra(3);
+        dist = (double[])a[0];
+        pred = (int[])a[1];
+
+        assertEquals(6, dist.length);
+        assertEquals(Integer.MAX_VALUE, dist[0]);
+        assertEquals(3, dist[1]);
+        assertEquals(Integer.MAX_VALUE, dist[2]);
+        assertEquals(0, dist[3]);
+        assertEquals(2, dist[4]);
+        assertEquals(2, dist[5]);
+
+        assertEquals(6, pred.length);
+        assertEquals(-1, pred[0]);
+        assertEquals(4, pred[1]);
+        assertEquals(-1, pred[2]);
+        assertEquals(-1, pred[3]);
+        assertEquals(3, pred[4]);
+        assertEquals(3, pred[5]);
+
+        // Case 3: A connected multigraph
+        setupScene13();
+        a = directedGraph2.Dijsktra(0);
+        dist = (double[])a[0];
+        pred = (int[])a[1];
+
+        assertEquals(6, dist.length);
+        assertEquals(0, dist[0]);
+        assertEquals(3, dist[1]);
+        assertEquals(1, dist[2]);
+        assertEquals(2, dist[3]);
+        assertEquals(3, dist[4]);
+        assertEquals(4, dist[5]);
+
+        assertEquals(6, pred.length);
+        assertEquals(-1, pred[0]);
+        assertEquals(0, pred[1]);
+        assertEquals(0, pred[2]);
+        assertEquals(0, pred[3]);
+        assertEquals(3, pred[4]);
+        assertEquals(4, pred[5]);
+
+        // Case 4: Begin the path from a vertex which does not exist.
+        setupScene1();
+        try{
+            a = directedGraph.Dijsktra(90);
+            fail();
+        }
+        catch (IndexOutOfBoundsException e){
+            assertTrue(true);
+        }
     }
 }

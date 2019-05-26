@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AdjacencyListGraphTest_NonDirectedGraph {
 
     private AdjacencyListGraph<Integer, Integer> nondirectedGraph;
+    private AdjacencyListGraph<String, Integer> nondirectedGraph2;
 
     private void setupScene1(){
         nondirectedGraph = new AdjacencyListGraph<>(false, true, new VertexL<Integer, Integer>(1)); // First vertex (1)
@@ -109,6 +110,53 @@ public class AdjacencyListGraphTest_NonDirectedGraph {
         nondirectedGraph.insertEdge(3, 4, 12);
     }
 
+    /**
+     * Simple connected graph for Dijkstra.
+     */
+    private void setupScene12(){
+        nondirectedGraph2 = new AdjacencyListGraph<>(false, true);
+        nondirectedGraph2.insertVertex("A");
+        nondirectedGraph2.insertVertex("B");
+        nondirectedGraph2.insertVertex("C");
+        nondirectedGraph2.insertVertex("D");
+        nondirectedGraph2.insertVertex("E");
+        nondirectedGraph2.insertVertex("F");
+        nondirectedGraph2.insertEdge(0, 1, 3);
+        nondirectedGraph2.insertEdge(0, 2, 2);
+        nondirectedGraph2.insertEdge(1, 2, 1);
+        nondirectedGraph2.insertEdge(1, 3, 4);
+        nondirectedGraph2.insertEdge(1, 4, 1);
+        nondirectedGraph2.insertEdge(2, 4, 5);
+        nondirectedGraph2.insertEdge(3, 4, 2);
+        nondirectedGraph2.insertEdge(3, 5, 2);
+        nondirectedGraph2.insertEdge(4, 5, 3);
+    }
+
+    /**
+     * A multigraph for Dijkstra.
+     */
+    private void setupScene13(){
+        nondirectedGraph2 = new AdjacencyListGraph<>(false, true);
+        nondirectedGraph2.insertVertex("A");
+        nondirectedGraph2.insertVertex("B");
+        nondirectedGraph2.insertVertex("C");
+        nondirectedGraph2.insertVertex("D");
+        nondirectedGraph2.insertVertex("E");
+        nondirectedGraph2.insertVertex("F");
+        nondirectedGraph2.insertEdge(0, 1, 3);
+        nondirectedGraph2.insertEdge(0, 2, 1);
+        nondirectedGraph2.insertEdge(0, 2, 2);
+        nondirectedGraph2.insertEdge(0, 3, 2);
+        nondirectedGraph2.insertEdge(0, 3, 2);
+        nondirectedGraph2.insertEdge(1, 3, 4);
+        nondirectedGraph2.insertEdge(1, 4, 5);
+        nondirectedGraph2.insertEdge(1, 4, 1);
+        nondirectedGraph2.insertEdge(3, 4, 3);
+        nondirectedGraph2.insertEdge(3, 4, 2);
+        nondirectedGraph2.insertEdge(3, 4, 1);
+        nondirectedGraph2.insertEdge(3, 5, 7);
+        nondirectedGraph2.insertEdge(4, 5, 1);
+    }
 
     @Test
     void constructorMethodTest(){
@@ -568,6 +616,116 @@ public class AdjacencyListGraphTest_NonDirectedGraph {
         assertEquals(3, nondirectedGraph.getVerticesL().get(tree.get(2)).getValue());
         System.out.println("------------- Case 3: A multigraph -------------");
         printPrimTree(tree);
+    }
+
+    @Test
+    void DijkstraTest(){
+        Object[] a;
+        double[] dist;
+        int[] pred;
+        // Case 1: A graph with one vertex.
+        setupScene1();
+        a = nondirectedGraph.Dijsktra(0);
+        dist = (double[]) a[0];
+        pred = (int[]) a[1];
+        assertEquals(1, dist.length);
+        assertEquals(0, dist[0]);
+        assertEquals(1, pred.length);
+        assertEquals(-1, pred[0]);
+
+        // Case 2: A simple connected graph
+        setupScene12();
+        a = nondirectedGraph2.Dijsktra(0);
+        dist = (double[]) a[0];
+        pred = (int[]) a[1];
+
+        assertEquals(6, dist.length);
+        assertEquals(0, dist[0]);
+        assertEquals(3, dist[1]);
+        assertEquals(2, dist[2]);
+        assertEquals(6, dist[3]);
+        assertEquals(4, dist[4]);
+        assertEquals(7, dist[5]);
+
+        assertEquals(6, pred.length);
+        assertEquals(-1, pred[0]);
+        assertEquals(0, pred[1]);
+        assertEquals(0, pred[2]);
+        assertEquals(4, pred[3]);
+        assertEquals(1, pred[4]);
+        assertEquals(4, pred[5]);
+
+        a = nondirectedGraph2.Dijsktra(3);
+        dist = (double[]) a[0];
+        pred = (int[]) a[1];
+
+        assertEquals(6, dist.length);
+        assertEquals(6, dist[0]);
+        assertEquals(3, dist[1]);
+        assertEquals(4, dist[2]);
+        assertEquals(0, dist[3]);
+        assertEquals(2, dist[4]);
+        assertEquals(2, dist[5]);
+
+        assertEquals(6, pred.length);
+        assertEquals(1, pred[0]);
+        assertEquals(4, pred[1]);
+        assertEquals(1, pred[2]);
+        assertEquals(-1, pred[3]);
+        assertEquals(3, pred[4]);
+        assertEquals(3, pred[5]);
+
+        // Case 3: A connected multigraph
+        setupScene13();
+        a = nondirectedGraph2.Dijsktra(0);
+        dist = (double[]) a[0];
+        pred = (int[]) a[1];
+
+        assertEquals(6, dist.length);
+        assertEquals(0, dist[0]);
+        assertEquals(3, dist[1]);
+        assertEquals(1, dist[2]);
+        assertEquals(2, dist[3]);
+        assertEquals(3, dist[4]);
+        assertEquals(4, dist[5]);
+
+        assertEquals(6, pred.length);
+        assertEquals(-1, pred[0]);
+        assertEquals(0, pred[1]);
+        assertEquals(0, pred[2]);
+        assertEquals(0, pred[3]);
+        assertEquals(3, pred[4]);
+        assertEquals(4, pred[5]);
+
+        a = nondirectedGraph2.Dijsktra(4);
+        dist = (double[]) a[0];
+        pred = (int[]) a[1];
+
+        assertEquals(6, dist.length);
+        assertEquals(3, dist[0]);
+        assertEquals(1, dist[1]);
+        assertEquals(4, dist[2]);
+        assertEquals(1, dist[3]);
+        assertEquals(0, dist[4]);
+        assertEquals(1, dist[5]);
+
+        assertEquals(6, pred.length);
+        assertEquals(3, pred[0]);
+        assertEquals(4, pred[1]);
+        assertEquals(0, pred[2]);
+        assertEquals(4, pred[3]);
+        assertEquals(-1, pred[4]);
+        assertEquals(4, pred[5]);
+
+        // Case 4: Begin the path from a vertex which does not exist.
+        setupScene1();
+        try{
+            a = nondirectedGraph.Dijsktra(90);
+            fail();
+        }
+        catch (IndexOutOfBoundsException e){
+            assertTrue(true);
+        }
     }
 
 }
