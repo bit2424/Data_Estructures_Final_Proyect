@@ -62,17 +62,15 @@ public class AnalyzeController implements Initializable {
     
     @FXML
     void ListUsers(ActionEvent event) {
-
     }
 
     @FXML
     void add(ActionEvent event) {
-
     }
 
     @FXML
     void listUser(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -80,10 +78,55 @@ public class AnalyzeController implements Initializable {
     	if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
     		option = ComboBoxOptions.getSelectionModel().getSelectedIndex();
     		labelOptions.setText(listOptions.get(option));
+    		fresh();
+    		goOption();
     	}
     }
 
-    @FXML
+    private void fresh() {
+    	ListResult.setVisible(false);
+    	nearGrade.setVisible(false);
+    	relation.setVisible(false);
+	}
+
+	private void goOption() {
+		switch (option+1) {
+		case 1:goListUsersCategory();
+		break;
+		case 2: ListRelationHashtag();
+		break;
+		case 3: ListRelationAt();
+		break;
+		case 4: goFilter();
+		break;
+		case 5: probabilityRelation();
+		break;
+		default:
+			break;
+		}
+	}
+    
+    private void probabilityRelation() {
+		relation.setVisible(true);
+	}
+
+	private void goFilter() {
+		nearGrade.setVisible(true);
+	}
+
+	private void ListRelationAt() {
+    	ListResult.setVisible(true);
+	}
+
+	private void ListRelationHashtag() {
+		ListResult.setVisible(true);
+	}
+
+	private void goListUsersCategory() {
+		ListResult.setVisible(true);
+    }
+
+	@FXML
     void returnStart(ActionEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(getClass().getResource("/view/Start.fxml"));

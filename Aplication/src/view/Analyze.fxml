@@ -60,7 +60,7 @@
             <Font name="Bodoni MT Poster Compressed" size="17.0" />
          </font>
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Label>
       <ListView fx:id="ListResult" layoutX="143.0" layoutY="105.0" prefHeight="160.0" prefWidth="314.0" style="-fx-border-color: #2F3231;" visible="false" />
