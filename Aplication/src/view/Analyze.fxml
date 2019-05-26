@@ -55,9 +55,9 @@
             <Font name="Bodoni MT Poster Compressed" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="labelOptions" layoutX="191.0" layoutY="62.0" prefHeight="25.0" prefWidth="113.0" textFill="#4ee5c1">
+      <Label fx:id="labelOptions" layoutX="179.0" layoutY="62.0" prefHeight="25.0" prefWidth="123.0" textFill="#4ee5c1">
          <font>
-            <Font name="Bodoni MT Poster Compressed" size="20.0" />
+            <Font name="Bodoni MT Poster Compressed" size="17.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
