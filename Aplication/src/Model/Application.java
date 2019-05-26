@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class Application {
 
-	private HashMap<String, Integer> raiz_relevantesS;
+ 	private HashMap<String, Integer> raiz_relevantesS;
 	private HashMap<String, Integer> raiz_relevantesP;
 	private HashMap<String, Integer> raiz_relevantesT;
 
