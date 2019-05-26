@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Hilo_ProcesarDatos{
+public class ProcessData {
 	static final long serialVersionUID = 42L;
 	public FileReader read;
 	public BufferedReader rd;
@@ -20,20 +20,21 @@ public class Hilo_ProcesarDatos{
 	private  int[] Puntaje_Usuario;
 
 	/**
-	 * Hilo_ProcesarDatos - Metodo constructor de la clase
+	 * ProcessData - Metodo constructor de la clase
 	 * @param nombre_archivo Un String indicando el nombre del archivo donde se guardo la informaci�n del usuario
 	 * pos : primer_link queda inicializado
 	 * pos : hashtags queda inicializado
 	 * pos : raiz_relevante queda inicializado
 	 * pos : nombre_archivo queda inicializado
 	 */
-	public Hilo_ProcesarDatos(String nombre_archivo, HashMap<String, Integer> raiz_relevantesS,HashMap<String, Integer> raiz_relevantesP,HashMap<String, Integer> raiz_relevantesT) {
+	public ProcessData(String nombre_archivo, HashMap<String, Integer> raiz_relevantesS, HashMap<String, Integer> raiz_relevantesP, HashMap<String, Integer> raiz_relevantesT) {
 		super();
 		hashtags = new HashMap<>();
 		this.raiz_relevantesT = raiz_relevantesT;
 		this.raiz_relevantesP = raiz_relevantesP;
 		this.raiz_relevantesS = raiz_relevantesS;
 		Puntaje_Usuario = new int[3];
+		user_Name = "LOL";
 
 		this.nombre_archivo = nombre_archivo;
 
@@ -69,10 +70,13 @@ public class Hilo_ProcesarDatos{
 			
 			int contador = 0;
 			while(dato != null && dato.compareTo("Who to follow ·  Refresh · View all") != 0) {
-				if(contador == 20) {
-					System.out.println("Nombre: " +dato);
+
+				dato = dato.trim();
+
+				if(dato.length()>=2 && dato.substring(0, 1).compareToIgnoreCase("@") == 0 && user_Name.equals("LOL")) {
 					user_Name = dato;
-				}else if(contador == 27) {
+					System.out.println("Nombre: " +dato);
+				} else if(contador == 27) {
 					seguidos = dato;
 				}else if(contador == 30) {
 					seguidores = dato;

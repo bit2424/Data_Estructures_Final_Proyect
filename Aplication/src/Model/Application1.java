@@ -1,12 +1,11 @@
 package Model;
 
-import Persistence_Control.Hilo_ProcesarDatos;
+import Persistence_Control.ProcessData;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import Estructures.Graphs.AdjacencyListGraph;
@@ -16,7 +15,7 @@ public class Application1 {
  	private HashMap<String, Integer> raiz_relevantesS;
 	private HashMap<String, Integer> raiz_relevantesP;
 	private HashMap<String, Integer> raiz_relevantesT;
-	private Hilo_ProcesarDatos hilo;
+	private ProcessData hilo;
 	private AdjacencyListGraph<User, Integer> graphHashtag;
 	private AdjacencyListGraph<User, Integer> graphAt;
 	public Application1() {
@@ -35,7 +34,7 @@ public class Application1 {
 
 	private void loadEspecialWords() throws IOException {
 
-		String names[] = {"./Aplication/Persistence/Dictionaries/Politics_Dictionary","./Aplication/Persistence/Dictionaries/Tecnology_Dictionary","./Aplication/Persistence/Dictionaries/Sports_Dictionary"};
+		String names[] = {"./Persistence/Dictionaries/Politics_Dictionary","./Persistence/Dictionaries/Tecnology_Dictionary","./Persistence/Dictionaries/Sports_Dictionary"};
 
 		loadType(names[0],raiz_relevantesP);
 
@@ -68,7 +67,7 @@ public class Application1 {
 	}
 
 	public void registerUser(){
-		hilo = new Hilo_ProcesarDatos("./Aplication/Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+		hilo = new ProcessData("./Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
 		System.out.println(hilo.getUser_Name()+"  "+  hilo.getPuntaje_Usuario()[0] +" Tecnologia   "+ hilo.getPuntaje_Usuario()[1]+"  Deporte   "
 				+  hilo.getPuntaje_Usuario()[2]+"   Politica   "+  hilo.getHashtags().size()+" Cantidad de  #      "+ hilo.getMenciones().size()+" Cantidad de  @");
 		graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
