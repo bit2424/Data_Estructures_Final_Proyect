@@ -1,5 +1,8 @@
 package controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -11,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import view.Main;
 
 public class NewUserController {
 
@@ -18,8 +22,15 @@ public class NewUserController {
     private TextArea dataText;
 
     @FXML
-    void add(ActionEvent event) {
-
+    void add(ActionEvent event) throws IOException {
+    	File f = new File("./Aplication/Persistence/Users/nuevo");
+    	FileWriter fw = new FileWriter(f);
+    	BufferedWriter bw = new BufferedWriter(fw);
+    	bw.write(dataText.getText());
+    	bw.close();
+    	Main.getApli().registerUser();
+//    	System.out.print("Termino");
+    	System.out.println(Main.getApli().getGraphHashtag().getVerticesL().get(0).getValue().getName() +"   "+ Main.getApli().getGraphAt().getVerticesL().get(0).getValue().getName());
     }
 
     @FXML

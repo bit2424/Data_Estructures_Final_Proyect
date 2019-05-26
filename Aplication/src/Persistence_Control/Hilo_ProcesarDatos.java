@@ -58,7 +58,6 @@ public class Hilo_ProcesarDatos{
 	public void run(){
 		try {
 			ArrayList<String> Texto_Bruto = new ArrayList<>();
-			
 			File fl = new File(nombre_archivo);
 			FileReader read = new FileReader(fl);
 			BufferedReader rd = new BufferedReader(read);
@@ -71,6 +70,7 @@ public class Hilo_ProcesarDatos{
 			int contador = 0;
 			while(dato != null && dato.compareTo("Who to follow ·  Refresh · View all") != 0) {
 				if(contador == 20) {
+					System.out.println("Nombre: " +dato);
 					user_Name = dato;
 				}else if(contador == 27) {
 					seguidos = dato;
@@ -80,7 +80,6 @@ public class Hilo_ProcesarDatos{
 				
 				dato = rd.readLine();
 				Texto_Bruto.add(dato);
-				System.out.println(dato);
 				contador++;
 			}
 	

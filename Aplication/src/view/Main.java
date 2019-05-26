@@ -3,6 +3,7 @@ package view;
 	
 
 
+import Model.Application1;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -11,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 
 
 public class Main extends Application {
-//	private static BVC reception;
+	private static Application1 apli;
 	
 	
 	@Override
@@ -26,19 +27,15 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-//	public static BVC getReception() {
-//		return reception;
-//	}
-//	
-//	public static void setReception(BVC bvc) {
-//		reception=bvc;
-//	}
-//	
+	public static Application1 getApli() {
+		return apli;
+	}
+	
 	
 	
 	public static void main(String[] args)  {
 		
-//			reception = new BVC();
+		apli = new Application1();
 		launch(args);
 	}
 }

@@ -1,6 +1,6 @@
 package Model;
 
-import Estructures.linear_Structures.HashMap;
+import java.util.HashMap;
 
 public class User {
 	
