@@ -65,7 +65,9 @@ class AdjacencyMatrixGraphTest {
 
         // Case 1: Delete a vertex which does not exist.
         try{
-            noDirectedGraph.deleteVertex(3);
+            //La matriz tiene 1001 posiciones por default.
+
+            noDirectedGraph.deleteVertex(1002);
             fail();
         }
         catch (IndexOutOfBoundsException e){

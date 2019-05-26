@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Estructures/auxiliary_estructures/GreaterKeyException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aplication/Estructures/auxiliary_estructures/GreaterKeyException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Estructures/auxiliary_estructures/SmallerKeyException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aplication/Estructures/auxiliary_estructures/SmallerKeyException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Estructures/test/AdjacencyListGraphTest_DirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aplication/Estructures/test/AdjacencyListGraphTest_DirectedGraph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aplication/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,19 +14,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Aplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Application.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -48,55 +42,43 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Persistence_Control/Hilo_ProcesarDatos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
+            <state relative-caret-position="351">
               <caret line="270" selection-start-line="270" selection-end-line="270" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6401#6402#0" expanded="true" />
-                <element signature="e#6423#6424#0" expanded="true" />
-                <element signature="e#6471#6472#0" expanded="true" />
-                <element signature="e#6494#6495#0" expanded="true" />
-                <element signature="e#6532#6533#0" expanded="true" />
-                <element signature="e#6561#6562#0" expanded="true" />
-                <element signature="e#7231#7232#0" expanded="true" />
-                <element signature="e#7254#7255#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Persistence/Users/Elon_Musk">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Politics_Dictionary">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="234" column="8" selection-start-line="234" selection-start-column="8" selection-end-line="234" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Sports_Dictionary">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-147">
-              <caret line="215" selection-start-line="215" selection-end-line="215" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="113">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+              <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
+              <folding>
+                <element signature="e#3595#3596#0" expanded="true" />
+                <element signature="e#3691#3692#0" expanded="true" />
+                <element signature="e#9465#9466#0" expanded="true" />
+                <element signature="e#12649#12650#0" expanded="true" />
+                <element signature="e#12730#12731#0" expanded="true" />
+                <element signature="e#12796#12797#0" expanded="true" />
+                <element signature="e#12885#12886#0" expanded="true" />
+                <element signature="e#12951#12952#0" expanded="true" />
+                <element signature="e#13040#13041#0" expanded="true" />
+                <element signature="e#13139#13140#0" expanded="true" />
+                <element signature="e#13361#13362#0" expanded="true" />
+                <element signature="e#13480#13481#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,7 +115,6 @@
         <option value="$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java" />
         <option value="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java" />
         <option value="$PROJECT_DIR$/src/Estructures/Graphs/EdgeM.java" />
-        <option value="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" />
         <option value="$PROJECT_DIR$/src/Threads/Hilo_ProcesarDatos.java" />
         <option value="$PROJECT_DIR$/Persistence/Sports_Dictionary" />
         <option value="$PROJECT_DIR$/Persistence/Science_Dictionary" />
@@ -142,9 +123,11 @@
         <option value="$PROJECT_DIR$/Persistence/Users/Elon_Musk" />
         <option value="$PROJECT_DIR$/src/Model/User.java" />
         <option value="$PROJECT_DIR$/src/Persistence_Control/Hilo_ProcesarDatos.java" />
-        <option value="$PROJECT_DIR$/Persistence/Dictionaries/Politics_Dictionary" />
         <option value="$PROJECT_DIR$/Persistence/Dictionaries/Tecnology_Dictionary" />
         <option value="$PROJECT_DIR$/Persistence/Dictionaries/Sports_Dictionary" />
+        <option value="$PROJECT_DIR$/Persistence/Dictionaries/Politics_Dictionary" />
+        <option value="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java" />
+        <option value="$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java" />
       </list>
     </option>
   </component>
@@ -167,6 +150,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,24 +162,20 @@
             <path>
               <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
               <item name="Aplication" type="462c0819:PsiDirectoryNode" />
-              <item name="Persistence" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aplication" type="462c0819:PsiDirectoryNode" />
-              <item name="Persistence" type="462c0819:PsiDirectoryNode" />
-              <item name="Dictionaries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Aplication" type="462c0819:PsiDirectoryNode" />
-              <item name="Persistence" type="462c0819:PsiDirectoryNode" />
-              <item name="Users" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
               <item name="Aplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Estructures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aplication" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Estructures" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
@@ -206,8 +187,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -237,7 +216,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Hilo_ProcesarDatos">
+  <component name="RunManager" selected="JUnit.AdjacencyMatrixGraphTest">
     <configuration name="AdjacencyMatrixGraph" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Estructures.Graphs.AdjacencyMatrixGraph" />
       <module name="Aplication" />
@@ -282,23 +261,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdjacencyListGraphTest_NonDirectedGraph.DFSWithInitialVertexTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdjacencyMatrixGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Aplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Estructures.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="PACKAGE_NAME" value="Estructures.test" />
-      <option name="MAIN_CLASS_NAME" value="Estructures.test.AdjacencyListGraphTest_NonDirectedGraph" />
-      <option name="METHOD_NAME" value="DFSWithInitialVertexTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="Estructures.test.AdjacencyMatrixGraphTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdjacencyMatrixGraphTest" />
         <item itemvalue="Application.Hilo_ProcesarDatos" />
         <item itemvalue="Application.AdjacencyMatrixGraph" />
         <item itemvalue="JUnit.AdjacencyListGraphTest_DirectedGraph" />
         <item itemvalue="JUnit.AdjacencyListGraphTest_NonDirectedGraph" />
-        <item itemvalue="JUnit.AdjacencyListGraphTest_NonDirectedGraph.DFSWithInitialVertexTest" />
       </list>
     </recent_temporary>
   </component>
@@ -369,19 +353,17 @@
       <option name="project" value="LOCAL" />
       <updated>1558788018570</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="&quot;Finalización en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;">
+      <created>1558799416446</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1558799416446</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AdjacencyListGraphTest_NonDirectedGraph_deleteAllEdge - 2019.05.17 at 05h 05m 53s.xml">
-      <configuration name="AdjacencyListGraphTest_NonDirectedGraph.deleteAllEdge" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AdjacencyListGraphTest_NonDirectedGraph_deleteAllEdge - 2019.05.17 at 05h 06m 44s.xml">
-      <configuration name="AdjacencyListGraphTest_NonDirectedGraph.deleteAllEdge" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AdjacencyListGraphTest_NonDirectedGraph_deleteAllEdge - 2019.05.17 at 05h 08m 21s.xml">
-      <configuration name="AdjacencyListGraphTest_NonDirectedGraph.deleteAllEdge" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AdjacencyListGraphTest_NonDirectedGraph_BFSWithStartPositionTest - 2019.05.17 at 05h 44m 10s.xml">
       <configuration name="AdjacencyListGraphTest_NonDirectedGraph.BFSWithStartPositionTest" configurationId="JUnit" />
     </history-entry>
@@ -403,12 +385,21 @@
     <history-entry file="AdjacencyListGraphTest_DirectedGraph - 2019.05.24 at 11h 52m 16s.xml">
       <configuration name="AdjacencyListGraphTest_DirectedGraph" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AdjacencyMatrixGraphTest - 2019.05.25 at 19h 09m 32s.xml">
+      <configuration name="AdjacencyMatrixGraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AdjacencyMatrixGraphTest - 2019.05.25 at 19h 11m 29s.xml">
+      <configuration name="AdjacencyMatrixGraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AdjacencyMatrixGraphTest - 2019.05.25 at 19h 13m 24s.xml">
+      <configuration name="AdjacencyMatrixGraphTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.116113745" weight="0.2118003" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.116113745" visible="true" weight="0.2118003" />
       <window_info id="Structure" order="1" sideWeight="0.8838863" side_tool="true" weight="0.2118003" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50164473" side_tool="true" weight="0.28668684" />
@@ -418,7 +409,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35176653" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39938557" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.37480798" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -489,6 +480,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;Prueba de commit en intell&quot;" />
@@ -497,14 +502,15 @@
     <MESSAGE value="&quot;Eliminacion de Krutskal en Matriz de adyacencia&quot;" />
     <MESSAGE value="&quot;Metodo de prim listo en Matriz de adyacencias&quot;" />
     <MESSAGE value="&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;" />
+    <MESSAGE value="&quot;Finalización en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Finalización en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java</url>
-          <line>515</line>
+          <line>517</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -513,6 +519,12 @@
           <line>270</line>
           <properties />
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -626,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -693,24 +698,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java">
+    <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Tecnology_Dictionary">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="177" column="33" selection-start-line="177" selection-start-column="33" selection-end-line="177" selection-end-column="33" />
-          <folding>
-            <element signature="e#6027#6028#0" expanded="true" />
-            <element signature="e#6089#6090#0" expanded="true" />
-            <element signature="e#9286#9287#0" expanded="true" />
-            <element signature="e#12470#12471#0" expanded="true" />
-            <element signature="e#12551#12552#0" expanded="true" />
-            <element signature="e#12617#12618#0" expanded="true" />
-            <element signature="e#12706#12707#0" expanded="true" />
-            <element signature="e#12772#12773#0" expanded="true" />
-            <element signature="e#12861#12862#0" expanded="true" />
-            <element signature="e#12960#12961#0" expanded="true" />
-            <element signature="e#13182#13183#0" expanded="true" />
-            <element signature="e#13301#13302#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="329">
+          <caret line="229" selection-start-line="229" selection-end-line="229" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Sports_Dictionary">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="242" selection-start-line="242" selection-end-line="242" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Politics_Dictionary">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="235" selection-start-line="235" selection-end-line="235" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -721,49 +733,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Persistence_Control/Hilo_ProcesarDatos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="351">
           <caret line="270" selection-start-line="270" selection-end-line="270" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6401#6402#0" expanded="true" />
-            <element signature="e#6423#6424#0" expanded="true" />
-            <element signature="e#6471#6472#0" expanded="true" />
-            <element signature="e#6494#6495#0" expanded="true" />
-            <element signature="e#6532#6533#0" expanded="true" />
-            <element signature="e#6561#6562#0" expanded="true" />
-            <element signature="e#7231#7232#0" expanded="true" />
-            <element signature="e#7254#7255#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Tecnology_Dictionary">
+    <entry file="file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="229" selection-start-line="229" selection-end-line="229" />
+        <state relative-caret-position="101">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+          <folding>
+            <element signature="e#3595#3596#0" expanded="true" />
+            <element signature="e#3691#3692#0" expanded="true" />
+            <element signature="e#9465#9466#0" expanded="true" />
+            <element signature="e#12649#12650#0" expanded="true" />
+            <element signature="e#12730#12731#0" expanded="true" />
+            <element signature="e#12796#12797#0" expanded="true" />
+            <element signature="e#12885#12886#0" expanded="true" />
+            <element signature="e#12951#12952#0" expanded="true" />
+            <element signature="e#13040#13041#0" expanded="true" />
+            <element signature="e#13139#13140#0" expanded="true" />
+            <element signature="e#13361#13362#0" expanded="true" />
+            <element signature="e#13480#13481#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Politics_Dictionary">
+    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="234" column="8" selection-start-line="234" selection-start-column="8" selection-end-line="234" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Persistence/Dictionaries/Sports_Dictionary">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-147">
-          <caret line="215" selection-start-line="215" selection-end-line="215" />
+        <state relative-caret-position="113">
+          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
         </state>
       </provider>
     </entry>
