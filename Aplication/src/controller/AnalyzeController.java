@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import view.Main;
 
 public class AnalyzeController implements Initializable {
 
@@ -59,6 +61,8 @@ public class AnalyzeController implements Initializable {
 
     private int option;
     private ArrayList<String> listOptions;
+    private ArrayList<String> types;
+    private ArrayList<String> nameUsers;
     
     @FXML
     void ListUsers(ActionEvent event) {
@@ -111,6 +115,14 @@ public class AnalyzeController implements Initializable {
 	}
 
 	private void goFilter() {
+		String[] a = {"Tecnologia","Deportes","Politica"};
+		types = new ArrayList<>(Arrays.asList(a));
+		ComboboxType.getItems().addAll(types);
+		nameUsers = new ArrayList<>();
+		for (int i = 0; i < Main.getApli().getGraphHashtag().getVerticesL().size(); i++) {
+			nameUsers.add(Main.getApli().getGraphHashtag().getVerticesL().get(i).getValue().getName());
+		}
+		ComboboxUsers.getItems().addAll(nameUsers);
 		nearGrade.setVisible(true);
 	}
 
@@ -139,7 +151,10 @@ public class AnalyzeController implements Initializable {
 
     @FXML
     void type(ActionEvent event) {
-    	
+		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
+    		option = ComboboxType.getSelectionModel().getSelectedIndex();
+    		labelType.setText(types.get(option));
+    	}
     }
 
 	@Override

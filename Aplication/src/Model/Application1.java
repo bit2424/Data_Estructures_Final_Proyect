@@ -53,7 +53,7 @@ public class Application1 {
 
 			//Tu version
 
-			String names[] = {"./Persistence/Dictionaries/Politics_Dictionary","./Persistence/Dictionaries/Tecnology_Dictionary","./Persistence/Dictionaries/Sports_Dictionary"};
+			String names[] = {"./Aplication/Persistence/Dictionaries/Politics_Dictionary","./Aplication/Persistence/Dictionaries/Tecnology_Dictionary","./Aplication/Persistence/Dictionaries/Sports_Dictionary"};
 
 			loadType(names[0],raiz_relevantesP);
 
@@ -88,8 +88,7 @@ public class Application1 {
 	}
 
 	public void registerUser(){
-		try {
-			hilo = new ProcessData("./Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+			hilo = new ProcessData("/Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
 			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
 					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
 			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
@@ -97,20 +96,7 @@ public class Application1 {
 			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
 			System.out.println(graphHashtag.getNumberOfVertices());
 			joinEdges(graphHashtag.getNumberOfVertices() - 1);
-		}catch (Exception e){
-
-			//tu version pana
-
-			hilo = new ProcessData("./Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
-			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
-					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
-			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			System.out.println(graphHashtag.getNumberOfVertices());
-			joinEdges(graphHashtag.getNumberOfVertices() - 1);
-
-		}
+		
 	}
 
 	private void joinEdges(int index) {
