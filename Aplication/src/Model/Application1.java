@@ -57,6 +57,8 @@ public class Application1 {
 
 			//Tu version
 
+            e.printStackTrace();
+
 			String names[] = {"./Aplication/Persistence/Dictionaries/Politics_Dictionary","./Aplication/Persistence/Dictionaries/Tecnology_Dictionary","./Aplication/Persistence/Dictionaries/Sports_Dictionary"};
 
 			System.out.println("Cargando   LOL");
