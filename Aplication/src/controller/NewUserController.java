@@ -23,8 +23,15 @@ public class NewUserController {
 
     @FXML
     void add(ActionEvent event) throws IOException {
-    	File f = new File("./Persistence/Users/nuevo");
-    	FileWriter fw = new FileWriter(f);
+    	File f;
+    	FileWriter fw;
+    	f = new File("./Persistence/Users/nuevo");
+    	try {
+			fw = new FileWriter(f);
+		} catch (IOException e) {
+			f = new File("./Aplication/Persistence/Users/nuevo");
+			fw = new FileWriter(f);
+		}
     	BufferedWriter bw = new BufferedWriter(fw);
     	bw.write(dataText.getText());
     	bw.close();

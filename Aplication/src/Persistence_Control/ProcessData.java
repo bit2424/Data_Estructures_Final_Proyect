@@ -59,7 +59,7 @@ public class ProcessData {
 	public void run(){
 		try {
 			ArrayList<String> Texto_Bruto = new ArrayList<>();
-			File fl = new File(nombre_archivo);
+			File fl = new File("."+nombre_archivo);
 			FileReader read = new FileReader(fl);
 			BufferedReader rd = new BufferedReader(read);
 			String nombre_Usuario = "";
@@ -114,7 +114,11 @@ public class ProcessData {
 
 			rd.close();
 		}catch(IOException e) {
-			e.printStackTrace();
+			File fl = new File("./Aplication"+nombre_archivo);
+			try {
+				FileReader read = new FileReader(fl);
+			} catch (FileNotFoundException e1) {
+			}
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
