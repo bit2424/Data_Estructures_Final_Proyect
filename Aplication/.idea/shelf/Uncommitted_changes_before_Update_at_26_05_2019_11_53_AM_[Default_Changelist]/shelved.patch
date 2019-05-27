@@ -1,0 +1,832 @@
+Index: src/view/NewUser.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/view/NewUser.fxml	(date 1558889308591)
++++ src/view/NewUser.fxml	(date 1558889308591)
+@@ -0,0 +1,57 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import javafx.scene.Cursor?>
++<?import javafx.scene.control.Button?>
++<?import javafx.scene.control.Label?>
++<?import javafx.scene.control.TextArea?>
++<?import javafx.scene.effect.DropShadow?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
++<?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.text.Font?>
++
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4EE5C1;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewUserController">
++   <children>
++      <Label layoutX="233.0" layoutY="14.0" text="Usuario nuevo">
++         <font>
++            <Font name="Bodoni MT Poster Compressed" size="40.0" />
++         </font>
++      </Label>
++      <AnchorPane layoutY="337.0" prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: #313131;" />
++      <Button layoutX="117.0" layoutY="285.0" mnemonicParsing="false" onAction="#add" prefHeight="37.0" prefWidth="168.0" style="-fx-background-color: #2F3231;" text="Agregar" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Condensed" size="21.0" />
++         </font>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++         <effect>
++            <DropShadow />
++         </effect>
++      </Button>
++      <Button layoutX="323.0" layoutY="285.0" mnemonicParsing="false" onAction="#returnStart" prefHeight="37.0" prefWidth="168.0" style="-fx-background-color: #2F3231;" text="Volver" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Condensed" size="21.0" />
++         </font>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++         <effect>
++            <DropShadow />
++         </effect>
++      </Button>
++      <ImageView fitHeight="40.0" fitWidth="28.0" layoutX="491.0" layoutY="78.0" onMouseClicked="#clean" pickOnBounds="true" preserveRatio="true">
++         <image>
++            <Image url="@../Image/clean.png" />
++         </image>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++      </ImageView>
++      <TextArea fx:id="dataText" layoutX="119.0" layoutY="78.0" prefHeight="184.0" prefWidth="367.0" promptText="Datos de usuario" style="-fx-background-color: #313131;">
++         <cursor>
++            <Cursor fx:constant="TEXT" />
++         </cursor>
++      </TextArea>
++   </children>
++</AnchorPane>
+Index: src/view/Start.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/view/Start.fxml	(date 1558889308593)
++++ src/view/Start.fxml	(date 1558889308593)
+@@ -0,0 +1,57 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import javafx.scene.Cursor?>
++<?import javafx.scene.control.Button?>
++<?import javafx.scene.control.Label?>
++<?import javafx.scene.effect.DropShadow?>
++<?import javafx.scene.image.Image?>
++<?import javafx.scene.image.ImageView?>
++<?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.text.Font?>
++
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4EE5C1;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartController">
++   <children>
++      <Label layoutX="342.0" layoutY="14.0" text="Relaciones de Twitter">
++         <font>
++            <Font name="Bodoni MT Poster Compressed" size="40.0" />
++         </font>
++      </Label>
++      <AnchorPane prefHeight="400.0" prefWidth="289.0" style="-fx-background-color: #050606;">
++         <children>
++            <Label fx:id="textEfect" layoutX="63.0" layoutY="159.0" text="Escoja una opción" textFill="#4ee5c1">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="40.0" />
++               </font>
++            </Label>
++         </children>
++      </AnchorPane>
++      <AnchorPane layoutX="7.0" layoutY="315.0" prefHeight="85.0" prefWidth="95.0" style="-fx-background-color: #4EE5C1;" />
++      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-29.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
++         <image>
++            <Image url="@../Image/LogoTwitter.png" />
++         </image>
++      </ImageView>
++      <Button layoutX="367.0" layoutY="164.0" mnemonicParsing="false" onAction="#addUser" prefHeight="37.0" prefWidth="168.0" style="-fx-background-color: #2F3231;" text="Agregar un usuario" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Condensed" size="21.0" />
++         </font>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++         <effect>
++            <DropShadow />
++         </effect>
++      </Button>
++      <Button layoutX="367.0" layoutY="235.0" mnemonicParsing="false" onAction="#analyze" prefHeight="37.0" prefWidth="168.0" style="-fx-background-color: #2F3231;" text="Analisar relaciones" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Condensed" size="21.0" />
++         </font>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++         <effect>
++            <DropShadow />
++         </effect>
++      </Button>
++   </children>
++</AnchorPane>
+Index: src/controller/NewUserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/controller/NewUserController.java	(date 1558889308583)
++++ src/controller/NewUserController.java	(date 1558889308583)
+@@ -0,0 +1,41 @@
++package controller;
++
++import java.io.IOException;
++
++import javafx.event.ActionEvent;
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import javafx.scene.control.TextArea;
++import javafx.scene.input.MouseEvent;
++import javafx.stage.Stage;
++
++public class NewUserController {
++
++	@FXML
++    private TextArea dataText;
++
++    @FXML
++    void add(ActionEvent event) {
++
++    }
++
++    @FXML
++    void clean(MouseEvent event) {
++    	dataText.setText("");
++    }
++
++    @FXML
++    void returnStart(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/Start.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++
++}
+Index: src/controller/StartController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/controller/StartController.java	(date 1558889308585)
++++ src/controller/StartController.java	(date 1558889308585)
+@@ -0,0 +1,63 @@
++package controller;
++import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import javafx.scene.control.Label;
++import javafx.stage.Stage;
++import javafx.util.Duration;
++
++import java.io.IOException;
++import java.net.URL;
++import java.util.ResourceBundle;
++
++import javafx.animation.FadeTransition;
++import javafx.event.ActionEvent;
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.fxml.Initializable;
++public class StartController implements Initializable {
++
++	@FXML
++    private Label textEfect;
++
++    @FXML
++    void addUser(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/NewUser.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++
++    @FXML
++    void analyze(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/Analyze.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++    
++    private void goStart() {
++    	FadeTransition fadeTransition = new FadeTransition(Duration.millis(900));
++    	fadeTransition.setNode(textEfect);
++    	fadeTransition.setFromValue(1);
++    	fadeTransition.setToValue(0);
++    	fadeTransition.setAutoReverse(true);
++    	fadeTransition.setCycleCount(FadeTransition.INDEFINITE);
++    	fadeTransition.play();
++    }
++
++	@Override
++	public void initialize(URL arg0, ResourceBundle arg1) {
++		goStart();
++	}
++
++}
++
++
++
+Index: src/controller/AnalyzeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/controller/AnalyzeController.java	(date 1558889308582)
++++ src/controller/AnalyzeController.java	(date 1558889308582)
+@@ -0,0 +1,89 @@
++package controller;
++import java.io.IOException;
++import javafx.event.ActionEvent;
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import javafx.scene.control.ComboBox;
++import javafx.scene.control.Label;
++import javafx.scene.control.ListView;
++import javafx.scene.control.TextField;
++import javafx.scene.layout.AnchorPane;
++import javafx.stage.Stage;
++
++public class AnalyzeController {
++
++    @FXML
++    private ComboBox<?> ComboBoxOptions;
++
++    @FXML
++    private Label labelOptions;
++
++    @FXML
++    private ListView<?> ListResult;
++
++    @FXML
++    private AnchorPane nearGrade;
++
++    @FXML
++    private TextField pointsreferents;
++
++    @FXML
++    private ComboBox<?> ComboboxType;
++
++    @FXML
++    private ComboBox<?> ComboboxUsers;
++
++    @FXML
++    private Label labelListUsers;
++
++    @FXML
++    private Label labelType;
++
++    @FXML
++    private AnchorPane relation;
++
++    @FXML
++    private Label UserStarLabel;
++
++    @FXML
++    private ComboBox<?> ListUserCombobox;
++
++    @FXML
++    void ListUsers(ActionEvent event) {
++
++    }
++
++    @FXML
++    void add(ActionEvent event) {
++
++    }
++
++    @FXML
++    void listUser(ActionEvent event) {
++
++    }
++
++    @FXML
++    void options(ActionEvent event) {
++
++    }
++
++    @FXML
++    void returnStart(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/Start.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++
++    @FXML
++    void type(ActionEvent event) {
++    	
++    }
++}
+Index: ../.project
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../.project	(date 1558889308392)
++++ ../.project	(date 1558889308392)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<projectDescription>
++	<name>Data_Estructures_Final_Proyect</name>
++	<comment></comment>
++	<projects>
++	</projects>
++	<buildSpec>
++		<buildCommand>
++			<name>org.eclipse.jdt.core.javabuilder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++	</buildSpec>
++	<natures>
++		<nature>org.eclipse.jdt.core.javanature</nature>
++	</natures>
++</projectDescription>
+Index: out/production/Aplication/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- out/production/Aplication/.gitignore	(date 1558889308397)
++++ out/production/Aplication/.gitignore	(date 1558889308397)
+@@ -0,0 +1,7 @@
++/Estructures/
++/Model/
++/Tests/
++/sample/
++/Image/
++/controller/
++/view/
+Index: src/view/Analyze.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/view/Analyze.fxml	(date 1558889308588)
++++ src/view/Analyze.fxml	(date 1558889308588)
+@@ -0,0 +1,144 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import javafx.scene.Cursor?>
++<?import javafx.scene.control.Button?>
++<?import javafx.scene.control.ComboBox?>
++<?import javafx.scene.control.Label?>
++<?import javafx.scene.control.ListView?>
++<?import javafx.scene.control.TextField?>
++<?import javafx.scene.effect.DropShadow?>
++<?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.text.Font?>
++
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4EE5C1;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AnalyzeController">
++   <children>
++      <Label layoutX="263.0" layoutY="14.0" text="Analisis">
++         <font>
++            <Font name="Bodoni MT Poster Compressed" size="40.0" />
++         </font>
++      </Label>
++      <AnchorPane layoutY="337.0" prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: #313131;" />
++      <Button layoutX="117.0" layoutY="285.0" mnemonicParsing="false" onAction="#add" prefHeight="37.0" prefWidth="168.0" style="-fx-background-color: #2F3231;" text="Siguiente" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Condensed" size="21.0" />
++         </font>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++         <effect>
++            <DropShadow />
++         </effect>
++      </Button>
++      <Button layoutX="323.0" layoutY="285.0" mnemonicParsing="false" onAction="#returnStart" prefHeight="37.0" prefWidth="168.0" style="-fx-background-color: #2F3231;" text="Volver" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Condensed" size="21.0" />
++         </font>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++         <effect>
++            <DropShadow />
++         </effect>
++      </Button>
++      <ComboBox fx:id="ComboBoxOptions" layoutX="173.0" layoutY="62.0" onAction="#options" prefWidth="150.0" style="-fx-background-color: #2F3231;">
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++      </ComboBox>
++      <Label layoutX="104.0" layoutY="61.0" prefHeight="28.0" prefWidth="67.0" text="Opciones :">
++         <font>
++            <Font name="Bodoni MT Poster Compressed" size="24.0" />
++         </font>
++      </Label>
++      <Label layoutX="180.0" layoutY="80.0" prefHeight="25.0" prefWidth="113.0" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Poster Compressed" size="20.0" />
++         </font>
++      </Label>
++      <Label fx:id="labelOptions" layoutX="191.0" layoutY="62.0" prefHeight="25.0" prefWidth="113.0" textFill="#4ee5c1">
++         <font>
++            <Font name="Bodoni MT Poster Compressed" size="20.0" />
++         </font>
++         <cursor>
++            <Cursor fx:constant="HAND" />
++         </cursor>
++      </Label>
++      <ListView fx:id="ListResult" layoutX="143.0" layoutY="105.0" prefHeight="160.0" prefWidth="314.0" style="-fx-border-color: #2F3231;" visible="false" />
++      <AnchorPane fx:id="nearGrade" layoutY="105.0" prefHeight="160.0" prefWidth="600.0" style="-fx-background-color: #4EE5C1;" visible="false">
++         <children>
++            <Label layoutX="101.0" layoutY="8.0" prefHeight="28.0" prefWidth="135.0" text="Puntaje de referencia:">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="24.0" />
++               </font>
++            </Label>
++            <TextField fx:id="pointsreferents" layoutX="247.0" layoutY="9.0" />
++            <Label layoutX="101.0" layoutY="43.0" prefHeight="28.0" prefWidth="135.0" text="Categoria:">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="24.0" />
++               </font>
++            </Label>
++            <ComboBox fx:id="ComboboxType" layoutX="246.0" layoutY="44.0" onAction="#type" prefWidth="150.0" style="-fx-background-color: #2F3231;">
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </ComboBox>
++            <Label layoutX="100.0" layoutY="80.0" prefHeight="28.0" prefWidth="135.0" text="Uusuario">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="24.0" />
++               </font>
++            </Label>
++            <ComboBox fx:id="ComboboxUsers" layoutX="245.0" layoutY="81.0" onAction="#ListUsers" prefWidth="150.0" style="-fx-background-color: #2F3231;">
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </ComboBox>
++            <Label fx:id="labelListUsers" layoutX="263.0" layoutY="81.0" prefHeight="25.0" prefWidth="113.0" textFill="#4ee5c1">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="20.0" />
++               </font>
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </Label>
++            <Label layoutX="264.0" layoutY="44.0" prefHeight="25.0" prefWidth="113.0" textFill="#4ee5c1">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="20.0" />
++               </font>
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </Label>
++            <Label fx:id="labelType" layoutX="262.0" layoutY="44.0" prefHeight="25.0" prefWidth="113.0" textFill="#4ee5c1">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="20.0" />
++               </font>
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </Label>
++         </children>
++      </AnchorPane>
++      <AnchorPane fx:id="relation" layoutY="112.0" prefHeight="160.0" prefWidth="600.0" style="-fx-background-color: #4EE5C1;" visible="false">
++         <children>
++            <Label fx:id="UserStarLabel" layoutX="263.0" layoutY="8.0" prefHeight="25.0" prefWidth="113.0" textFill="#4ee5c1">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="20.0" />
++               </font>
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </Label>
++            <Label layoutX="100.0" layoutY="6.0" prefHeight="28.0" prefWidth="135.0" text="Uusuario de inicio">
++               <font>
++                  <Font name="Bodoni MT Poster Compressed" size="24.0" />
++               </font>
++            </Label>
++            <ComboBox fx:id="ListUserCombobox" layoutX="245.0" layoutY="7.0" onAction="#listUser" prefWidth="150.0" style="-fx-background-color: #2F3231;">
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </ComboBox>
++         </children>
++      </AnchorPane>
++   </children>
++</AnchorPane>
+Index: src/Image/controller/StartController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Image/controller/StartController.java	(date 1558889308580)
++++ src/Image/controller/StartController.java	(date 1558889308580)
+@@ -0,0 +1,63 @@
++package controller;
++import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import javafx.scene.control.Label;
++import javafx.stage.Stage;
++import javafx.util.Duration;
++
++import java.io.IOException;
++import java.net.URL;
++import java.util.ResourceBundle;
++
++import javafx.animation.FadeTransition;
++import javafx.event.ActionEvent;
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.fxml.Initializable;
++public class StartController implements Initializable {
++
++	@FXML
++    private Label textEfect;
++
++    @FXML
++    void addUser(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/NewUser.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++
++    @FXML
++    void analyze(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/Analyze.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++    
++    private void goStart() {
++    	FadeTransition fadeTransition = new FadeTransition(Duration.millis(900));
++    	fadeTransition.setNode(textEfect);
++    	fadeTransition.setFromValue(1);
++    	fadeTransition.setToValue(0);
++    	fadeTransition.setAutoReverse(true);
++    	fadeTransition.setCycleCount(FadeTransition.INDEFINITE);
++    	fadeTransition.play();
++    }
++
++	@Override
++	public void initialize(URL arg0, ResourceBundle arg1) {
++		goStart();
++	}
++
++}
++
++
++
+Index: ../.classpath
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../.classpath	(date 1558889308390)
++++ ../.classpath	(date 1558889308390)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<classpath>
++	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
++	<classpathentry kind="src" path="Aplication/src"/>
++	<classpathentry kind="output" path="Aplication/out/production/Aplication"/>
++</classpath>
+Index: src/Image/controller/AnalyzeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Image/controller/AnalyzeController.java	(date 1558889308576)
++++ src/Image/controller/AnalyzeController.java	(date 1558889308576)
+@@ -0,0 +1,89 @@
++package controller;
++import java.io.IOException;
++import javafx.event.ActionEvent;
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import javafx.scene.control.ComboBox;
++import javafx.scene.control.Label;
++import javafx.scene.control.ListView;
++import javafx.scene.control.TextField;
++import javafx.scene.layout.AnchorPane;
++import javafx.stage.Stage;
++
++public class AnalyzeController {
++
++    @FXML
++    private ComboBox<?> ComboBoxOptions;
++
++    @FXML
++    private Label labelOptions;
++
++    @FXML
++    private ListView<?> ListResult;
++
++    @FXML
++    private AnchorPane nearGrade;
++
++    @FXML
++    private TextField pointsreferents;
++
++    @FXML
++    private ComboBox<?> ComboboxType;
++
++    @FXML
++    private ComboBox<?> ComboboxUsers;
++
++    @FXML
++    private Label labelListUsers;
++
++    @FXML
++    private Label labelType;
++
++    @FXML
++    private AnchorPane relation;
++
++    @FXML
++    private Label UserStarLabel;
++
++    @FXML
++    private ComboBox<?> ListUserCombobox;
++
++    @FXML
++    void ListUsers(ActionEvent event) {
++
++    }
++
++    @FXML
++    void add(ActionEvent event) {
++
++    }
++
++    @FXML
++    void listUser(ActionEvent event) {
++
++    }
++
++    @FXML
++    void options(ActionEvent event) {
++
++    }
++
++    @FXML
++    void returnStart(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/Start.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++
++    @FXML
++    void type(ActionEvent event) {
++    	
++    }
++}
+Index: src/Image/controller/NewUserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Image/controller/NewUserController.java	(date 1558889308578)
++++ src/Image/controller/NewUserController.java	(date 1558889308578)
+@@ -0,0 +1,41 @@
++package controller;
++
++import java.io.IOException;
++
++import javafx.event.ActionEvent;
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import javafx.scene.control.TextArea;
++import javafx.scene.input.MouseEvent;
++import javafx.stage.Stage;
++
++public class NewUserController {
++
++	@FXML
++    private TextArea dataText;
++
++    @FXML
++    void add(ActionEvent event) {
++
++    }
++
++    @FXML
++    void clean(MouseEvent event) {
++    	dataText.setText("");
++    }
++
++    @FXML
++    void returnStart(ActionEvent event) throws IOException {
++    	FXMLLoader loader = new FXMLLoader();
++    	loader.setLocation(getClass().getResource("/view/Start.fxml"));
++    	Parent viewCampo = loader.load();
++    	Scene scene = new Scene(viewCampo);
++    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
++    	windowCampo.setScene(scene);
++    	windowCampo.show();
++    }
++
++}
+Index: src/view/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/view/Main.java	(date 1558889308589)
++++ src/view/Main.java	(date 1558889308589)
+@@ -0,0 +1,44 @@
++
++package view;
++	
++
++
++import javafx.application.Application;
++import javafx.fxml.FXMLLoader;
++import javafx.stage.Stage;
++import javafx.scene.Scene;
++import javafx.scene.layout.AnchorPane;
++
++
++public class Main extends Application {
++//	private static BVC reception;
++	
++	
++	@Override
++	public void start(Stage primaryStage) {
++		try {
++
++			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("Start.fxml"));
++			Scene scene = new Scene(root,600,400);
++			primaryStage.setScene(scene);
++			primaryStage.show();
++		} catch(Exception e) {
++			e.printStackTrace();
++		}
++	}
++//	public static BVC getReception() {
++//		return reception;
++//	}
++//	
++//	public static void setReception(BVC bvc) {
++//		reception=bvc;
++//	}
++//	
++	
++	
++	public static void main(String[] args)  {
++		
++//			reception = new BVC();
++		launch(args);
++	}
++}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c4985c06-0f21-4113-9834-0257dcc24b44\" name=\"Default Changelist\" comment=\"&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;\" />\r\n    <ignored path=\"$PROJECT_DIR$/out/\" />\r\n    <ignored path=\"C:\\Users\\nelso\\Desktop\\Data_Estructures_Final_Proyect\\Aplication\\.idea\\shelf/\" />\r\n    <option name=\"EXCLUDED_CONVERTED_TO_IGNORED\" value=\"true\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"DefaultGradleProjectSettings\">\r\n    <option name=\"isMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FavoritesManager\">\r\n    <favorites_list name=\"Aplication\" />\r\n  </component>\r\n  <component name=\"FileEditorManager\">\r\n    <leaf>\r\n      <file pinned=\"false\" current-in-tab=\"true\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Model/Application.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"247\">\r\n              <caret line=\"64\" column=\"5\" lean-forward=\"true\" selection-start-line=\"64\" selection-start-column=\"5\" selection-end-line=\"64\" selection-end-column=\"5\" />\r\n              <folding>\r\n                <element signature=\"imports\" expanded=\"true\" />\r\n              </folding>\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"3026\">\r\n              <caret line=\"182\" column=\"10\" lean-forward=\"true\" selection-start-line=\"182\" selection-start-column=\"10\" selection-end-line=\"182\" selection-end-column=\"10\" />\r\n              <folding>\r\n                <element signature=\"e#12920#12921#0\" expanded=\"true\" />\r\n                <element signature=\"e#12951#12952#0\" expanded=\"true\" />\r\n              </folding>\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"504\">\r\n              <caret line=\"113\" column=\"16\" selection-start-line=\"113\" selection-start-column=\"16\" selection-end-line=\"113\" selection-end-column=\"16\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/sample/Controller.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"34\">\r\n              <caret line=\"2\" column=\"13\" selection-start-line=\"2\" selection-start-column=\"13\" selection-end-line=\"2\" selection-end-column=\"13\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/sample/Main.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"68\">\r\n              <caret line=\"8\" column=\"13\" selection-start-line=\"8\" selection-start-column=\"13\" selection-end-line=\"8\" selection-end-column=\"13\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"272\">\r\n              <caret line=\"20\" column=\"29\" selection-start-line=\"20\" selection-start-column=\"29\" selection-end-line=\"20\" selection-end-column=\"29\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n    </leaf>\r\n  </component>\r\n  <component name=\"FindInProjectRecents\">\r\n    <findStrings>\r\n      <find>Sys</find>\r\n    </findStrings>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"UPDATE_CHANGES_POLICY\" value=\"SHELVE\" />\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"IdeDocumentHistory\">\r\n    <option name=\"CHANGED_PATHS\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/QueueNode.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/GreaterKeyException.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/HeapUnderFlowException.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/SmallerKeyException.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/UnderflowException.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/IMinHeap.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/MinHeap.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/IMinPriorityQueue.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/MinPriorityQueue.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/IQueue.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/auxiliary_estructures/Queue.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/Graphs/IAdjacencyListGraph.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/Graphs/Vertex.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/Graphs/Edge.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/Graphs/EdgeM.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Threads/Hilo_ProcesarDatos.java\" />\r\n        <option value=\"$PROJECT_DIR$/Persistence/Sports_Dictionary\" />\r\n        <option value=\"$PROJECT_DIR$/Persistence/Science_Dictionary\" />\r\n        <option value=\"$PROJECT_DIR$/Persistence/Politics_Dictionary\" />\r\n        <option value=\"$PROJECT_DIR$/src/Model/Application.java\" />\r\n        <option value=\"$PROJECT_DIR$/Persistence/Users/Elon_Musk\" />\r\n        <option value=\"$PROJECT_DIR$/src/Model/User.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Persistence_Control/Hilo_ProcesarDatos.java\" />\r\n        <option value=\"$PROJECT_DIR$/Persistence/Dictionaries/Politics_Dictionary\" />\r\n        <option value=\"$PROJECT_DIR$/Persistence/Dictionaries/Tecnology_Dictionary\" />\r\n        <option value=\"$PROJECT_DIR$/Persistence/Dictionaries/Sports_Dictionary\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_DirectedGraph.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.java\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"MavenProjectNavigator\">\r\n    <treeState>\r\n      <expand />\r\n      <select />\r\n    </treeState>\r\n  </component>\r\n  <component name=\"ProjectFrameBounds\" extendedState=\"6\">\r\n    <option name=\"x\" value=\"676\" />\r\n    <option name=\"width\" value=\"697\" />\r\n    <option name=\"height\" value=\"775\" />\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectView\">\r\n    <navigator proportions=\"\" version=\"1\">\r\n      <foldersAlwaysOnTop value=\"true\" />\r\n    </navigator>\r\n    <panes>\r\n      <pane id=\"Scope\" />\r\n      <pane id=\"PackagesPane\" />\r\n      <pane id=\"ProjectPane\">\r\n        <subPane>\r\n          <expand>\r\n            <path>\r\n              <item name=\"Aplication\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"Aplication\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n            <path>\r\n              <item name=\"Aplication\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"Aplication\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"src\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n          </expand>\r\n          <select />\r\n        </subPane>\r\n      </pane>\r\n    </panes>\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ChangesTree.GroupingKeys\" value=\"\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../../Proyecto-Apo-2/Proyecto_Final_APO2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"Threads\" />\r\n      <recent name=\"Estructures.test\" />\r\n      <recent name=\"Estructures.auxiliary_estructures\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\nelso\\Desktop\\Data_Estructures_Final_Proyect\\Aplication\\Persistence\\Dictionaries\" />\r\n      <recent name=\"C:\\Users\\nelso\\Desktop\\Data_Estructures_Final_Proyect\\Aplication\\Persistence\\Users\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"ruleStates\">\r\n      <list>\r\n        <RuleState>\r\n          <option name=\"name\" value=\"ConfigurationTypeDashboardGroupingRule\" />\r\n        </RuleState>\r\n        <RuleState>\r\n          <option name=\"name\" value=\"StatusDashboardGroupingRule\" />\r\n        </RuleState>\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.AdjacencyMatrixGraphTest\">\r\n    <configuration name=\"AdjacencyListGraphTest_DirectedGraph\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Aplication\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"Estructures.test\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Estructures.test.AdjacencyListGraphTest_DirectedGraph\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"AdjacencyListGraphTest_DirectedGraph.DijkstraTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Aplication\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"Estructures.test\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Estructures.test.AdjacencyListGraphTest_DirectedGraph\" />\r\n      <option name=\"METHOD_NAME\" value=\"DijkstraTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"AdjacencyListGraphTest_NonDirectedGraph\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Aplication\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"Estructures.test\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Estructures.test.AdjacencyListGraphTest_NonDirectedGraph\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"AdjacencyListGraphTest_NonDirectedGraph.DijkstraTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Aplication\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"Estructures.test\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Estructures.test.AdjacencyListGraphTest_NonDirectedGraph\" />\r\n      <option name=\"METHOD_NAME\" value=\"DijkstraTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"AdjacencyMatrixGraphTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Aplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Estructures.test.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"Estructures.test\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Estructures.test.AdjacencyMatrixGraphTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.AdjacencyMatrixGraphTest\" />\r\n        <item itemvalue=\"JUnit.AdjacencyListGraphTest_DirectedGraph\" />\r\n        <item itemvalue=\"JUnit.AdjacencyListGraphTest_NonDirectedGraph\" />\r\n        <item itemvalue=\"JUnit.AdjacencyListGraphTest_NonDirectedGraph.DijkstraTest\" />\r\n        <item itemvalue=\"JUnit.AdjacencyListGraphTest_DirectedGraph.DijkstraTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c4985c06-0f21-4113-9834-0257dcc24b44\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1558131825958</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1558131825958</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"&quot;Prueba de commit en intell&quot;\">\r\n      <created>1558647078128</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558647078129</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"&quot;Finalización de Prim&quot;\">\r\n      <created>1558647359842</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558647359842</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"&quot;Avances en Krutskal Matriz de adyacencia&quot;\">\r\n      <created>1558649352523</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558649352523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"&quot;Eliminacion de Krutskal en Matriz de adyacencia&quot;\">\r\n      <created>1558649445868</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558649445868</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"&quot;Eliminacion de Krutskal en Matriz de adyacencia&quot;\">\r\n      <created>1558649663471</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558649663471</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"&quot;Eliminacion de Krutskal en Matriz de adyacencia&quot;\">\r\n      <created>1558650021987</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558650021987</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"&quot;Metodo de prim listo en Matriz de adyacencias&quot;\">\r\n      <created>1558717527161</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558717527161</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;\">\r\n      <created>1558788018570</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1558788018570</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TestHistory\">\r\n    <history-entry file=\"AdjacencyListGraphTest_DirectedGraph - 2019.05.24 at 11h 52m 16s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_DirectedGraph\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_DirectedGraph_deleteVertexTest - 2019.05.25 at 20h 50m 49s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_DirectedGraph.deleteVertexTest\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_DirectedGraph_deleteVertexTest - 2019.05.25 at 20h 51m 29s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_DirectedGraph.deleteVertexTest\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_DirectedGraph_DijkstraTest - 2019.05.25 at 21h 09m 54s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_DirectedGraph.DijkstraTest\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_NonDirectedGraph_DijkstraTest - 2019.05.25 at 21h 12m 06s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_NonDirectedGraph.DijkstraTest\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_NonDirectedGraph - 2019.05.25 at 21h 12m 39s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_NonDirectedGraph\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_DirectedGraph - 2019.05.25 at 21h 13m 09s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_DirectedGraph\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_DirectedGraph - 2019.05.26 at 08h 55m 39s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_DirectedGraph\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyListGraphTest_DirectedGraph - 2019.05.26 at 09h 23m 44s.xml\">\r\n      <configuration name=\"AdjacencyListGraphTest_DirectedGraph\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n    <history-entry file=\"AdjacencyMatrixGraphTest - 2019.05.26 at 09h 23m 52s.xml\">\r\n      <configuration name=\"AdjacencyMatrixGraphTest\" configurationId=\"JUnit\" />\r\n    </history-entry>\r\n  </component>\r\n  <component name=\"ToolWindowManager\">\r\n    <frame x=\"-8\" y=\"-8\" width=\"1382\" height=\"784\" extended-state=\"6\" />\r\n    <layout>\r\n      <window_info content_ui=\"combo\" id=\"Project\" order=\"0\" sideWeight=\"0.116113745\" visible=\"true\" weight=\"0.25189108\" />\r\n      <window_info id=\"Structure\" order=\"1\" sideWeight=\"0.8838863\" side_tool=\"true\" weight=\"0.2118003\" />\r\n      <window_info id=\"Designer\" order=\"2\" />\r\n      <window_info id=\"Favorites\" order=\"3\" sideWeight=\"0.50164473\" side_tool=\"true\" weight=\"0.28668684\" />\r\n      <window_info id=\"Image Layers\" order=\"4\" />\r\n      <window_info id=\"UI Designer\" order=\"5\" />\r\n      <window_info id=\"Capture Tool\" order=\"6\" />\r\n      <window_info anchor=\"bottom\" id=\"Message\" order=\"0\" />\r\n      <window_info anchor=\"bottom\" id=\"Find\" order=\"1\" />\r\n      <window_info anchor=\"bottom\" id=\"Run\" order=\"2\" weight=\"0.47926268\" />\r\n      <window_info anchor=\"bottom\" id=\"Debug\" order=\"3\" weight=\"0.39938557\" />\r\n      <window_info anchor=\"bottom\" id=\"Cvs\" order=\"4\" weight=\"0.25\" />\r\n      <window_info anchor=\"bottom\" id=\"Inspection\" order=\"5\" weight=\"0.4\" />\r\n      <window_info anchor=\"bottom\" id=\"TODO\" order=\"6\" />\r\n      <window_info active=\"true\" anchor=\"bottom\" id=\"Version Control\" order=\"7\" visible=\"true\" weight=\"0.23348695\" />\r\n      <window_info anchor=\"bottom\" id=\"Event Log\" order=\"8\" side_tool=\"true\" />\r\n      <window_info anchor=\"bottom\" id=\"Messages\" order=\"9\" weight=\"0.43607\" />\r\n      <window_info anchor=\"bottom\" id=\"Terminal\" order=\"10\" weight=\"0.32872504\" />\r\n      <window_info anchor=\"right\" id=\"Commander\" internal_type=\"SLIDING\" order=\"0\" type=\"SLIDING\" weight=\"0.4\" />\r\n      <window_info anchor=\"right\" id=\"Ant Build\" order=\"1\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" content_ui=\"combo\" id=\"Hierarchy\" order=\"2\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" id=\"Palette&#9;\" order=\"3\" />\r\n      <window_info anchor=\"right\" id=\"Palette\" order=\"4\" />\r\n      <window_info anchor=\"right\" id=\"Capture Analysis\" order=\"5\" />\r\n      <window_info anchor=\"right\" id=\"Theme Preview\" order=\"6\" />\r\n      <window_info anchor=\"right\" id=\"Maven\" order=\"7\" weight=\"0.32980332\" />\r\n    </layout>\r\n    <layout-to-restore>\r\n      <window_info content_ui=\"combo\" id=\"Project\" order=\"0\" sideWeight=\"0.116113745\" weight=\"0.2118003\" />\r\n      <window_info id=\"Structure\" order=\"1\" sideWeight=\"0.8838863\" side_tool=\"true\" visible=\"true\" weight=\"0.2118003\" />\r\n      <window_info id=\"Designer\" order=\"2\" />\r\n      <window_info id=\"Favorites\" order=\"3\" sideWeight=\"0.50164473\" side_tool=\"true\" weight=\"0.28668684\" />\r\n      <window_info id=\"Image Layers\" order=\"4\" />\r\n      <window_info id=\"UI Designer\" order=\"5\" />\r\n      <window_info id=\"Capture Tool\" order=\"6\" />\r\n      <window_info anchor=\"bottom\" id=\"Message\" order=\"0\" />\r\n      <window_info anchor=\"bottom\" id=\"Find\" order=\"1\" />\r\n      <window_info anchor=\"bottom\" id=\"Run\" order=\"2\" weight=\"0.35176653\" />\r\n      <window_info active=\"true\" anchor=\"bottom\" id=\"Debug\" order=\"3\" visible=\"true\" weight=\"0.39938557\" />\r\n      <window_info anchor=\"bottom\" id=\"Cvs\" order=\"4\" weight=\"0.25\" />\r\n      <window_info anchor=\"bottom\" id=\"Inspection\" order=\"5\" weight=\"0.4\" />\r\n      <window_info anchor=\"bottom\" id=\"TODO\" order=\"6\" />\r\n      <window_info anchor=\"bottom\" id=\"Version Control\" order=\"7\" weight=\"0.23348695\" />\r\n      <window_info anchor=\"bottom\" id=\"Event Log\" order=\"8\" side_tool=\"true\" />\r\n      <window_info anchor=\"bottom\" id=\"Messages\" order=\"9\" weight=\"0.43607\" />\r\n      <window_info anchor=\"bottom\" id=\"Terminal\" order=\"10\" weight=\"0.32872504\" />\r\n      <window_info anchor=\"right\" id=\"Commander\" internal_type=\"SLIDING\" order=\"0\" type=\"SLIDING\" weight=\"0.4\" />\r\n      <window_info anchor=\"right\" id=\"Ant Build\" order=\"1\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" content_ui=\"combo\" id=\"Hierarchy\" order=\"2\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" id=\"Palette&#9;\" order=\"3\" />\r\n      <window_info anchor=\"right\" id=\"Palette\" order=\"4\" />\r\n      <window_info anchor=\"right\" id=\"Capture Analysis\" order=\"5\" />\r\n      <window_info anchor=\"right\" id=\"Theme Preview\" order=\"6\" />\r\n      <window_info anchor=\"right\" id=\"Maven\" order=\"7\" weight=\"0.32980332\" />\r\n    </layout-to-restore>\r\n  </component>\r\n  <component name=\"Vcs.Log.History.Properties\">\r\n    <option name=\"COLUMN_ORDER\">\r\n      <list>\r\n        <option value=\"0\" />\r\n        <option value=\"2\" />\r\n        <option value=\"3\" />\r\n        <option value=\"1\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"RECENTLY_FILTERED_USER_GROUPS\">\r\n                <collection />\r\n              </option>\r\n              <option name=\"RECENTLY_FILTERED_BRANCH_GROUPS\">\r\n                <collection />\r\n              </option>\r\n              <option name=\"COLUMN_ORDER\">\r\n                <list>\r\n                  <option value=\"0\" />\r\n                  <option value=\"1\" />\r\n                  <option value=\"2\" />\r\n                  <option value=\"3\" />\r\n                </list>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list />\r\n          </value>\r\n        </entry>\r\n        <entry key=\"User\">\r\n          <value>\r\n            <list />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"&quot;Prueba de commit en intell&quot;\" />\r\n    <MESSAGE value=\"&quot;Finalización de Prim&quot;\" />\r\n    <MESSAGE value=\"&quot;Avances en Krutskal Matriz de adyacencia&quot;\" />\r\n    <MESSAGE value=\"&quot;Eliminacion de Krutskal en Matriz de adyacencia&quot;\" />\r\n    <MESSAGE value=\"&quot;Metodo de prim listo en Matriz de adyacencias&quot;\" />\r\n    <MESSAGE value=\"&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java</url>\r\n          <line>515</line>\r\n          <properties />\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"editorHistoryManager\">\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/linear_Structures/Heap.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"68\">\r\n          <caret line=\"4\" column=\"20\" lean-forward=\"true\" selection-start-line=\"4\" selection-start-column=\"20\" selection-end-line=\"4\" selection-end-column=\"20\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/UnderflowException.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/SmallerKeyException.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/HeapUnderFlowException.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/QueueNode.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/IMinHeap.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/MinHeap.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state>\r\n          <caret column=\"42\" selection-start-column=\"42\" selection-end-column=\"42\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/MinPriorityQueue.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state>\r\n          <caret column=\"42\" selection-start-column=\"42\" selection-end-column=\"42\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/Queue.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"17\">\r\n          <caret line=\"1\" lean-forward=\"true\" selection-start-line=\"1\" selection-end-line=\"1\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/IQueue.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/VertexL.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"34\">\r\n          <caret line=\"2\" column=\"27\" lean-forward=\"true\" selection-start-line=\"2\" selection-start-column=\"27\" selection-end-line=\"2\" selection-end-column=\"27\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/VertexM.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"34\">\r\n          <caret line=\"2\" column=\"13\" selection-start-line=\"2\" selection-start-column=\"13\" selection-end-line=\"2\" selection-end-column=\"13\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/IAdjacencyListGraph.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"272\">\r\n          <caret line=\"20\" column=\"83\" selection-start-line=\"20\" selection-start-column=\"83\" selection-end-line=\"20\" selection-end-column=\"83\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListDirectedGraphTest.java\" />\r\n    <entry file=\"file://$PROJECT_DIR$/.idea/workspace.xml\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"68\">\r\n          <caret line=\"4\" column=\"12\" lean-forward=\"true\" selection-start-line=\"4\" selection-start-column=\"12\" selection-end-line=\"4\" selection-end-column=\"12\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/GreaterKeyException.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"34\">\r\n          <caret line=\"2\" column=\"13\" selection-start-line=\"2\" selection-start-column=\"13\" selection-end-line=\"2\" selection-end-column=\"13\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/auxiliary_estructures/IMinPriorityQueue.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"34\">\r\n          <caret line=\"2\" column=\"17\" selection-start-line=\"2\" selection-start-column=\"17\" selection-end-line=\"2\" selection-end-column=\"17\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"jar://C:/Program Files/Java/jdk1.8.0_111/jre/lib/rt.jar!/java/util/TreeMap.class\" />\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListNoDirectedGraphTest.java\" />\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/EdgeL.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"34\">\r\n          <caret line=\"2\" column=\"21\" selection-start-line=\"2\" selection-start-column=\"19\" selection-end-line=\"2\" selection-end-column=\"21\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/EdgeM.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"153\">\r\n          <caret line=\"9\" column=\"38\" selection-start-line=\"9\" selection-start-column=\"38\" selection-end-line=\"9\" selection-end-column=\"38\" />\r\n          <folding>\r\n            <element signature=\"e#439#440#0\" expanded=\"true\" />\r\n            <element signature=\"e#468#469#0\" expanded=\"true\" />\r\n            <element signature=\"e#516#517#0\" expanded=\"true\" />\r\n            <element signature=\"e#552#553#0\" expanded=\"true\" />\r\n            <element signature=\"e#594#595#0\" expanded=\"true\" />\r\n            <element signature=\"e#628#629#0\" expanded=\"true\" />\r\n            <element signature=\"e#686#687#0\" expanded=\"true\" />\r\n            <element signature=\"e#732#733#0\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/Persistence/Users/Elon_Musk\" />\r\n    <entry file=\"file://$PROJECT_DIR$/src/Persistence_Control/Hilo_ProcesarDatos.java\" />\r\n    <entry file=\"file://$PROJECT_DIR$/Persistence/Dictionaries/Tecnology_Dictionary\" />\r\n    <entry file=\"file://$PROJECT_DIR$/Persistence/Dictionaries/Politics_Dictionary\" />\r\n    <entry file=\"file://$PROJECT_DIR$/Persistence/Dictionaries/Sports_Dictionary\" />\r\n    <entry file=\"file://$PROJECT_DIR$/src/Model/User.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"119\">\r\n          <caret line=\"7\" column=\"43\" selection-start-line=\"7\" selection-start-column=\"43\" selection-end-line=\"7\" selection-end-column=\"43\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_DirectedGraph.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"11033\">\r\n          <caret line=\"656\" column=\"33\" lean-forward=\"true\" selection-start-line=\"656\" selection-start-column=\"33\" selection-end-line=\"656\" selection-end-column=\"33\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"10829\">\r\n          <caret line=\"646\" column=\"33\" lean-forward=\"true\" selection-start-line=\"646\" selection-start-column=\"33\" selection-end-line=\"646\" selection-end-column=\"33\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state>\r\n          <caret column=\"27\" lean-forward=\"true\" selection-start-column=\"27\" selection-end-column=\"27\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyMatrixGraph.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"3026\">\r\n          <caret line=\"182\" column=\"10\" lean-forward=\"true\" selection-start-line=\"182\" selection-start-column=\"10\" selection-end-line=\"182\" selection-end-column=\"10\" />\r\n          <folding>\r\n            <element signature=\"e#12920#12921#0\" expanded=\"true\" />\r\n            <element signature=\"e#12951#12952#0\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"504\">\r\n          <caret line=\"113\" column=\"16\" selection-start-line=\"113\" selection-start-column=\"16\" selection-end-line=\"113\" selection-end-column=\"16\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/sample/Controller.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"34\">\r\n          <caret line=\"2\" column=\"13\" selection-start-line=\"2\" selection-start-column=\"13\" selection-end-line=\"2\" selection-end-column=\"13\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/sample/Main.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"68\">\r\n          <caret line=\"8\" column=\"13\" selection-start-line=\"8\" selection-start-column=\"13\" selection-end-line=\"8\" selection-end-column=\"13\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Estructures/Graphs/IGraph.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"272\">\r\n          <caret line=\"20\" column=\"29\" selection-start-line=\"20\" selection-start-column=\"29\" selection-end-line=\"20\" selection-end-column=\"29\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Model/Application.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"247\">\r\n          <caret line=\"64\" column=\"5\" lean-forward=\"true\" selection-start-line=\"64\" selection-start-column=\"5\" selection-end-line=\"64\" selection-end-column=\"5\" />\r\n          <folding>\r\n            <element signature=\"imports\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(date 1558889286000)
++++ .idea/workspace.xml	(date 1558889614235)

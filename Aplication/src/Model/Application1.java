@@ -19,6 +19,7 @@ public class Application1 {
 	private ProcessData hilo;
 	private AdjacencyListGraph<User, Integer> graphHashtag;
 	private AdjacencyListGraph<User, Integer> graphAt;
+	
 	public Application1() {
 		raiz_relevantesS = new HashMap<>();
 		raiz_relevantesP = new HashMap<>();

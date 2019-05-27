@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_25_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_25_AM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_35_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_35_AM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_38_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_38_AM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_43_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_43_AM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_49_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_05_2019_8_49_AM__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Users/nuevo" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Users/nuevo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Estructures/test/AdjacencyMatrixGraphTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aplication/Estructures/test/AdjacencyMatrixGraphTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aplication/Model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Persistence_Control/Hilo_ProcesarDatos.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Application1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Application1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence_Control/Hilo_ProcesarDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence_Control/ProcessData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/NewUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/NewUserController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\nelso\Desktop\Data_Estructures_Final_Proyect\Aplication\.idea\shelf/" />
@@ -42,20 +30,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Persistence_Control/ProcessData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="127">
               <caret line="75" column="114" selection-start-line="75" selection-start-column="114" selection-end-line="75" selection-end-column="114" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="918">
+              <caret line="132" column="16" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Application1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+            <state relative-caret-position="-1657">
+              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              <folding>
+                <element signature="e#4556#4557#0" expanded="true" />
+                <element signature="e#4635#4636#0" expanded="true" />
+                <element signature="e#4647#4648#0" expanded="true" />
+                <element signature="e#4659#4660#0" expanded="true" />
+                <element signature="e#4706#4707#0" expanded="true" />
+                <element signature="e#4724#4725#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,9 +163,9 @@
         <option value="$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_DirectedGraph.java" />
         <option value="$PROJECT_DIR$/src/Estructures/test/AdjacencyListGraphTest_NonDirectedGraph.java" />
         <option value="$PROJECT_DIR$/src/controller/NewUserController.java" />
-        <option value="$PROJECT_DIR$/src/Model/Application1.java" />
         <option value="$PROJECT_DIR$/src/Persistence_Control/Hilo_ProcesarDatos.java" />
         <option value="$PROJECT_DIR$/src/Persistence_Control/ProcessData.java" />
+        <option value="$PROJECT_DIR$/src/Model/Application1.java" />
       </list>
     </option>
   </component>
@@ -201,13 +206,26 @@
               <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
               <item name="Aplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Persistence_Control" type="462c0819:PsiDirectoryNode" />
+              <item name="Estructures" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
               <item name="Aplication" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="Estructures" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aplication" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Aplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Aplication" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Persistence_Control" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -377,7 +395,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558788018570</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="&quot;Ajustes en algunas clases para ajustarse a la interfaz&quot;">
+      <created>1558911379428</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1558911379428</updated>
+    </task>
+    <task id="LOCAL-00010" summary="&quot;Adaptación de lectura de archivos&quot;">
+      <created>1558978610035</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558978610035</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -425,12 +457,12 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20430107" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20430107" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.23348695" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.23348695" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.43607" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32872504" />
@@ -530,7 +562,9 @@
     <MESSAGE value="&quot;Metodo de prim listo en Matriz de adyacencias&quot;" />
     <MESSAGE value="&quot;Avances en la recoleccion de datos en Twitter y en la adaptación de los glosarios&quot;" />
     <MESSAGE value="&quot;Correcciones&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Correcciones&quot;" />
+    <MESSAGE value="&quot;Ajustes en algunas clases para ajustarse a la interfaz&quot;" />
+    <MESSAGE value="&quot;Adaptación de lectura de archivos&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Adaptación de lectura de archivos&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -699,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="132" column="16" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -769,17 +796,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Application1.java">
+    <entry file="file://$PROJECT_DIR$/src/Persistence_Control/ProcessData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+        <state relative-caret-position="127">
+          <caret line="75" column="114" selection-start-line="75" selection-start-column="114" selection-end-line="75" selection-end-column="114" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Persistence_Control/ProcessData.java">
+    <entry file="file://$PROJECT_DIR$/src/Tests/Pruebas_Estructuras.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="75" column="114" selection-start-line="75" selection-start-column="114" selection-end-line="75" selection-end-column="114" />
+        <state relative-caret-position="-3358">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estructures/test/AdjacencyMatrixGraphTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="132" column="16" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Application1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1657">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <element signature="e#4556#4557#0" expanded="true" />
+            <element signature="e#4635#4636#0" expanded="true" />
+            <element signature="e#4647#4648#0" expanded="true" />
+            <element signature="e#4659#4660#0" expanded="true" />
+            <element signature="e#4706#4707#0" expanded="true" />
+            <element signature="e#4724#4725#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
