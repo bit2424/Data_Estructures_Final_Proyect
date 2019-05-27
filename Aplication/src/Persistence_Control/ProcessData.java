@@ -27,7 +27,7 @@ public class ProcessData {
 	 * pos : raiz_relevante queda inicializado
 	 * pos : nombre_archivo queda inicializado
 	 */
-	public ProcessData(String nombre_archivo, HashMap<String, Integer> raiz_relevantesS, HashMap<String, Integer> raiz_relevantesP, HashMap<String, Integer> raiz_relevantesT) {
+	public ProcessData(String nombre_archivo, HashMap<String, Integer> raiz_relevantesS, HashMap<String, Integer> raiz_relevantesP, HashMap<String, Integer> raiz_relevantesT) throws IOException, URISyntaxException {
 		super();
 		hashtags = new HashMap<>();
 		this.raiz_relevantesT = raiz_relevantesT;
@@ -40,6 +40,7 @@ public class ProcessData {
 
 		menciones = new HashMap<>();
 
+		System.out.println("Intentandolo");
 
 		run();
 	}
@@ -56,8 +57,8 @@ public class ProcessData {
 	 * pos : Se añaden objetos a primer_link
 	 * pos : Se añaden objetos a hashtags
 	 */
-	public void run(){
-		try {
+	public void run() throws IOException, URISyntaxException {
+
 			ArrayList<String> Texto_Bruto = new ArrayList<>();
 			File fl = new File("."+nombre_archivo);
 			FileReader read = new FileReader(fl);
@@ -66,10 +67,13 @@ public class ProcessData {
 			String dato = "";
 			String seguidores = "";
 			String seguidos = "";
-	
+
+			System.out.println("Analizando: ");
 			
 			int contador = 0;
 			while(dato != null && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0) {
+
+				System.out.println("Analizando: ");
 
 				dato = dato.trim();
 
@@ -113,15 +117,7 @@ public class ProcessData {
 
 
 			rd.close();
-		}catch(IOException e) {
-			File fl = new File("./Aplication"+nombre_archivo);
-			try {
-				FileReader read = new FileReader(fl);
-			} catch (FileNotFoundException e1) {
-			}
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
+
 			
 	}
 	

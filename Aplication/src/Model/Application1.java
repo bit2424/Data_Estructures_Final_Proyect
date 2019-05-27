@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,12 +50,16 @@ public class Application1 {
 			loadType(names[1],raiz_relevantesT);
 
 			loadType(names[2],raiz_relevantesS);
+
+			System.out.println("JA");
+
 		}catch (Exception e){
 
 			//Tu version
 
 			String names[] = {"./Aplication/Persistence/Dictionaries/Politics_Dictionary","./Aplication/Persistence/Dictionaries/Tecnology_Dictionary","./Aplication/Persistence/Dictionaries/Sports_Dictionary"};
 
+			System.out.println("Cargando   LOL");
 			loadType(names[0],raiz_relevantesP);
 
 			loadType(names[1],raiz_relevantesT);
@@ -71,8 +76,8 @@ public class Application1 {
 		String dato = rd.readLine();
 
 		while(dato != null) {
+			System.out.println("Cargando   LOL");
 			String info[] = dato.split(",");
-
 			for(int I =0 ; I<info.length ; I++){
 				selected.put(info[I].toLowerCase(),0);
 			}
@@ -88,6 +93,8 @@ public class Application1 {
 	}
 
 	public void registerUser(){
+
+		try {
 			hilo = new ProcessData("/Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
 			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
 					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
@@ -96,6 +103,23 @@ public class Application1 {
 			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
 			System.out.println(graphHashtag.getNumberOfVertices());
 			joinEdges(graphHashtag.getNumberOfVertices() - 1);
+		}catch (Exception e){
+			try {
+				hilo = new ProcessData("/Aplication/Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (URISyntaxException e1) {
+				e1.printStackTrace();
+			}
+			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
+					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
+			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			System.out.println(graphHashtag.getNumberOfVertices());
+			joinEdges(graphHashtag.getNumberOfVertices() - 1);
+		}
+
 		
 	}
 
