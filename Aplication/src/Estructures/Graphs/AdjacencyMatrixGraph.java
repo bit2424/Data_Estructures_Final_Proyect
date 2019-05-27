@@ -340,9 +340,11 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
     //Nelson
     @Override
     public Object[] Dijsktra(int startPosition) {
+        Object[] arrays = new Object[2];
         int V = nVertex;
         double dist[] = new double[V];
         Boolean sptSet[] = new Boolean[V];
+        int[] predecessors = new int[V];
 
         PriorityQueue<VertexM> minDistance = new PriorityQueue<>();
 
@@ -351,6 +353,7 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
         for (int i = 0; i < V; i++)
         {
             dist[i] = Double.MAX_VALUE;
+            predecessors[i] = -1;
             minDistance.offer(elementsReference.get(i));
         }
 
@@ -379,8 +382,11 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
 
                 if (!sptSet[v] && matrixAdyacency[u][v] != null &&
                         dist[u] != Double.MAX_VALUE &&
-                        dist[u] + c < dist[v])
+                        dist[u] + c < dist[v]) {
                     dist[v] = dist[u] + c;
+                    predecessors[v] = u;
+                }
+
             }
         }
 
@@ -390,7 +396,10 @@ public class AdjacencyMatrixGraph<V,E extends Comparable<E>> implements IGraph<V
             result.add(dist[I]);
         }
 
-        return null;
+        arrays[0] = dist;
+        arrays[1] = predecessors;
+
+        return arrays;
     }
 
     //Veloza

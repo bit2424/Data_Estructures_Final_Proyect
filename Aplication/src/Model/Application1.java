@@ -120,12 +120,16 @@ public class Application1 {
 			User newUser = graphHashtag.getVerticesL().get(index).getValue();
 			User aux = graphHashtag.getVerticesL().get(i).getValue();
 			for(String key : newUser.getAt().keySet()) {
-				if(aux.getAt().containsKey(key))
-					relationAt++;
+				if(aux.getAt().containsKey(key)) {
+                    relationAt++;
+                    System.out.println(key+ " We found this in common");
+                }
 			}
 			for(String key : newUser.getHashtag().keySet()) {
-				if(aux.getHashtag().containsKey(key))
-					relationHash++;
+				if(aux.getHashtag().containsKey(key)) {
+                    relationHash++;
+                    System.out.println(key+ " We found this in common");
+                }
 			}
 
 			if(relationHash > 0 ){
@@ -217,6 +221,22 @@ public class Application1 {
             return result;
         }
 	}
+
+
+	public HashMap<User,Integer> usersUpScorePolitic(int score){
+		return null;
+	}
+
+	public HashMap<User,Integer> usersUpScoreSports(int score){
+		return null;
+	}
+
+	public HashMap<User,Integer> usersUpScoreTecnology(int score){
+		return null;
+	}
+
+
+
 
 }
 

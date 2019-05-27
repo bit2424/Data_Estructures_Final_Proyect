@@ -69,7 +69,7 @@ public class ProcessData {
 	
 			
 			int contador = 0;
-			while(dato != null && dato.compareTo("Who to follow Â·  Refresh Â· View all") != 0) {
+			while(dato != null && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0) {
 
 				dato = dato.trim();
 
@@ -96,7 +96,7 @@ public class ProcessData {
 			int cantidad = 0;
 
 			
-			while(dato != null && dato.compareTo("Who to follow Â·  Refresh Â· View all") != 0) {
+			while(dato != null && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0) {
 				if(dato.compareTo("Verified account") == 0) {
 					a = recopilarTweet(Texto_Bruto,contador+1,nombre_Usuario);
 					int resul[] = (int[])a[0];
@@ -145,7 +145,7 @@ public class ProcessData {
 		
 		int Puntaje_Tweet[] = new int[3];
 		
-		while(!seguir && dato != null && dato.compareTo("Verified account") != 0 && dato.compareTo("Who to follow Â·  Refresh Â· View all") != 0) {
+		while(!seguir && dato != null && dato.compareTo("Verified account") != 0 && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0) {
 			String herramienta[] = dato.split(" ");
 			if(herramienta.length >= 6 && herramienta[herramienta.length-1].compareTo("message") == 0 && herramienta[herramienta.length-2].compareTo("Direct") == 0) {
 				herramienta = t.get(c-1).split(" ");
@@ -159,7 +159,7 @@ public class ProcessData {
 				Puntaje_Tweet[0] += puntos[0];
 				Puntaje_Tweet[1] += puntos[1];
 				Puntaje_Tweet[2] += puntos[2];
-			}else if(!seguir && dato.compareTo("Who to follow Â·  Refresh Â· View all") != 0){
+			}else if(!seguir && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0){
 				for (int i = 0; i < herramienta.length; i++) {
 					int puntos[] = identificarPalabra(herramienta[i]);
 					Puntaje_Tweet[0] += puntos[0];
