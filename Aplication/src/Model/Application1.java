@@ -186,8 +186,36 @@ public class Application1 {
 	}
 
 	public ArrayList<User> getDifusionGroup(User uSend, User uRecive){
+        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+        int iR = 0;
+        int iS = 0;
 
-		return null;
+        for(int I = 0;I<aux.size();I++){
+            if(aux.get(I).getValue().equals(uSend)){
+                iR = I;
+            }
+
+            if(aux.get(I).getValue().equals(uRecive)){
+                iS = I;
+            }
+        }
+
+        int[] parents = (int[])graphRelations.Dijsktra(iS)[1] ;
+
+        ArrayList<User> result = new ArrayList<>();
+        result.add(uRecive);
+        int actual_parent = parents[iR];
+
+        while (actual_parent != -1){
+            result.add(aux.get(actual_parent).getValue());
+            actual_parent = parents[actual_parent];
+        }
+
+        if(result.size() == 1){
+            return null;
+        }else{
+            return result;
+        }
 	}
 
 }
