@@ -23,94 +23,94 @@ import view.Main;
 
 public class AnalyzeController implements Initializable {
 
-    @FXML
-    private ComboBox<String> ComboBoxOptions;
+	@FXML
+	private ComboBox<String> ComboBoxOptions;
 
-    @FXML
-    private Label labelOptions;
+	@FXML
+	private Label labelOptions;
 
-    @FXML
-    private ListView<String> ListResult;
+	@FXML
+	private ListView<String> ListResult;
 
-    @FXML
-    private AnchorPane nearGrade;
+	@FXML
+	private AnchorPane nearGrade;
 
-    @FXML
-    private TextField pointsreferents;
+	@FXML
+	private TextField pointsreferents;
 
-    @FXML
-    private ComboBox<String> ComboboxType;
+	@FXML
+	private ComboBox<String> ComboboxType;
 
-    @FXML
-    private ComboBox<String> ComboboxUsers;
+	@FXML
+	private ComboBox<String> ComboboxUsers;
 
-    @FXML
-    private Label labelListUsers;
+	@FXML
+	private Label labelListUsers;
 
-    @FXML
-    private Label labelType;
+	@FXML
+	private Label labelType;
 
-    @FXML
-    private AnchorPane relation;
+	@FXML
+	private AnchorPane relation;
 
-    @FXML
-    private Label UserStarLabel;
+	@FXML
+	private Label UserStarLabel;
 
-    @FXML
-    private ComboBox<String> ListUserCombobox;
+	@FXML
+	private ComboBox<String> ListUserCombobox;
 
-    private int option;
-    private ArrayList<String> listOptions;
-    private ArrayList<String> types;
-    private ArrayList<String> nameUsers;
-    
-    @FXML
-    void ListUsers(ActionEvent event) {
-    }
+	private int option;
+	private ArrayList<String> listOptions;
+	private ArrayList<String> types;
+	private ArrayList<String> nameUsers;
 
-    @FXML
-    void add(ActionEvent event) {
-    }
+	@FXML
+	void ListUsers(ActionEvent event) {
+	}
 
-    @FXML
-    void listUser(ActionEvent event) {
-    	
-    }
+	@FXML
+	void add(ActionEvent event) {
+	}
 
-    @FXML
-    void options(ActionEvent event) {
-    	if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
-    		option = ComboBoxOptions.getSelectionModel().getSelectedIndex();
-    		labelOptions.setText(listOptions.get(option));
-    		fresh();
-    		goOption();
-    	}
-    }
+	@FXML
+	void listUser(ActionEvent event) {
 
-    private void fresh() {
-    	ListResult.setVisible(false);
-    	nearGrade.setVisible(false);
-    	relation.setVisible(false);
+	}
+
+	@FXML
+	void options(ActionEvent event) {
+		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
+			option = ComboBoxOptions.getSelectionModel().getSelectedIndex();
+			labelOptions.setText(listOptions.get(option));
+			fresh();
+			goOption();
+		}
+	}
+
+	private void fresh() {
+		ListResult.setVisible(false);
+		nearGrade.setVisible(false);
+		relation.setVisible(false);
 	}
 
 	private void goOption() {
 		switch (option+1) {
-		case 1:goListUsersCategory();
-		break;
-		case 2: ListRelationHashtag();
-		break;
-		case 3: ListRelationAt();
-		break;
-		case 4: goFilter();
-		break;
-		case 5: probabilityRelation();
-		break;
-		default:
-			break;
+			case 1:goListUsersCategory();
+				break;
+			case 2: ListRelationHashtag();
+				break;
+			case 3: ListRelationAt();
+				break;
+			case 4: goFilter();
+				break;
+			case 5: probabilityRelation();
+				break;
+			default:
+				break;
 		}
 	}
-    
-    private void probabilityRelation() {
+
+	private void probabilityRelation() {
 		relation.setVisible(true);
 	}
 
@@ -127,7 +127,7 @@ public class AnalyzeController implements Initializable {
 	}
 
 	private void ListRelationAt() {
-    	ListResult.setVisible(true);
+		ListResult.setVisible(true);
 	}
 
 	private void ListRelationHashtag() {
@@ -136,26 +136,26 @@ public class AnalyzeController implements Initializable {
 
 	private void goListUsersCategory() {
 		ListResult.setVisible(true);
-    }
+	}
 
 	@FXML
-    void returnStart(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(getClass().getResource("/view/Start.fxml"));
-    	Parent viewCampo = loader.load();
-    	Scene scene = new Scene(viewCampo);
-    	Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    	windowCampo.setScene(scene);
-    	windowCampo.show();
-    }
+	void returnStart(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/view/Start.fxml"));
+		Parent viewCampo = loader.load();
+		Scene scene = new Scene(viewCampo);
+		Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		windowCampo.setScene(scene);
+		windowCampo.show();
+	}
 
-    @FXML
-    void type(ActionEvent event) {
+	@FXML
+	void type(ActionEvent event) {
 		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
-    		option = ComboboxType.getSelectionModel().getSelectedIndex();
-    		labelType.setText(types.get(option));
-    	}
-    }
+			option = ComboboxType.getSelectionModel().getSelectedIndex();
+			labelType.setText(types.get(option));
+		}
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
