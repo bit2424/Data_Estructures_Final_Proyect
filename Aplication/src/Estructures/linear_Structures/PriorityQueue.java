@@ -2,6 +2,7 @@ package Estructures.linear_Structures;
 
 public class PriorityQueue<K extends Comparable<K>,V> implements MyQueue<K> {
 	Heap<K> elements;
+
 	
 	public PriorityQueue (boolean Type) {
 		elements = new Heap<>(Type);

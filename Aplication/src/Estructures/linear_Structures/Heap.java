@@ -3,7 +3,7 @@ package Estructures.linear_Structures;
 public class Heap<V extends Comparable<V>> implements MyHeap<V> {
 	protected Object elements[];
 	public int size;
-	private int maxSize = 20;
+	private int maxSize = 10000;
 	
 	// true Max - false Min
 	

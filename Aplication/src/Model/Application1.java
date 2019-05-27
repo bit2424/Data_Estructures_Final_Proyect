@@ -1,5 +1,9 @@
 package Model;
 
+import Estructures.Graphs.EdgeL;
+import Estructures.Graphs.VertexL;
+import Estructures.Graphs.VertexM;
+import Estructures.trees.RBTree;
 import Persistence_Control.ProcessData;
 
 import java.io.BufferedReader;
@@ -19,13 +23,15 @@ public class Application1 {
 	private ProcessData hilo;
 	private AdjacencyListGraph<User, Integer> graphHashtag;
 	private AdjacencyListGraph<User, Integer> graphAt;
-	
+	private AdjacencyListGraph<User, Double> graphRelations;
+
 	public Application1() {
 		raiz_relevantesS = new HashMap<>();
 		raiz_relevantesP = new HashMap<>();
 		raiz_relevantesT = new HashMap<>();
 		graphAt = new AdjacencyListGraph<>(false, true);
 		graphHashtag = new AdjacencyListGraph<>(false, true);
+		graphRelations = new AdjacencyListGraph<>(false,true);
 
 		try {
 			loadEspecialWords();
@@ -88,6 +94,7 @@ public class Application1 {
 					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
 			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
 			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
 			System.out.println(graphHashtag.getNumberOfVertices());
 			joinEdges(graphHashtag.getNumberOfVertices() - 1);
 		}catch (Exception e){
@@ -99,6 +106,7 @@ public class Application1 {
 					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
 			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
 			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
 			System.out.println(graphHashtag.getNumberOfVertices());
 			joinEdges(graphHashtag.getNumberOfVertices() - 1);
 
@@ -119,11 +127,22 @@ public class Application1 {
 				if(aux.getHashtag().containsKey(key))
 					relationHash++;
 			}
-			if(relationHash > 0 )
-				graphHashtag.insertEdge(index, i, relationHash);
-			if(relationAt>0)
+
+			if(relationHash > 0 ){
+				graphHashtag.insertEdge(index, i,relationHash);
+			}
+
+			if(relationAt>0){
 				graphAt.insertEdge(index, i, relationAt);
-				
+			}
+
+			if(relationHash > 0 || relationAt>0){
+				double weight = (relationAt+relationHash);
+				double a = Math.abs(newUser.getPoints()[0] - aux.getPoints()[0]) + Math.abs(newUser.getPoints()[1] - aux.getPoints()[1]) + Math.abs(newUser.getPoints()[2] - aux.getPoints()[2]);
+				weight = weight/a;
+				graphRelations.insertEdge(index,i,weight);
+			}
+
 			System.out.println(relationAt+" Aristas @  peso --- "+ relationHash+ "Aristas# peso");
 		}
 	}
@@ -133,14 +152,41 @@ public class Application1 {
 	}
 
 	public AdjacencyListGraph<User, Integer> getGraphAt() {
+
 		return graphAt;
 	}
 	
-	public User getNextProbableRelation(){
-		return null;
+	public User getNextProbableRelation(User user){
+		ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+		HashMap<User,ArrayList<EdgeL<User,Double>>> store = new HashMap<>();
+		int i = 0;
+		for(int I = 0;I<aux.size();I++){
+			store.put(aux.get(I).getValue(),aux.get(I).getAdjacencyList());
+			if(aux.get(I).getValue().equals(user)){
+				i = I;
+			}
+		}
+
+		ArrayList<EdgeL<User,Double>> close =  aux.get(i).getAdjacencyList();
+		ArrayList<EdgeL<User,Double>> closeOnes = new ArrayList<>();
+		RBTree<Double,User> keeper  = new RBTree<>();
+
+		for(int K = 0; K < close.size();K++){
+			closeOnes = store.get(close.get(K).getVertex().getValue());
+
+			for(int M = 0; M<closeOnes.size(); M++){
+				Double val = closeOnes.get(M).getWeight();
+				keeper.insert(val,closeOnes.get(M).getVertex().getValue());
+			}
+		}
+
+		User result = keeper.search(keeper.getMax());
+
+		return result;
 	}
 
-	public ArrayList<User> getDifusionGroup(){
+	public ArrayList<User> getDifusionGroup(User uSend, User uRecive){
+
 		return null;
 	}
 
