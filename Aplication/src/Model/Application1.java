@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import Estructures.Graphs.AdjacencyListGraph;
@@ -33,14 +34,27 @@ public class Application1 {
 	}
 
 	private void loadEspecialWords() throws IOException {
+		try {
+			String names[] = {"./Persistence/Dictionaries/Politics_Dictionary","./Persistence/Dictionaries/Tecnology_Dictionary","./Persistence/Dictionaries/Sports_Dictionary"};
 
-		String names[] = {"./Persistence/Dictionaries/Politics_Dictionary","./Persistence/Dictionaries/Tecnology_Dictionary","./Persistence/Dictionaries/Sports_Dictionary"};
+			loadType(names[0],raiz_relevantesP);
 
-		loadType(names[0],raiz_relevantesP);
+			loadType(names[1],raiz_relevantesT);
 
-		loadType(names[1],raiz_relevantesT);
+			loadType(names[2],raiz_relevantesS);
+		}catch (Exception e){
 
-		loadType(names[2],raiz_relevantesS);
+			//Tu version
+
+			String names[] = {"./Persistence/Dictionaries/Politics_Dictionary","./Persistence/Dictionaries/Tecnology_Dictionary","./Persistence/Dictionaries/Sports_Dictionary"};
+
+			loadType(names[0],raiz_relevantesP);
+
+			loadType(names[1],raiz_relevantesT);
+
+			loadType(names[2],raiz_relevantesS);
+		}
+
 	}
 
 	private void loadType(String name , HashMap<String,Integer> selected) throws IOException {
@@ -67,13 +81,27 @@ public class Application1 {
 	}
 
 	public void registerUser(){
-		hilo = new ProcessData("./Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
-		System.out.println(hilo.getUser_Name()+"  "+  hilo.getPuntaje_Usuario()[0] +" Tecnologia   "+ hilo.getPuntaje_Usuario()[1]+"  Deporte   "
-				+  hilo.getPuntaje_Usuario()[2]+"   Politica   "+  hilo.getHashtags().size()+" Cantidad de  #      "+ hilo.getMenciones().size()+" Cantidad de  @");
-		graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-		graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-		System.out.println(graphHashtag.getNumberOfVertices());
-		joinEdges(graphHashtag.getNumberOfVertices()-1);
+		try {
+			hilo = new ProcessData("./Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
+					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
+			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			System.out.println(graphHashtag.getNumberOfVertices());
+			joinEdges(graphHashtag.getNumberOfVertices() - 1);
+		}catch (Exception e){
+
+			//tu version pana
+
+			hilo = new ProcessData("./Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
+					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
+			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			System.out.println(graphHashtag.getNumberOfVertices());
+			joinEdges(graphHashtag.getNumberOfVertices() - 1);
+
+		}
 	}
 
 	private void joinEdges(int index) {
@@ -107,7 +135,13 @@ public class Application1 {
 		return graphAt;
 	}
 	
+	public User getNextProbableRelation(){
+		return null;
+	}
 
+	public ArrayList<User> getDifusionGroup(){
+		return null;
+	}
 
 }
 
