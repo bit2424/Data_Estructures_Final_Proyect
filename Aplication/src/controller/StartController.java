@@ -6,7 +6,11 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,6 +19,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import view.Main;
+
 public class StartController implements Initializable {
 
 	@FXML
@@ -55,9 +61,25 @@ public class StartController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		goStart();
+		try {
+			searchData("/Persistence/Users/BillGates");
+			searchData("/Persistence/Users/DonaldJTrump");
+			searchData("/Persistence/Users/ElonMusk");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
+	private void searchData(String link) throws IOException {
+		try {
+			Main.getApli().registerData(link);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+
+
 }
-
-
-
