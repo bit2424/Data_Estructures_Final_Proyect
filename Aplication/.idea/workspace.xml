@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="&quot;Correciones de la obtencion de datos&quot;">
+    <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estructures/Graphs/AdjacencyListGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Application1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Application1.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\nelso\Desktop\Data_Estructures_Final_Proyect\Aplication\.idea\shelf/" />
@@ -25,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Application1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="300" column="50" selection-start-line="300" selection-start-column="50" selection-end-line="300" selection-end-column="50" />
+            <state relative-caret-position="312">
+              <caret line="299" column="41" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
               <folding>
                 <element signature="e#6039#6040#0" expanded="true" />
               </folding>
@@ -470,7 +468,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558998815507</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="&quot;Listo Requerimiento 5&quot;">
+      <created>1559008786021</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1559008786021</updated>
+    </task>
+    <task id="LOCAL-00020" summary="&quot;configuracion de pull&quot;">
+      <created>1559034650421</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1559034650421</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -518,7 +530,7 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4028056" visible="true" weight="0.19969743" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4028056" visible="true" weight="0.19969743" />
       <window_info id="Structure" order="1" sideWeight="0.5971944" side_tool="true" visible="true" weight="0.19969743" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50164473" side_tool="true" weight="0.28668684" />
@@ -532,7 +544,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32872504" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.23348695" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.23348695" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.4347158" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32872504" />
@@ -638,7 +650,9 @@
     <MESSAGE value="&quot;Listo requerimento 7&quot;" />
     <MESSAGE value="&quot;Avances en requerimento 5&quot;" />
     <MESSAGE value="&quot;Correciones de la obtencion de datos&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Correciones de la obtencion de datos&quot;" />
+    <MESSAGE value="&quot;Listo Requerimiento 5&quot;" />
+    <MESSAGE value="&quot;configuracion de pull&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;configuracion de pull&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -927,8 +941,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Application1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="300" column="50" selection-start-line="300" selection-start-column="50" selection-end-line="300" selection-end-column="50" />
+        <state relative-caret-position="312">
+          <caret line="299" column="41" selection-start-line="299" selection-start-column="41" selection-end-line="299" selection-end-column="41" />
           <folding>
             <element signature="e#6039#6040#0" expanded="true" />
           </folding>
