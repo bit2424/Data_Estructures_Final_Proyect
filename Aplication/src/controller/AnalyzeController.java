@@ -124,12 +124,42 @@ public class AnalyzeController implements Initializable {
 			case 0:
 				listUsersPoints();
 				break;
+			case 1:
+				listUserHash();
+				break;
+			case 2:
+				listUserAt();
+				break;
 			case 6:
 				resultGrup();
 				break;
 			default:
 				break;
 		}
+	}
+
+	private void listUserAt() {
+		ArrayList<String> n  = new ArrayList<>();
+		ArrayList<ArrayList<User>> u  = Main.getApli().getArCoincidentUsers();
+		for(int i=0; i<u.size();i++){
+			n.add("Grupo #"+(i+1));
+			for(int j=0; j< u.get(i).size();j++){
+				n.add(u.get(i).get(j).getName());
+			}
+		}
+		ListResult.getItems().addAll(n);
+	}
+
+	private void listUserHash() {
+		ArrayList<String> n  = new ArrayList<>();
+		ArrayList<ArrayList<User>> u  = Main.getApli().getHashCoincidentUsers();
+		for(int i=0; i<u.size();i++){
+			n.add("Grupo #"+(i+1));
+			for(int j=0; j< u.get(i).size();j++){
+				n.add(u.get(i).get(j).getName());
+			}
+		}
+		ListResult.getItems().addAll(n);
 	}
 
 	private void listUsersPoints() {
@@ -185,6 +215,7 @@ public class AnalyzeController implements Initializable {
 	}
 
 	private void fresh() {
+		ListResult.getItems().clear();
 		ListResult.setVisible(false);
 		nearGrade.setVisible(false);
 		relation.setVisible(false);
