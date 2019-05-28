@@ -239,8 +239,8 @@ public class AnalyzeController implements Initializable {
 		ArrayList<String> names = new ArrayList<>();
 		ArrayList<User> u = Main.getApli().getDifusionGroup(UserSend,userReceive );
 		if(u!=null){
-			for (int i  =0; i< Main.getApli().getDifusionGroup(UserSend,userReceive ).size();i++){
-				names.add(Main.getApli().getDifusionGroup(UserSend,userReceive ).get(i).getName());
+			for (int i  =0; i< u.size();i++){
+				names.add(u.get(i).getName());
 			}
 		}else{
 			names.add("No existe grupo de relacion");

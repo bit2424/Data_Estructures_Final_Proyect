@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Stack;
 
 public class Application1 {
 
@@ -175,7 +176,8 @@ public class Application1 {
 		int i = 0;
 		for(int I = 0;I<aux.size();I++){
 			store.put(aux.get(I).getValue(),aux.get(I).getAdjacencyList());
-			if(aux.get(I).getValue().equals(user)){
+            User a = aux.get(I).getValue();
+			if(a.compareTo(user) == 0){
 				i = I;
 			}
 		}
@@ -188,8 +190,13 @@ public class Application1 {
 			closeOnes = store.get(close.get(K).getValue());
 
 			for(int M = 0; M<closeOnes.size(); M++){
-				Double val = graphRelations.getEdges(K,M).get(0).getWeight();
-				keeper.insert(val,closeOnes.get(M).getValue());
+			    if(graphRelations.getEdges(K,M).size()>0){
+                    Double val = graphRelations.getEdges(K,M).get(0).getWeight();
+                    keeper.insert(val,closeOnes.get(M).getValue());
+                }else{
+                    Double val = -1d;
+                    keeper.insert(val,closeOnes.get(M).getValue());
+                }
 			}
 		}
 
@@ -205,11 +212,11 @@ public class Application1 {
         int iS = 0;
 
         for (int I = 0; I < aux.size(); I++) {
-            if (aux.get(I).getValue().equals(uSend)) {
+            if (aux.get(I).getValue().compareTo(uRecive) == 0) {
                 iR = I;
             }
 
-            if (aux.get(I).getValue().equals(uRecive)) {
+            if (aux.get(I).getValue().compareTo(uSend) == 0) {
                 iS = I;
             }
         }
@@ -217,12 +224,20 @@ public class Application1 {
         int[] parents = (int[]) graphRelations.Dijsktra(iS)[1];
 
         ArrayList<User> result = new ArrayList<>();
-        result.add(uRecive);
+        Stack<User> temp = new Stack<>();
         int actual_parent = parents[iR];
 
+        temp.push(uRecive);
+
         while (actual_parent != -1) {
-            result.add(aux.get(actual_parent).getValue());
+            temp.push(aux.get(actual_parent).getValue());
             actual_parent = parents[actual_parent];
+        }
+
+        int a = temp.size();
+
+        for (int I = 0;I<a;I++){
+            result.add(temp.pop());
         }
 
         if (result.size() == 1) {
@@ -241,7 +256,7 @@ public class Application1 {
         ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
         int i = 0;
         for(int I = 0;I<aux.size();I++){
-            if(aux.get(I).getValue().equals(ref)){
+            if(aux.get(I).getValue().compareTo(ref) == 0){
                 i = I;
             }
         }
