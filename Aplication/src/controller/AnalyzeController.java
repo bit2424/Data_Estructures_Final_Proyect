@@ -3,8 +3,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.CheckBox;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import view.Main;
+
+import javax.swing.*;
 
 public class AnalyzeController implements Initializable {
 
@@ -73,11 +76,23 @@ public class AnalyzeController implements Initializable {
 	@FXML
 	private Label receiveLabel;
 
+	@FXML
+	private CheckBox sport;
+
+	@FXML
+	private CheckBox tecnology;
+
+	@FXML
+	private CheckBox politics;
+
+
 	private int option;
 	private ArrayList<String> listOptions;
 	private ArrayList<String> types;
 	private ArrayList<String> nameUsers;
 	private int[] sendAndReceide;
+	private int selecCategory=-1;
+	private int selecUser;
 
 
 	@FXML
@@ -101,17 +116,106 @@ public class AnalyzeController implements Initializable {
 	}
 	@FXML
 	void ListUsers(ActionEvent event) {
+		if(ComboboxUsers.getSelectionModel().getSelectedIndex()>-1) {
+			selecUser = ComboboxUsers.getSelectionModel().getSelectedIndex();
+			labelListUsers.setText(nameUsers.get(selecUser));
+		}
 	}
 
 	@FXML
 	void add(ActionEvent event) {
+
 		switch (option) {
+			case 0:
+				listUsersPoints();
+				break;
+			case 1:
+				listUserHash();
+				break;
+			case 2:
+				listUserAt();
+				break;
+			case 3:
+				listfiler();
+				break;
 			case 6:
 				resultGrup();
 				break;
 			default:
 				break;
 		}
+	}
+
+	private void listfiler() {
+		if(selecUser!=-1&&selecCategory!=-1&&!pointsreferents.getText().equals("")){
+			int puntaje = Integer.parseInt(pointsreferents.getText());
+			User start = Main.getApli().getGraphHashtag().getVerticesL().get(selecUser).getValue();
+			System.out.println("Puntaje "+puntaje+ "  Usuario inicio "+start.getName()+"  categoria" + selecCategory);
+			HashMap<User,Integer> resul = Main.getApli().usersUpScore(puntaje,start,selecCategory);
+			ArrayList<String> data = new ArrayList<>();
+			for(User u : resul.keySet()){
+				data.add(u.getName());
+			}
+			int j =0;
+			for(Integer i : resul.values()){
+				data.set(j,data.get(j)+"  Puntaje:"+ i);
+				j++;
+			}
+			ListResult.getItems().addAll(data);
+			ListResult.setVisible(true);
+			nearGrade.setVisible(false);
+		}else{
+			JOptionPane.showMessageDialog(null,"Faltan datos requeridos");
+		}
+		selecCategory=-1;
+		selecUser=-1;
+
+	}
+
+
+	private void listUserAt() {
+		ArrayList<String> n  = new ArrayList<>();
+		ArrayList<ArrayList<User>> u  = Main.getApli().getArCoincidentUsers();
+		for(int i=0; i<u.size();i++){
+			n.add("Grupo #"+(i+1));
+			for(int j=0; j< u.get(i).size();j++){
+				n.add(u.get(i).get(j).getName());
+			}
+		}
+		ListResult.getItems().addAll(n);
+	}
+
+	private void listUserHash() {
+		ArrayList<String> n  = new ArrayList<>();
+		ArrayList<ArrayList<User>> u  = Main.getApli().getHashCoincidentUsers();
+		for(int i=0; i<u.size();i++){
+			n.add("Grupo #"+(i+1));
+			for(int j=0; j< u.get(i).size();j++){
+				n.add(u.get(i).get(j).getName());
+			}
+		}
+		ListResult.getItems().addAll(n);
+	}
+
+	private void listUsersPoints() {
+		if(selecCategory != -1){
+			HashMap<User,Integer> data = Main.getApli().getClasificatedUsers(selecCategory);
+			ArrayList<String> n  = new ArrayList<>();
+			int i = 0;
+			for ( User key : data.keySet() ) {
+				n.add(key.getName()+"  Puntaje: "+ key.getPoints()[selecCategory]);
+			}
+			politics.setDisable(false);
+			politics.setSelected(false);
+			sport.setDisable(false);
+			sport.setSelected(false);
+			tecnology.setDisable(false);
+			tecnology.setSelected(false);
+			ListResult.getItems().addAll(n);
+		}else{
+			JOptionPane.showMessageDialog(null,"Seleccione una categoria");
+		}
+		selecCategory=-1;
 	}
 
 	private void resultGrup() {
@@ -146,10 +250,14 @@ public class AnalyzeController implements Initializable {
 	}
 
 	private void fresh() {
+		ListResult.getItems().clear();
 		ListResult.setVisible(false);
 		nearGrade.setVisible(false);
 		relation.setVisible(false);
 		grup.setVisible(false);
+		sport.setVisible(false);
+		politics.setVisible(false);
+		tecnology.setVisible(false);
 	}
 
 	private void goOption() {
@@ -212,6 +320,9 @@ public class AnalyzeController implements Initializable {
 	}
 
 	private void goListUsersCategory() {
+		sport.setVisible(true);
+		politics.setVisible(true);
+		tecnology.setVisible(true);
 		ListResult.setVisible(true);
 	}
 
@@ -229,9 +340,33 @@ public class AnalyzeController implements Initializable {
 	@FXML
 	void type(ActionEvent event) {
 		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
-			int a = ComboboxType.getSelectionModel().getSelectedIndex();
-			labelType.setText(types.get(a));
+			selecCategory = ComboboxType.getSelectionModel().getSelectedIndex();
+			labelType.setText(types.get(selecCategory));
 		}
+	}
+
+	@FXML
+	void categoryPolitics(ActionEvent event) {
+		selecCategory = 2;
+		ListResult.getItems().clear();
+		tecnology.setDisable(true);
+		sport.setDisable(true);
+	}
+
+	@FXML
+	void categorySport(ActionEvent event) {
+		selecCategory = 1;
+		ListResult.getItems().clear();
+		tecnology.setDisable(true);
+		politics.setDisable(true);
+	}
+
+	@FXML
+	void categoryTecnology(ActionEvent event) {
+		selecCategory = 0;
+		ListResult.getItems().clear();
+		sport.setDisable(true);
+		politics.setDisable(true);
 	}
 
 	@Override

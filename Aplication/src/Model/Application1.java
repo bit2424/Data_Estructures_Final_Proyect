@@ -318,6 +318,34 @@ public class Application1 {
         return result;
     }
 
+    public void registerData(String link) throws IOException, URISyntaxException {
+		try {
+			hilo = new ProcessData(link, raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
+					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
+			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			System.out.println(graphHashtag.getNumberOfVertices());
+			joinEdges(graphHashtag.getNumberOfVertices() - 1);
+		} catch (Exception e) {
+			try {
+				hilo = new ProcessData("/Aplication"+link, raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (URISyntaxException e1) {
+				e1.printStackTrace();
+			}
+			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
+					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
+			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+			System.out.println(graphHashtag.getNumberOfVertices());
+			joinEdges(graphHashtag.getNumberOfVertices() - 1);
+		}
+	}
+
 
 }
 
