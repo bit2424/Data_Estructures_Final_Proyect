@@ -74,7 +74,7 @@ public class ProcessData {
 
 			while(dato != null && forSure != 2) {
 
-			    if(dato.trim().compareTo("Who to follow �  Refresh � View all") == 0){
+			    if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
 			        forSure++;
                 }
 
@@ -106,9 +106,10 @@ public class ProcessData {
 			forSure = 0;
 
 			while(dato != null && forSure!=2) {
-                if(dato.trim().compareTo("Who to follow �  Refresh � View all") == 0){
+                if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
                     forSure++;
                 }
+
 				if(dato.compareTo("Verified account") == 0) {
 					a = recopilarTweet(Texto_Bruto,contador+1,nombre_Usuario);
 					int resul[] = (int[])a[0];
@@ -202,6 +203,7 @@ public class ProcessData {
 		salida[1] = 0;
 		salida[2] = 0;
 		if(s.length()>=2 && s.substring(0, 1).compareToIgnoreCase("@") == 0) {
+
 			menciones.put(s.substring(1,s.length()),0);
 		}else if(s.length()>=1 && s.substring(0, 1).compareToIgnoreCase("#") == 0){
 			if(hashtags.containsKey(s)) {
