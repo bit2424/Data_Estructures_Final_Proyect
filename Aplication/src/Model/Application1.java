@@ -309,6 +309,43 @@ public class Application1 {
         return result;
     }
 
+    //Requerimiento 4
+    public ArrayList<ArrayList<User>> getArCoincidentUsers(){
+        ArrayList<ArrayList<Integer>> ref = graphAt.DFS();
+        ArrayList<VertexL<User,Integer>> refUsers = graphAt.getVerticesL();
+        ArrayList<ArrayList<User>> outputUsers = new ArrayList<>();
+
+        for(int I = 0;I<ref.size();I++){
+            outputUsers.add(new ArrayList<>());
+            for(int K = 0; K<ref.get(I).size(); K++){
+                outputUsers.get(I).add(refUsers.get(ref.get(I).get(K)).getValue());
+            }
+        }
+
+        return outputUsers;
+    }
+
+    //Requerimiento 3
+    public ArrayList<ArrayList<User>> getHashCoincidentUsers(){
+        ArrayList<ArrayList<Integer>> ref = graphHashtag.DFS();
+        ArrayList<VertexL<User,Integer>> refUsers = graphHashtag.getVerticesL();
+        ArrayList<ArrayList<User>> outputUsers = new ArrayList<>();
+
+        for(int I = 0;I<ref.size();I++){
+            outputUsers.add(new ArrayList<>());
+            for(int K = 0; K<ref.get(I).size(); K++){
+                outputUsers.get(I).add(refUsers.get(ref.get(I).get(K)).getValue());
+            }
+        }
+
+        return outputUsers;
+    }
+
+    //Requrimiento 2
+    public ArrayList<User> getClasificatedUsers(){
+        return null;
+    }
+
 
 }
 
