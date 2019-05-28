@@ -335,7 +335,6 @@ public class Application1 {
 			System.out.println(graphHashtag.getNumberOfVertices());
 			joinEdges(graphHashtag.getNumberOfVertices() - 1);
 		} catch (Exception e) {
-		    e.printStackTrace();
 			try {
 				hilo = new ProcessData("/Aplication"+link, raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
 			} catch (IOException e1) {

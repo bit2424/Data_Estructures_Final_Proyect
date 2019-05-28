@@ -150,7 +150,6 @@ public class AnalyzeController implements Initializable {
 		if(selecUser!=-1&&selecCategory!=-1&&!pointsreferents.getText().equals("")){
 			int puntaje = Integer.parseInt(pointsreferents.getText());
 			User start = Main.getApli().getGraphHashtag().getVerticesL().get(selecUser).getValue();
-			System.out.println("Puntaje "+puntaje+ "  Usuario inicio "+start.getName()+"  categoria" + selecCategory);
 			HashMap<User,Integer> resul = Main.getApli().usersUpScore(puntaje,start,selecCategory);
 			ArrayList<String> data = new ArrayList<>();
 			for(User u : resul.keySet()){
@@ -158,7 +157,7 @@ public class AnalyzeController implements Initializable {
 			}
 			int j =0;
 			for(Integer i : resul.values()){
-				data.set(j,data.get(j)+"  Puntaje:"+ i);
+				data.set(j,data.get(j)+"  Grado de cercania:"+ i);
 				j++;
 			}
 			ListResult.getItems().addAll(data);
