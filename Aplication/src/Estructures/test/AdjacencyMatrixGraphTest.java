@@ -101,13 +101,13 @@ class AdjacencyMatrixGraphTest {
         setupScene3();
         assertEquals(5, noDirectedGraph.getMatrixAdyacency()[1][3].getValue());
         noDirectedGraph.deleteEdge(1, 3, 5);
-        assertEquals(0, noDirectedGraph.getMatrixAdyacency()[1][3].getValue());
+        assertEquals(null, noDirectedGraph.getMatrixAdyacency()[1][3]);
 
 
         noDirectedGraph.insertVertex("6");
         noDirectedGraph.insertEdge(4,4,6);
         noDirectedGraph.deleteEdge(4,4,6);
-        assertEquals(0, noDirectedGraph.getMatrixAdyacency()[4][4]);
+        assertEquals(null, noDirectedGraph.getMatrixAdyacency()[4][4]);
 
     }
 
@@ -119,18 +119,32 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     public void BFSTest(){
+        ArrayList<Integer> tree = null;
+        // Case 1: A graph with one vertex.
+        setupScene1();
+        noDirectedGraph.insertVertex("4");
+        tree = noDirectedGraph.BFS(0);
+        assertEquals(1, tree.size());
+        assertEquals(noDirectedGraph.getElementsReference().get(0), noDirectedGraph.getElementsReference().get(tree.get(0)));
+        // Case 2: A disconnected graph of n vertices.
+        setupScene3();
+        tree = noDirectedGraph.BFS(0);
+        assertEquals(4, tree.size());
+        assertEquals(1, noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
+
 
 
     }
-
+    @Test
     private void printDFSTree(ArrayList<Integer> tree){
         for(int i = 0; i < tree.size(); i++){
             int j = tree.get(i);
-           // int predecessor = noDirectedGraph.getElementsReference().get(j);
+            int predecessor = tree.get(j); //position
+            noDirectedGraph.getElementsReference().get(tree.get(j)); //User
             System.out.println("Valor: " + noDirectedGraph.getElementsReference().get(j).getValue());
             System.out.println("Tiempo inicial: " + noDirectedGraph.getVerticesL().get(j).getInitialTime());
             System.out.println("Tiempo final: " + noDirectedGraph.getVerticesL().get(j).getFinalTime());
-            //System.out.println("Predecesor: " + ((predecessor == -1) ? null : noDirectedGraph.getElementsReference().get(predecessor).getValue()));
+            System.out.println("Predecesor: " + ((predecessor == -1) ? null : noDirectedGraph.getElementsReference().get(predecessor).getValue()));
             System.out.println("\n");
         }
     }
@@ -138,34 +152,24 @@ class AdjacencyMatrixGraphTest {
     @Test
     public void DFSTest(){
 
-        //noDirectedGraph.insertVertex("4");
-       // noDirectedGraph.insertVertex("5");
-       // noDirectedGraph.insertEdge(0,5,7);
-
         ArrayList<ArrayList<Integer>> forest;
 
         // Case 1: A graph with one vertex.
-        setupScene2();
+        setupScene1();
         noDirectedGraph.insertVertex("1");
         forest = noDirectedGraph.DFS();
-        assertEquals(1, forest.size());
-        assertEquals(1, forest.get(0).size());
+        assertEquals(0, forest.size());
         assertEquals(1, noDirectedGraph.getnVertex());
-        System.out.println(forest.size());
 
         // Case 2: A connected graph of n vertices.
         setupScene3();
         noDirectedGraph.insertVertex("5");
-        noDirectedGraph.insertEdge(0,5,7);
+        noDirectedGraph.insertEdge(0,4,7);
         forest = noDirectedGraph.DFS();
-        assertEquals(5, forest.size());
-       // assertEquals(, forest.get(0).size());
+        assertEquals(0, forest.size());
         System.out.println("\nDFSWithoutStartPositionTest");
         System.out.println("---------- Case 2: A connected graph of n vertices ---------");
         //printDFSTree(forest.get(0));
-
-
-
     }
 
     @Test
