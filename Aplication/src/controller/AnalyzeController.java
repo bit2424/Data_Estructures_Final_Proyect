@@ -95,7 +95,7 @@ public class AnalyzeController implements Initializable {
 	private ArrayList<String> nameUsers;
 	private int[] sendAndReceide;
 	private int selecCategory=-1;
-	private int selecUser;
+	private int selecUser=-1;
 
 
 	@FXML
@@ -179,12 +179,11 @@ public class AnalyzeController implements Initializable {
 			ListResult.getItems().addAll(data);
 			ListResult.setVisible(true);
 			nearGrade.setVisible(false);
+			selecCategory=-1;
+			selecUser=-1;
 		}else{
 			JOptionPane.showMessageDialog(null,"Faltan datos requeridos");
 		}
-		selecCategory=-1;
-		selecUser=-1;
-
 	}
 
 
@@ -304,6 +303,10 @@ public class AnalyzeController implements Initializable {
 		for (int i = 0; i < Main.getApli().getGraphHashtag().getVerticesL().size(); i++) {
 			nameUsers.add(Main.getApli().getGraphHashtag().getVerticesL().get(i).getValue().getName());
 		}
+		ListReciveComboBox.getItems().clear();
+		ListSendComboBox.getItems().clear();
+		sendLabel.setText("");
+		receiveLabel.setText("");
 		ListReciveComboBox.getItems().addAll(nameUsers);
 		ListSendComboBox.getItems().addAll(nameUsers);
 		grup.setVisible(true);
@@ -315,6 +318,9 @@ public class AnalyzeController implements Initializable {
 		for (int i = 0; i < Main.getApli().getGraphHashtag().getVerticesL().size(); i++) {
 			nameUsers.add(Main.getApli().getGraphHashtag().getVerticesL().get(i).getValue().getName());
 		}
+		UserStarLabel.setText("");
+		resulLabel.setText("");
+		ListUserCombobox.getItems().clear();
 		ListUserCombobox.getItems().addAll(nameUsers);
 		relation.setVisible(true);
 	}
@@ -322,12 +328,18 @@ public class AnalyzeController implements Initializable {
 	private void goFilter() {
 		String[] a = {"Tecnologia","Deportes","Politica"};
 		types = new ArrayList<>(Arrays.asList(a));
+		ComboboxType.getItems().clear();
 		ComboboxType.getItems().addAll(types);
 		nameUsers = new ArrayList<>();
 		for (int i = 0; i < Main.getApli().getGraphHashtag().getVerticesL().size(); i++) {
 			nameUsers.add(Main.getApli().getGraphHashtag().getVerticesL().get(i).getValue().getName());
 		}
+		pointsreferents.setText("");
+		labelType.setText("");
+		labelListUsers.setText("");
+		ComboboxUsers.getItems().clear();
 		ComboboxUsers.getItems().addAll(nameUsers);
+		ListResult.setVisible(false);
 		nearGrade.setVisible(true);
 	}
 
@@ -349,7 +361,7 @@ public class AnalyzeController implements Initializable {
 	@FXML
 	void returnStart(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/Start.fxml"));
+		loader.setLocation(getClass().getResource("/view/Analyze.fxml"));
 		Parent viewCampo = loader.load();
 		Scene scene = new Scene(viewCampo);
 		Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -361,7 +373,9 @@ public class AnalyzeController implements Initializable {
 	void type(ActionEvent event) {
 		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
 			selecCategory = ComboboxType.getSelectionModel().getSelectedIndex();
-			labelType.setText(types.get(selecCategory));
+			if(selecCategory!=-1){
+				labelType.setText(types.get(selecCategory));
+			}
 		}
 	}
 
