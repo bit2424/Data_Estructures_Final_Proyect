@@ -85,6 +85,9 @@ public class AnalyzeController implements Initializable {
 	@FXML
 	private CheckBox politics;
 
+	@FXML
+	private Label resulLabel;
+
 
 	private int option;
 	private ArrayList<String> listOptions;
@@ -138,12 +141,25 @@ public class AnalyzeController implements Initializable {
 			case 3:
 				listfiler();
 				break;
-			case 6:
+			case 4:
+				futureRelation();
+				break;
+			case 5:
 				resultGrup();
 				break;
 			default:
 				break;
 		}
+	}
+
+	private void futureRelation() {
+		if(selecUser!=-1){
+			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(selecUser).getValue();
+			resulLabel.setText(Main.getApli().getNextProbableRelation(selec).getName());
+		}else{
+			JOptionPane.showMessageDialog(null,"Seleccione un usuario");
+		}
+		selecUser= -1;
 	}
 
 	private void listfiler() {
@@ -221,20 +237,25 @@ public class AnalyzeController implements Initializable {
 		User UserSend = Main.getApli().getGraphHashtag().getVerticesL().get(sendAndReceide[0]).getValue();
 		User userReceive = Main.getApli().getGraphHashtag().getVerticesL().get(sendAndReceide[1]).getValue();
 		ArrayList<String> names = new ArrayList<>();
-		for (int i  =0; i< Main.getApli().getDifusionGroup(UserSend,userReceive ).size();i++){
-			names.add(Main.getApli().getDifusionGroup(UserSend,userReceive ).get(i).getName());
+		ArrayList<User> u = Main.getApli().getDifusionGroup(UserSend,userReceive );
+		if(u!=null){
+			for (int i  =0; i< Main.getApli().getDifusionGroup(UserSend,userReceive ).size();i++){
+				names.add(Main.getApli().getDifusionGroup(UserSend,userReceive ).get(i).getName());
+			}
+		}else{
+			names.add("No existe grupo de relacion");
 		}
+
 		ListResult.getItems().addAll(names);
 		ListResult.setVisible(true);
+		grup.setVisible(false);
 	}
 
 	@FXML
 	void listUser(ActionEvent event) {
 		if(ListUserCombobox.getSelectionModel().getSelectedIndex()>-1) {
-			int a = ListUserCombobox.getSelectionModel().getSelectedIndex();
-			UserStarLabel.setText(nameUsers.get(a));
-			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(option).getValue();
-//			String name = Main.getApli().getNextProbableRelation(selec)..getName();
+			selecUser = ListUserCombobox.getSelectionModel().getSelectedIndex();
+			UserStarLabel.setText(nameUsers.get(selecUser));
 		}
 	}
 
