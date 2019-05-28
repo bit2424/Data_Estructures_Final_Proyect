@@ -1,10 +1,9 @@
 package Model;
 
-import Estructures.Graphs.EdgeL;
-import Estructures.Graphs.VertexL;
-import Estructures.Graphs.VertexM;
-import Estructures.auxiliary_estructures.UnderflowException;
-import Estructures.trees.RBTree;
+import Structures.Graphs.EdgeL;
+import Structures.Graphs.VertexL;
+import Structures.auxiliary_structures.exceptions_auxiliary_structures.UnderflowException;
+import Structures.trees.RBTree;
 import Persistence_Control.ProcessData;
 
 import java.io.BufferedReader;
@@ -15,7 +14,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import Estructures.Graphs.AdjacencyListGraph;
+import Structures.Graphs.AdjacencyListGraph;
 
 public class Application1 {
 
@@ -174,34 +173,34 @@ public class Application1 {
 	}
 
 	//Requerimiento 6
-	public User getNextProbableRelation(User user){
-		ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
-		HashMap<User,ArrayList<EdgeL<User,Double>>> store = new HashMap<>();
-		int i = 0;
-		for(int I = 0;I<aux.size();I++){
-			store.put(aux.get(I).getValue(),aux.get(I).getAdjacencyList());
-			if(aux.get(I).getValue().equals(user)){
-				i = I;
-			}
-		}
-
-		ArrayList<EdgeL<User,Double>> close =  aux.get(i).getAdjacencyList();
-		ArrayList<EdgeL<User,Double>> closeOnes = new ArrayList<>();
-		RBTree<Double,User> keeper  = new RBTree<>();
-
-		for(int K = 0; K < close.size();K++){
-			closeOnes = store.get(close.get(K).getVertex().getValue());
-
-			for(int M = 0; M<closeOnes.size(); M++){
-				Double val = closeOnes.get(M).getWeight();
-				keeper.insert(val,closeOnes.get(M).getVertex().getValue());
-			}
-		}
-
-		User result = keeper.search(keeper.getMax());
-
-		return result;
-	}
+//	public User getNextProbableRelation(User user){
+//		ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+//		HashMap<User,ArrayList<EdgeL<User,Double>>> store = new HashMap<>();
+//		int i = 0;
+//		for(int I = 0;I<aux.size();I++){
+//			store.put(aux.get(I).getValue(),aux.get(I).getAdjacencyList());
+//			if(aux.get(I).getValue().equals(user)){
+//				i = I;
+//			}
+//		}
+//
+//		ArrayList<EdgeL<User,Double>> close =  aux.get(i).getAdjacencyList();
+//		ArrayList<EdgeL<User,Double>> closeOnes = new ArrayList<>();
+//		RBTree<Double,User> keeper  = new RBTree<>();
+//
+//		for(int K = 0; K < close.size();K++){
+//			closeOnes = store.get(close.get(K).getVertex().getValue());
+//
+//			for(int M = 0; M<closeOnes.size(); M++){
+//				Double val = closeOnes.get(M).getWeight();
+//				keeper.insert(val,closeOnes.get(M).getVertex().getValue());
+//			}
+//		}
+//
+//		User result = keeper.search(keeper.getMax());
+//
+//		return result;
+//	}
 
     //Requerimiento 7
 	public ArrayList<User> getDifusionGroup(User uSend, User uRecive){
@@ -240,71 +239,71 @@ public class Application1 {
 
 	//Requerimiento 5
 
-	public HashMap<User,Integer> usersUpScorePolitic(int score,User ref){
-        int search = graphRelations.getVerticesL().indexOf(ref);
+//	public HashMap<User,Integer> usersUpScorePolitic(int score,User ref){
+//        int search = graphRelations.getVerticesL().indexOf(ref);
+//
+//        try {
+//            graphRelations.BFS(search);
+//        } catch (UnderflowException e) {
+//            e.printStackTrace();
+//        }
+//
+//        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+//
+//        HashMap<User,Integer> result = new HashMap<>();
+//
+//        for(int I = 0; I<aux.size();I++){
+//            if(aux.get(I).getValue().getPoints()[2] > score) {
+//                result.put(aux.get(I).getValue(), aux.get(I).getDistance());
+//            }
+//        }
+//
+//        return result;
+//	}
 
-        try {
-            graphRelations.BFS(search);
-        } catch (UnderflowException e) {
-            e.printStackTrace();
-        }
+//	public HashMap<User,Integer> usersUpScoreSports(int score,User ref){
+//        int search = graphRelations.getVerticesL().indexOf(ref);
+//
+//        try {
+//            graphRelations.BFS(search);
+//        } catch (UnderflowException e) {
+//            e.printStackTrace();
+//        }
+//
+//        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+//
+//        HashMap<User,Integer> result = new HashMap<>();
+//
+//        for(int I = 0; I<aux.size();I++){
+//            if(aux.get(I).getValue().getPoints()[1] > score) {
+//                result.put(aux.get(I).getValue(), aux.get(I).getDistance());
+//            }
+//        }
+//
+//        return result;
+//	}
 
-        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
-
-        HashMap<User,Integer> result = new HashMap<>();
-
-        for(int I = 0; I<aux.size();I++){
-            if(aux.get(I).getValue().getPoints()[2] > score) {
-                result.put(aux.get(I).getValue(), aux.get(I).getDistance());
-            }
-        }
-
-        return result;
-	}
-
-	public HashMap<User,Integer> usersUpScoreSports(int score,User ref){
-        int search = graphRelations.getVerticesL().indexOf(ref);
-
-        try {
-            graphRelations.BFS(search);
-        } catch (UnderflowException e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
-
-        HashMap<User,Integer> result = new HashMap<>();
-
-        for(int I = 0; I<aux.size();I++){
-            if(aux.get(I).getValue().getPoints()[1] > score) {
-                result.put(aux.get(I).getValue(), aux.get(I).getDistance());
-            }
-        }
-
-        return result;
-	}
-
-	public HashMap<User,Integer> usersUpScoreTecnology(int score,User ref){
-        int search = graphRelations.getVerticesL().indexOf(ref);
-
-        try {
-            graphRelations.BFS(search);
-        } catch (UnderflowException e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
-
-        HashMap<User,Integer> result = new HashMap<>();
-
-        for(int I = 0; I<aux.size();I++){
-            if(aux.get(I).getValue().getPoints()[0] > score) {
-                result.put(aux.get(I).getValue(), aux.get(I).getDistance());
-            }
-        }
-
-        return result;
-	}
+//	public HashMap<User,Integer> usersUpScoreTecnology(int score,User ref){
+//        int search = graphRelations.getVerticesL().indexOf(ref);
+//
+//        try {
+//            graphRelations.BFS(search);
+//        } catch (UnderflowException e) {
+//            e.printStackTrace();
+//        }
+//
+//        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+//
+//        HashMap<User,Integer> result = new HashMap<>();
+//
+//        for(int I = 0; I<aux.size();I++){
+//            if(aux.get(I).getValue().getPoints()[0] > score) {
+//                result.put(aux.get(I).getValue(), aux.get(I).getDistance());
+//            }
+//        }
+//
+//        return result;
+//	}
 
 
 

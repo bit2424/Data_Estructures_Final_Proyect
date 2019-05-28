@@ -2,7 +2,7 @@ package Model;
 
 import java.util.HashMap;
 
-public class User {
+public class User implements Comparable<User>{
 	
 	private String name;
 	//[0] Tecnology [1] Sports [2] Politics
@@ -52,4 +52,8 @@ public class User {
 		this.at = at;
 	}
 
+	@Override
+	public int compareTo(User o) {
+		return name.compareTo(o.name);
+	}
 }
