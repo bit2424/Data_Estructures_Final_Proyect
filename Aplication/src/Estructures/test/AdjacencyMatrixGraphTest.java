@@ -130,10 +130,26 @@ class AdjacencyMatrixGraphTest {
         setupScene3();
         tree = noDirectedGraph.BFS(0);
         assertEquals(4, tree.size());
-        assertEquals(1, noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
+        assertEquals("0", noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
+        assertEquals("1", noDirectedGraph.getElementsReference().get(tree.get(1)).getValue());
+        assertEquals("2", noDirectedGraph.getElementsReference().get(tree.get(2)).getValue());
+        assertEquals("3", noDirectedGraph.getElementsReference().get(tree.get(3)).getValue());
 
+        // Case 3: A connected graph with n vertices.
+        setupScene3();
+        tree = noDirectedGraph.BFS(0);
+        assertEquals(4, tree.size());
 
-
+        // Case 4: A graph with a cycle.
+        setupScene3();
+        noDirectedGraph.insertEdge(3,3,6);
+        System.out.println("\nBFSWithStartPositionTest");
+        System.out.println("--------- Starting from (3) ---------");
+        tree = noDirectedGraph.BFS(2);
+        assertEquals(4, tree.size());
+        System.out.println("--------- Starting from (2) ---------");
+        tree = noDirectedGraph.BFS(1);
+        assertEquals(4, tree.size());
     }
     @Test
     private void printDFSTree(ArrayList<Integer> tree){
@@ -149,6 +165,45 @@ class AdjacencyMatrixGraphTest {
         }
     }
 
+    @Test
+    void DFSWithInitialVertexTest(){
+        ArrayList<Integer> tree;
+        // Case 1: A graph with one vertex.
+        setupScene1();
+        noDirectedGraph.insertVertex("0");
+        tree = noDirectedGraph.DFS(0);
+        assertEquals(1, tree.size());
+        assertEquals(noDirectedGraph.getElementsReference().get(0), noDirectedGraph.getElementsReference().get(tree.get(0)));
+
+        // Case 2: A connected graph of n vertices.
+        setupScene3();
+        tree = noDirectedGraph.DFS(2);
+        assertEquals(4, tree.size());
+        assertEquals("2", noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
+        assertEquals("3", noDirectedGraph.getElementsReference().get(tree.get(1)).getValue());
+        assertEquals("1", noDirectedGraph.getElementsReference().get(tree.get(2)).getValue());
+        assertEquals("0", noDirectedGraph.getElementsReference().get(tree.get(3)).getValue());
+
+
+        // Case 3: A disconnected graph of n vertices.
+        setupScene3();
+        tree = noDirectedGraph.DFS(1);
+        assertEquals(4, tree.size());
+        System.out.println("\nDFSWithInitialVertexTest");
+        System.out.println("---------- Case 3: A disconnected graph of n vertices ---------");
+        System.out.println("--------First tree-------");
+
+        // Case 4: A graph with a cycle.
+        setupScene3();
+        System.out.println("--------- Starting from (3) ---------");
+        tree = noDirectedGraph.DFS(2);
+        assertEquals(4, tree.size());
+
+        System.out.println("--------- Starting from (2) ---------");
+        tree = noDirectedGraph.DFS(1);
+        assertEquals(4, tree.size());
+
+    }
     @Test
     public void DFSTest(){
 
@@ -169,12 +224,23 @@ class AdjacencyMatrixGraphTest {
         assertEquals(0, forest.size());
         System.out.println("\nDFSWithoutStartPositionTest");
         System.out.println("---------- Case 2: A connected graph of n vertices ---------");
-        //printDFSTree(forest.get(0));
+
     }
 
     @Test
     public void primTest(){
+        ArrayList<Integer> tree;
 
+        setupScene3();
+        noDirectedGraph.insertEdge(0,1,9);
+        tree = noDirectedGraph.Prim(0);
+        assertEquals(4, tree.size());
+        assertEquals("0", noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
+        assertEquals("3", noDirectedGraph.getElementsReference().get(tree.get(1)).getValue());
+        assertEquals("1", noDirectedGraph.getElementsReference().get(tree.get(2)).getValue());
+        assertEquals("2", noDirectedGraph.getElementsReference().get(tree.get(3)).getValue());
+        System.out.println( noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
+        System.out.println("------------- Case 2: A connected graph -------------");
 
     }
     @Test
