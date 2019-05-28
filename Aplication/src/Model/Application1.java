@@ -238,15 +238,19 @@ public class Application1 {
 
 
 	public HashMap<User,Integer> usersUpScore(int score,User ref,int category){
-        int search = graphRelations.getVerticesL().indexOf(ref);
-
+        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+        int i = 0;
+        for(int I = 0;I<aux.size();I++){
+            if(aux.get(I).getValue().equals(ref)){
+                i = I;
+            }
+        }
         try {
-            graphRelations.BFS(search);
+            graphRelations.BFS(i);
         } catch (UnderflowException e) {
             e.printStackTrace();
         }
 
-        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
 
         HashMap<User,Integer> result = new HashMap<>();
 
@@ -311,12 +315,14 @@ public class Application1 {
 
         Collections.sort(outputUsers);
 
+
         for(int I = 0; I< outputUsers.size(); I++){
             result.put(refUsers.get(outputUsers.get(I).getObjeto()).getValue(),(int)outputUsers.get(I).getDistancia());
         }
 
         return result;
     }
+
 
     public void registerData(String link) throws IOException, URISyntaxException {
 		try {
