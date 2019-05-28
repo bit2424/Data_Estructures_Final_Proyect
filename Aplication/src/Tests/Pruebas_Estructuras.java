@@ -1,11 +1,11 @@
 package Tests;
 
-import Estructures.linear_Structures.HashMap;
-import Estructures.linear_Structures.Queue;
-import Estructures.linear_Structures.Stack;
-import Estructures.trees.AVLTree;
-import Estructures.trees.Binary_tree;
-import Estructures.trees.RBTree;
+import Structures.linear_Structures.HashMap;
+import Structures.linear_Structures.Queue;
+import Structures.linear_Structures.Stack;
+import Structures.trees.AVLTree;
+import Structures.trees.Binary_tree;
+import Structures.trees.RBTree;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
