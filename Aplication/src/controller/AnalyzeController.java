@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import Structures.Graphs.AdjacencyMatrixGraph;
+import Structures.Graphs.VertexL;
 import javafx.scene.control.CheckBox;
 import Model.User;
 import javafx.event.ActionEvent;
@@ -213,12 +216,17 @@ public class AnalyzeController implements Initializable {
 
 	private void listUsersPoints() {
 		if(selecCategory != -1){
-			HashMap<User,Integer> data = Main.getApli().getClasificatedUsers(selecCategory);
+            ArrayList<AdjacencyMatrixGraph.pair> data = Main.getApli().getClasificatedUsers(selecCategory);
+            ArrayList<VertexL<User, Integer>> refUsers = Main.getApli().getGraphHashtag().getVerticesL();
 			ArrayList<String> n  = new ArrayList<>();
 			int i = 0;
-			for ( User key : data.keySet() ) {
-				n.add(key.getName()+"  Puntaje: "+ key.getPoints()[selecCategory]);
-			}
+
+
+            for(int I = 0; I< data.size(); I++){
+                n.add(refUsers.get(data.get(I).getObjeto()).getValue().getName()+"  Puntaje: "+ data.get(I).getDistancia());
+            }
+
+
 			politics.setDisable(false);
 			politics.setSelected(false);
 			sport.setDisable(false);

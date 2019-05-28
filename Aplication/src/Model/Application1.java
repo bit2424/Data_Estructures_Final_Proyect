@@ -318,7 +318,7 @@ public class Application1 {
 
     //Requrimiento 2
     //Retorno el usuario y su puntaje
-    public HashMap<User,Integer> getClasificatedUsers(int category){
+    public ArrayList<AdjacencyMatrixGraph.pair> getClasificatedUsers(int category){
         ArrayList<VertexL<User,Double>> refUsers = graphRelations.getVerticesL();
         ArrayList<AdjacencyMatrixGraph.pair> outputUsers = new ArrayList<>();
         HashMap<User,Integer> result = new HashMap<>();
@@ -326,16 +326,13 @@ public class Application1 {
 
         for(int I = 0;I<refUsers.size();I++){
             outputUsers.add(new AdjacencyMatrixGraph.pair(I,refUsers.get(I).getValue().getPoints()[category]));
+            System.out.println(refUsers.get(I).getValue().getName());
         }
 
         Collections.sort(outputUsers);
 
 
-        for(int I = 0; I< outputUsers.size(); I++){
-            result.put(refUsers.get(outputUsers.get(I).getObjeto()).getValue(),(int)outputUsers.get(I).getDistancia());
-        }
-
-        return result;
+        return outputUsers;
     }
 
 
