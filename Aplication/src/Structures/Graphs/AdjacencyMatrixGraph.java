@@ -212,7 +212,7 @@ public class AdjacencyMatrixGraph<V extends Comparable<V>, E extends Comparable<
 
     //Nelson
 
-    class pair implements Comparable<pair>{
+    public static class pair implements Comparable<pair>{
 
         int objeto;
         double distancia;
@@ -220,6 +220,14 @@ public class AdjacencyMatrixGraph<V extends Comparable<V>, E extends Comparable<
         public pair(int objeto, double distancia) {
             this.objeto = objeto;
             this.distancia = distancia;
+        }
+
+        public int getObjeto() {
+            return objeto;
+        }
+
+        public double getDistancia() {
+            return distancia;
         }
 
         @Override
