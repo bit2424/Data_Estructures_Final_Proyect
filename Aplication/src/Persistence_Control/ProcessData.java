@@ -71,7 +71,14 @@ public class ProcessData {
 			System.out.println("Analizando: ");
 			
 			int contador = 0;
-			while(dato != null && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0) {
+
+			int forSure = 0;
+
+			while(dato != null && forSure != 2) {
+
+			    if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
+			        forSure++;
+                }
 
 				System.out.println("Analizando: ");
 
@@ -99,8 +106,13 @@ public class ProcessData {
 			
 			int cantidad = 0;
 
-			
-			while(dato != null && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0) {
+			forSure = 0;
+
+			while(dato != null && forSure!=2) {
+                System.out.println("Analizando: Seco "+ dato);
+                if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
+                    forSure++;
+                }
 				if(dato.compareTo("Verified account") == 0) {
 					a = recopilarTweet(Texto_Bruto,contador+1,nombre_Usuario);
 					int resul[] = (int[])a[0];

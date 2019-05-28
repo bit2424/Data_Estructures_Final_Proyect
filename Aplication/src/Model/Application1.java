@@ -52,7 +52,6 @@ public class Application1 {
 
             loadType(names[2], raiz_relevantesS);
 
-            System.out.println("JA");
 
         } catch (Exception e) {
 
@@ -62,7 +61,6 @@ public class Application1 {
 
             String names[] = {"./Aplication/Persistence/Dictionaries/Politics_Dictionary", "./Aplication/Persistence/Dictionaries/Tecnology_Dictionary", "./Aplication/Persistence/Dictionaries/Sports_Dictionary"};
 
-            System.out.println("Cargando   LOL");
             loadType(names[0], raiz_relevantesP);
 
             loadType(names[1], raiz_relevantesT);
@@ -79,7 +77,7 @@ public class Application1 {
         String dato = rd.readLine();
 
         while (dato != null) {
-            System.out.println("Cargando   LOL");
+            System.out.println("Cargando   Datos  "+ dato);
             String info[] = dato.split(",");
             for (int I = 0; I < info.length; I++) {
                 selected.put(info[I].toLowerCase(), 0);
@@ -100,7 +98,7 @@ public class Application1 {
         try {
             hilo = new ProcessData("/Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
             System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
-                    + hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
+                    + hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
             graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
@@ -115,7 +113,7 @@ public class Application1 {
                 e1.printStackTrace();
             }
             System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
-                    + hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + " Cantidad de  @");
+                    + hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
             graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
@@ -160,7 +158,7 @@ public class Application1 {
                 graphRelations.insertEdge(index, i, weight);
             }
 
-            System.out.println(relationAt + " Aristas @  peso --- " + relationHash + "Aristas# peso");
+            System.out.println(relationAt + " Aristas @  peso --- " + relationHash + "  Aristas # peso");
         }
     }
 
