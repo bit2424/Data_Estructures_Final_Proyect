@@ -113,7 +113,24 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     public void deleteAllEdge(){
+        // Case 1: Two vertices connected by one edge without any other edges to other vertices.
+        setupScene3();
+        assertEquals("0", noDirectedGraph.getElementsReference().get(0).getValue());
+        assertEquals("1", noDirectedGraph.getElementsReference().get(1).getValue());
+        noDirectedGraph.deleteAllEdge(1, 0);
+        assertEquals("0", noDirectedGraph.getElementsReference().get(0).getValue());
+        assertEquals("1", noDirectedGraph.getElementsReference().get(1).getValue());
+        // Case 2: Two vertices connected by one edge with other edges to other vertices.
+        setupScene3();
+        noDirectedGraph.deleteAllEdge(2, 1);
+        assertEquals("1", noDirectedGraph.getElementsReference().get(1).getValue());
+        assertEquals("2", noDirectedGraph.getElementsReference().get(2).getValue());
 
+        //Case 3: Two vertices connected by many edges without any other edges to other vertices.
+        setupScene3();
+        noDirectedGraph.deleteAllEdge(1, 0);
+        assertEquals("0", noDirectedGraph.getElementsReference().get(0).getValue());
+        assertEquals("1", noDirectedGraph.getElementsReference().get(1).getValue());
 
     }
 
@@ -232,15 +249,13 @@ class AdjacencyMatrixGraphTest {
         ArrayList<Integer> tree;
 
         setupScene3();
-        noDirectedGraph.insertEdge(0,1,9);
+        noDirectedGraph.insertEdge(0,3,9);
         tree = noDirectedGraph.Prim(0);
         assertEquals(4, tree.size());
-        assertEquals("0", noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
-        assertEquals("3", noDirectedGraph.getElementsReference().get(tree.get(1)).getValue());
+        assertEquals(-1, tree.get(0));
+        assertEquals("0", noDirectedGraph.getElementsReference().get(tree.get(1)).getValue());
         assertEquals("1", noDirectedGraph.getElementsReference().get(tree.get(2)).getValue());
-        assertEquals("2", noDirectedGraph.getElementsReference().get(tree.get(3)).getValue());
-        System.out.println( noDirectedGraph.getElementsReference().get(tree.get(0)).getValue());
-        System.out.println("------------- Case 2: A connected graph -------------");
+        assertEquals("1", noDirectedGraph.getElementsReference().get(tree.get(3)).getValue());
 
     }
     @Test
