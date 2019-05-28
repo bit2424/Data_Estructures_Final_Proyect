@@ -92,6 +92,7 @@ public class AnalyzeController implements Initializable {
 	private ArrayList<String> nameUsers;
 	private int[] sendAndReceide;
 	private int selecCategory=-1;
+	private int selecUser;
 
 
 	@FXML
@@ -115,6 +116,10 @@ public class AnalyzeController implements Initializable {
 	}
 	@FXML
 	void ListUsers(ActionEvent event) {
+		if(ComboboxUsers.getSelectionModel().getSelectedIndex()>-1) {
+			selecUser = ComboboxUsers.getSelectionModel().getSelectedIndex();
+			labelListUsers.setText(nameUsers.get(selecUser));
+		}
 	}
 
 	@FXML
@@ -130,6 +135,9 @@ public class AnalyzeController implements Initializable {
 			case 2:
 				listUserAt();
 				break;
+			case 3:
+				listfiler();
+				break;
 			case 6:
 				resultGrup();
 				break;
@@ -137,6 +145,33 @@ public class AnalyzeController implements Initializable {
 				break;
 		}
 	}
+
+	private void listfiler() {
+		if(selecUser!=-1&&selecCategory!=-1&&!pointsreferents.getText().equals("")){
+			int puntaje = Integer.parseInt(pointsreferents.getText());
+			User start = Main.getApli().getGraphHashtag().getVerticesL().get(selecUser).getValue();
+			System.out.println("Puntaje "+puntaje+ "  Usuario inicio "+start.getName()+"  categoria" + selecCategory);
+			HashMap<User,Integer> resul = Main.getApli().usersUpScore(puntaje,start,selecCategory);
+			ArrayList<String> data = new ArrayList<>();
+			for(User u : resul.keySet()){
+				data.add(u.getName());
+			}
+			int j =0;
+			for(Integer i : resul.values()){
+				data.set(j,data.get(j)+"  Puntaje:"+ i);
+				j++;
+			}
+			ListResult.getItems().addAll(data);
+			ListResult.setVisible(true);
+			nearGrade.setVisible(false);
+		}else{
+			JOptionPane.showMessageDialog(null,"Faltan datos requeridos");
+		}
+		selecCategory=-1;
+		selecUser=-1;
+
+	}
+
 
 	private void listUserAt() {
 		ArrayList<String> n  = new ArrayList<>();
@@ -305,8 +340,8 @@ public class AnalyzeController implements Initializable {
 	@FXML
 	void type(ActionEvent event) {
 		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
-			int a = ComboboxType.getSelectionModel().getSelectedIndex();
-			labelType.setText(types.get(a));
+			selecCategory = ComboboxType.getSelectionModel().getSelectedIndex();
+			labelType.setText(types.get(selecCategory));
 		}
 	}
 
