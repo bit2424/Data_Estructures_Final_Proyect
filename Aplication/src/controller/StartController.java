@@ -5,10 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -61,12 +57,14 @@ public class StartController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		goStart();
-		try {
-			searchData("/Persistence/Users/BillGates");
-			searchData("/Persistence/Users/DonaldJTrump");
-			searchData("/Persistence/Users/ElonMusk");
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(Main.getApli().getGraphHashtag().getVerticesL().size()==0){
+			try {
+				searchData("/Persistence/Users/BillGates");
+				searchData("/Persistence/Users/DonaldJTrump");
+				searchData("/Persistence/Users/ElonMusk");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

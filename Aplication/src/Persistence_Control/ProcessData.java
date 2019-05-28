@@ -21,7 +21,7 @@ public class ProcessData {
 
 	/**
 	 * ProcessData - Metodo constructor de la clase
-	 * @param nombre_archivo Un String indicando el nombre del archivo donde se guardo la información del usuario
+	 * @param nombre_archivo Un String indicando el nombre del archivo donde se guardo la informaciï¿½n del usuario
 	 * pos : primer_link queda inicializado
 	 * pos : hashtags queda inicializado
 	 * pos : raiz_relevante queda inicializado
@@ -54,8 +54,8 @@ public class ProcessData {
 	 * pre : raiz_relevante queda inicializado
 	 * pre : nombre_archivo queda inicializado
 	 * pos : Se crea un nuevo Usuario con una lista de Tweet inicializada
-	 * pos : Se añaden objetos a primer_link
-	 * pos : Se añaden objetos a hashtags
+	 * pos : Se aï¿½aden objetos a primer_link
+	 * pos : Se aï¿½aden objetos a hashtags
 	 */
 	public void run() throws IOException, URISyntaxException {
 
@@ -67,8 +67,6 @@ public class ProcessData {
 			String dato = "";
 			String seguidores = "";
 			String seguidos = "";
-
-			System.out.println("Analizando: ");
 			
 			int contador = 0;
 
@@ -76,11 +74,10 @@ public class ProcessData {
 
 			while(dato != null && forSure != 2) {
 
-			    if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
+			    if(dato.trim().compareTo("Who to follow ï¿½  Refresh ï¿½ View all") == 0){
 			        forSure++;
                 }
 
-				System.out.println("Analizando: ");
 
 				dato = dato.trim();
 
@@ -109,8 +106,7 @@ public class ProcessData {
 			forSure = 0;
 
 			while(dato != null && forSure!=2) {
-                System.out.println("Analizando: Seco "+ dato);
-                if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
+                if(dato.trim().compareTo("Who to follow ï¿½  Refresh ï¿½ View all") == 0){
                     forSure++;
                 }
 				if(dato.compareTo("Verified account") == 0) {
@@ -141,7 +137,7 @@ public class ProcessData {
 	/**
 	 * recopilarTweet - Metodo para crear un Tweet
 	 * @param t - El ArrayList de String con todo el texto plano del usurio separado por " "	t != null
-	 * @param c - Un numero entero con el numero de linea que se está procesando en Arraylist	c != null c >= 15
+	 * @param c - Un numero entero con el numero de linea que se estï¿½ procesando en Arraylist	c != null c >= 15
 	 * @param n - Un String con el nombre del usuario n != null	n != ""
 	 * @return fin - Un arreglo de tipo {@link Object} que contiene el numero de la ultima linea que se estaba procesando y el Tweet creado
 	 * @throws URISyntaxException
@@ -157,7 +153,7 @@ public class ProcessData {
 		
 		int Puntaje_Tweet[] = new int[3];
 		
-		while(!seguir && dato != null && dato.compareTo("Verified account") != 0 && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0) {
+		while(!seguir && dato != null && dato.compareTo("Verified account") != 0 && dato.trim().compareTo("Who to follow ï¿½  Refresh ï¿½ View all") != 0) {
 			String herramienta[] = dato.split(" ");
 			if(herramienta.length >= 6 && herramienta[herramienta.length-1].compareTo("message") == 0 && herramienta[herramienta.length-2].compareTo("Direct") == 0) {
 				herramienta = t.get(c-1).split(" ");
@@ -171,7 +167,7 @@ public class ProcessData {
 				Puntaje_Tweet[0] += puntos[0];
 				Puntaje_Tweet[1] += puntos[1];
 				Puntaje_Tweet[2] += puntos[2];
-			}else if(!seguir && dato.trim().compareTo("Who to follow ·  Refresh · View all") != 0){
+			}else if(!seguir && dato.trim().compareTo("Who to follow ï¿½  Refresh ï¿½ View all") != 0){
 				for (int i = 0; i < herramienta.length; i++) {
 					int puntos[] = identificarPalabra(herramienta[i]);
 					Puntaje_Tweet[0] += puntos[0];
@@ -195,7 +191,7 @@ public class ProcessData {
 	}
 	
 	/**
-	 * identificarPalabra - Metodo para identificar que tipo de palabra se va a añadir al tweet y su respectivo puntaje
+	 * identificarPalabra - Metodo para identificar que tipo de palabra se va a aï¿½adir al tweet y su respectivo puntaje
 	 * @param s - Es un String con la palabra a identificar
 	 * @return salida un arreglo de enteros 
 	 * @throws URISyntaxException
