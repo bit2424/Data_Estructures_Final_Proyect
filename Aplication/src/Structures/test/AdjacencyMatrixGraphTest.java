@@ -260,12 +260,70 @@ class AdjacencyMatrixGraphTest {
     }
     @Test
     public void dikstraTest(){
+        Object[] array;
+        double[] distancias;
+        int[] pred;
+        //Case 1: when the graph only have one vertex
+        //setupScene3();
+        //array = noDirectedGraph.Dijsktra(0);
+        //double[]  distancias = (double[]) array[0];
+        //assertEquals(8, distancias[3]);
 
+        // Case 1: A graph with one vertex.
+        setupScene1();
+        array = noDirectedGraph.Dijsktra(0);
+        distancias = (double[]) array[0];
+        pred = (int[]) array[1];
+        assertEquals(1, distancias.length);
+        assertEquals(0, distancias[0]);
+        assertEquals(1, pred.length);
+        assertEquals(-1, pred[0]);
+
+        //El grafo es <0 relacionado con 1, 1 relacionado con 2 y 3 y tres relacionado con 2>
+
+        // Case 2: A simple connected graph
+        setupScene3();
+        array = noDirectedGraph.Dijsktra(0);
+        distancias = (double[]) array[0];
+        pred = (int[]) array[1];
+
+        assertEquals(4, distancias.length);
+        assertEquals(0, distancias[0]);
+        assertEquals(3, distancias[1]);
+        assertEquals(4, distancias[2]);
+        assertEquals(5, distancias[3]);
+
+        assertEquals(4, pred.length);
+        assertEquals(-1, pred[0]);
+        assertEquals(0, pred[1]);
+        assertEquals(1, pred[2]);
+        assertEquals(1, pred[3]);
+        assertEquals(2, pred[4]);
+
+        // Case 4: Begin the path from a vertex which does not exist.
+        setupScene1();
+        try{
+            array = noDirectedGraph.Dijsktra(90);
+            fail();
+        }
+        catch (IndexOutOfBoundsException e){
+            assertTrue(true);
+        }
     }
 
     @Test
-    public void floydTest(){
+    public void floydTest() {
+        setupScene3();
 
+        double[][] matrix = {{0,Double.POSITIVE_INFINITY,17,Double.POSITIVE_INFINITY,19},{Double.POSITIVE_INFINITY,0,6,10,Double.POSITIVE_INFINITY}
+                ,{17,6,0,Double.POSITIVE_INFINITY,8},{Double.POSITIVE_INFINITY,10,Double.POSITIVE_INFINITY,0,13}
+                ,{19,Double.POSITIVE_INFINITY,8,13,0}};
+
+        double [][] sol = noDirectedGraph.Floyd_Warshal();
+        assertEquals(sol[0][1],3);
+        assertEquals(sol[0][3],8);
+        assertEquals(sol[2][3],6);
+        assertEquals(sol[3][2],6);
 
     }
 
