@@ -139,7 +139,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="resulLabel" layoutX="215.0" layoutY="68.0" prefHeight="25.0" prefWidth="149.0" textAlignment="CENTER" textFill="#2f3231">
+            <Label fx:id="resulLabel" alignment="CENTER" layoutX="101.0" layoutY="68.0" prefHeight="25.0" prefWidth="398.0" textAlignment="CENTER" textFill="#2f3231">
                <font>
                   <Font name="Bodoni MT Poster Compressed" size="20.0" />
                </font>
