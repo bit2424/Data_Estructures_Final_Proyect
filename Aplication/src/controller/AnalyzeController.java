@@ -155,7 +155,12 @@ public class AnalyzeController implements Initializable {
 	private void futureRelation() {
 		if(selecUser!=-1){
 			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(selecUser).getValue();
-			resulLabel.setText(Main.getApli().getNextProbableRelation(selec).getName());
+			User ref = Main.getApli().getNextProbableRelation(selec);
+			if(ref == null){
+				resulLabel.setText("No hay suficiente informacion para generar una recomendación");
+			}else{
+				resulLabel.setText(ref.getName());
+			}
 		}else{
 			JOptionPane.showMessageDialog(null,"Seleccione un usuario");
 		}

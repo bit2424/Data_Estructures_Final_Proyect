@@ -173,15 +173,16 @@ public class Application1 {
         ArrayList<VertexL<User,Double>> closeOnes = new ArrayList<>();
         RBTree<Double,User> keeper  = new RBTree<>();
 
+        Double val = 0d;
         for(int K = 0; K < close.size();K++){
             closeOnes = store.get(close.get(K).getValue());
 
             for(int M = 0; M<closeOnes.size(); M++){
                 if(graphRelations.getEdges(K,M).size()>0){
-                    Double val = graphRelations.getEdges(K,M).get(0).getWeight();
+                    val = graphRelations.getEdges(K,M).get(0).getWeight();
                     keeper.insert(val,closeOnes.get(M).getValue());
                 }else{
-                    Double val = -1d;
+                    val = -1d;
                     keeper.insert(val,closeOnes.get(M).getValue());
                 }
             }

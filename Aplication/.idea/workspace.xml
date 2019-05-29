@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c4985c06-0f21-4113-9834-0257dcc24b44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Users/nuevo" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Users/nuevo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aplication/Persistence_Control/ProcessData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Aplication/Persistence_Control/ProcessData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Application1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Application1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/AnalyzeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AnalyzeController.java" afterDir="false" />
     </list>
@@ -26,12 +28,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Application1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="334" column="25" lean-forward="true" selection-start-line="334" selection-start-column="25" selection-end-line="334" selection-end-column="25" />
+            <state relative-caret-position="-152">
+              <caret line="159" column="16" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6004#6005#0" expanded="true" />
-                <element signature="e#6030#6031#0" expanded="true" />
+                <element signature="e#5619#5620#0" expanded="true" />
+                <element signature="e#5654#5655#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/AnalyzeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="159" column="96" selection-start-line="159" selection-start-column="96" selection-end-line="159" selection-end-column="96" />
+              <folding>
+                <element signature="e#9091#9092#0" expanded="true" />
+                <element signature="e#9125#9126#0" expanded="true" />
+                <element signature="e#9164#9165#0" expanded="true" />
+                <element signature="e#9198#9199#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,37 +57,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Structures/Graphs/AdjacencyMatrixGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="185">
               <caret line="239" column="21" selection-start-line="239" selection-start-column="21" selection-end-line="239" selection-end-column="21" />
               <folding>
                 <element signature="e#6208#6209#0" expanded="true" />
                 <element signature="e#6245#6246#0" expanded="true" />
                 <element signature="e#6285#6286#0" expanded="true" />
                 <element signature="e#6325#6326#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/StartController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="73" column="53" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/AnalyzeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="228" column="12" selection-start-line="228" selection-start-column="12" selection-end-line="228" selection-end-column="12" />
-              <folding>
-                <element signature="e#9082#9083#0" expanded="true" />
-                <element signature="e#9116#9117#0" expanded="true" />
-                <element signature="e#9155#9156#0" expanded="true" />
-                <element signature="e#9189#9190#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +84,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Persistence_Control/ProcessData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="158">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
+              <folding>
+                <element signature="e#6404#6405#0" expanded="true" />
+                <element signature="e#6426#6427#0" expanded="true" />
+                <element signature="e#6477#6478#0" expanded="true" />
+                <element signature="e#6500#6501#0" expanded="true" />
+                <element signature="e#6538#6539#0" expanded="true" />
+                <element signature="e#6567#6568#0" expanded="true" />
+                <element signature="e#6600#6601#0" expanded="true" />
+                <element signature="e#6623#6624#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -510,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559085256808</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="&quot;Requerimiento 2 corregido&quot;">
+      <created>1559087272348</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1559087272349</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -558,8 +568,8 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.55042017" visible="true" weight="0.19969743" />
-      <window_info id="Structure" order="1" sideWeight="0.44957983" side_tool="true" visible="true" weight="0.19969743" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5490605" visible="true" weight="0.19969743" />
+      <window_info id="Structure" order="1" sideWeight="0.45093945" side_tool="true" visible="true" weight="0.19969743" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50164473" side_tool="true" weight="0.28668684" />
       <window_info id="Image Layers" order="4" />
@@ -567,13 +577,13 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.90166414" visible="true" weight="0.26881722" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.9009077" visible="true" weight="0.2642089" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49848714" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32872504" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49924356" weight="0.2565284" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.098335855" side_tool="true" visible="true" weight="0.26881722" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.5510204" weight="0.26012462" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.09909228" side_tool="true" visible="true" weight="0.2642089" />
       <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.49924356" weight="0.30414745" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" weight="0.32872504" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -687,14 +697,15 @@
     <MESSAGE value="&quot;Ampliación de base de usuarios de la aplicacion&quot;" />
     <MESSAGE value="&quot;Ajustes de requerimientos con la interfaz&quot;" />
     <MESSAGE value="&quot;Requerimientos 6 y 7 corregidos&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Requerimientos 6 y 7 corregidos&quot;" />
+    <MESSAGE value="&quot;Requerimiento 2 corregido&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Requerimiento 2 corregido&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Model/Application1.java</url>
-          <line>209</line>
+          <line>196</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
@@ -702,13 +713,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/NewUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Structures/auxiliary_structures/exceptions_auxiliary_structures/GreaterKeyException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -854,13 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Persistence/Users/nuevo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-154">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/jre/lib/rt.jar!/java/util/ArrayList.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -938,13 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="668" selection-start-line="668" selection-end-line="668" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Persistence_Control/ProcessData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>
@@ -1036,19 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Structures/Graphs/AdjacencyMatrixGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="239" column="21" selection-start-line="239" selection-start-column="21" selection-end-line="239" selection-end-column="21" />
-          <folding>
-            <element signature="e#6208#6209#0" expanded="true" />
-            <element signature="e#6245#6246#0" expanded="true" />
-            <element signature="e#6285#6286#0" expanded="true" />
-            <element signature="e#6325#6326#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Structures/Graphs/AdjacencyListGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
@@ -1059,27 +1036,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Persistence/Users/nuevo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/NewUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Persistence_Control/ProcessData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+          <folding>
+            <element signature="e#6404#6405#0" expanded="true" />
+            <element signature="e#6426#6427#0" expanded="true" />
+            <element signature="e#6477#6478#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
+            <element signature="e#6538#6539#0" expanded="true" />
+            <element signature="e#6567#6568#0" expanded="true" />
+            <element signature="e#6600#6601#0" expanded="true" />
+            <element signature="e#6623#6624#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Structures/Graphs/AdjacencyMatrixGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="239" column="21" selection-start-line="239" selection-start-column="21" selection-end-line="239" selection-end-column="21" />
+          <folding>
+            <element signature="e#6208#6209#0" expanded="true" />
+            <element signature="e#6245#6246#0" expanded="true" />
+            <element signature="e#6285#6286#0" expanded="true" />
+            <element signature="e#6325#6326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Application1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="334" column="25" lean-forward="true" selection-start-line="334" selection-start-column="25" selection-end-line="334" selection-end-column="25" />
+        <state relative-caret-position="-152">
+          <caret line="159" column="16" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6004#6005#0" expanded="true" />
-            <element signature="e#6030#6031#0" expanded="true" />
+            <element signature="e#5619#5620#0" expanded="true" />
+            <element signature="e#5654#5655#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/AnalyzeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="228" column="12" selection-start-line="228" selection-start-column="12" selection-end-line="228" selection-end-column="12" />
+        <state relative-caret-position="159">
+          <caret line="159" column="96" selection-start-line="159" selection-start-column="96" selection-end-line="159" selection-end-column="96" />
           <folding>
-            <element signature="e#9082#9083#0" expanded="true" />
-            <element signature="e#9116#9117#0" expanded="true" />
-            <element signature="e#9155#9156#0" expanded="true" />
-            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9091#9092#0" expanded="true" />
+            <element signature="e#9125#9126#0" expanded="true" />
+            <element signature="e#9164#9165#0" expanded="true" />
+            <element signature="e#9198#9199#0" expanded="true" />
           </folding>
         </state>
       </provider>
