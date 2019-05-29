@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import Structures.Graphs.AdjacencyMatrixGraph;
+import Structures.Graphs.VertexL;
 import javafx.scene.control.CheckBox;
 import Model.User;
 import javafx.event.ActionEvent;
@@ -85,6 +88,9 @@ public class AnalyzeController implements Initializable {
 	@FXML
 	private CheckBox politics;
 
+	@FXML
+	private Label resulLabel;
+
 
 	private int option;
 	private ArrayList<String> listOptions;
@@ -92,7 +98,8 @@ public class AnalyzeController implements Initializable {
 	private ArrayList<String> nameUsers;
 	private int[] sendAndReceide;
 	private int selecCategory=-1;
-	private int selecUser;
+	private int selecUser=-1;
+	private int returnOption=-1;
 
 
 	@FXML
@@ -100,8 +107,6 @@ public class AnalyzeController implements Initializable {
 		if(ListReciveComboBox.getSelectionModel().getSelectedIndex()>-1) {
 			sendAndReceide[1] = ListReciveComboBox.getSelectionModel().getSelectedIndex();
 			receiveLabel.setText(nameUsers.get(sendAndReceide[1]));
-			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(option).getValue();
-//			String name = Main.getApli().getNextProbableRelation(selec)..getName();
 		}
 	}
 
@@ -110,8 +115,6 @@ public class AnalyzeController implements Initializable {
 		if(ListSendComboBox.getSelectionModel().getSelectedIndex()>-1) {
 			sendAndReceide[0] = ListSendComboBox.getSelectionModel().getSelectedIndex();
 			sendLabel.setText(nameUsers.get(sendAndReceide[0]));
-			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(option).getValue();
-//			String name = Main.getApli().getNextProbableRelation(selec)..getName();
 		}
 	}
 	@FXML
@@ -138,7 +141,10 @@ public class AnalyzeController implements Initializable {
 			case 3:
 				listfiler();
 				break;
-			case 6:
+			case 4:
+				futureRelation();
+				break;
+			case 5:
 				resultGrup();
 				break;
 			default:
@@ -146,11 +152,25 @@ public class AnalyzeController implements Initializable {
 		}
 	}
 
+	private void futureRelation() {
+		if(selecUser!=-1){
+			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(selecUser).getValue();
+			User ref = Main.getApli().getNextProbableRelation(selec);
+			if(ref == null){
+				resulLabel.setText("No hay suficiente informacion para generar una recomendación");
+			}else{
+				resulLabel.setText(ref.getName());
+			}
+		}else{
+			JOptionPane.showMessageDialog(null,"Seleccione un usuario");
+		}
+		selecUser= -1;
+	}
+
 	private void listfiler() {
 		if(selecUser!=-1&&selecCategory!=-1&&!pointsreferents.getText().equals("")){
 			int puntaje = Integer.parseInt(pointsreferents.getText());
 			User start = Main.getApli().getGraphHashtag().getVerticesL().get(selecUser).getValue();
-			System.out.println("Puntaje "+puntaje+ "  Usuario inicio "+start.getName()+"  categoria" + selecCategory);
 			HashMap<User,Integer> resul = Main.getApli().usersUpScore(puntaje,start,selecCategory);
 			ArrayList<String> data = new ArrayList<>();
 			for(User u : resul.keySet()){
@@ -158,18 +178,17 @@ public class AnalyzeController implements Initializable {
 			}
 			int j =0;
 			for(Integer i : resul.values()){
-				data.set(j,data.get(j)+"  Puntaje:"+ i);
+				data.set(j,data.get(j)+"  Grado de cercania:"+ i);
 				j++;
 			}
 			ListResult.getItems().addAll(data);
 			ListResult.setVisible(true);
 			nearGrade.setVisible(false);
+			selecCategory=-1;
+			selecUser=-1;
 		}else{
 			JOptionPane.showMessageDialog(null,"Faltan datos requeridos");
 		}
-		selecCategory=-1;
-		selecUser=-1;
-
 	}
 
 
@@ -177,7 +196,7 @@ public class AnalyzeController implements Initializable {
 		ArrayList<String> n  = new ArrayList<>();
 		ArrayList<ArrayList<User>> u  = Main.getApli().getArCoincidentUsers();
 		for(int i=0; i<u.size();i++){
-			n.add("Grupo #"+(i+1));
+			n.add("Grupo # "+(i+1));
 			for(int j=0; j< u.get(i).size();j++){
 				n.add(u.get(i).get(j).getName());
 			}
@@ -189,7 +208,7 @@ public class AnalyzeController implements Initializable {
 		ArrayList<String> n  = new ArrayList<>();
 		ArrayList<ArrayList<User>> u  = Main.getApli().getHashCoincidentUsers();
 		for(int i=0; i<u.size();i++){
-			n.add("Grupo #"+(i+1));
+			n.add("Grupo # "+(i+1));
 			for(int j=0; j< u.get(i).size();j++){
 				n.add(u.get(i).get(j).getName());
 			}
@@ -199,12 +218,17 @@ public class AnalyzeController implements Initializable {
 
 	private void listUsersPoints() {
 		if(selecCategory != -1){
-			HashMap<User,Integer> data = Main.getApli().getClasificatedUsers(selecCategory);
+            ArrayList<AdjacencyMatrixGraph.pair> data = Main.getApli().getClasificatedUsers(selecCategory);
+            ArrayList<VertexL<User, Integer>> refUsers = Main.getApli().getGraphHashtag().getVerticesL();
 			ArrayList<String> n  = new ArrayList<>();
 			int i = 0;
-			for ( User key : data.keySet() ) {
-				n.add(key.getName()+"  Puntaje: "+ key.getPoints()[selecCategory]);
-			}
+
+
+            for(int I = 0; I< data.size(); I++){
+                n.add(refUsers.get(data.get(I).getObjeto()).getValue().getName()+"  Puntaje: "+ data.get(I).getDistancia());
+            }
+
+
 			politics.setDisable(false);
 			politics.setSelected(false);
 			sport.setDisable(false);
@@ -222,25 +246,31 @@ public class AnalyzeController implements Initializable {
 		User UserSend = Main.getApli().getGraphHashtag().getVerticesL().get(sendAndReceide[0]).getValue();
 		User userReceive = Main.getApli().getGraphHashtag().getVerticesL().get(sendAndReceide[1]).getValue();
 		ArrayList<String> names = new ArrayList<>();
-		for (int i  =0; i< Main.getApli().getDifusionGroup(UserSend,userReceive ).size();i++){
-			names.add(Main.getApli().getDifusionGroup(UserSend,userReceive ).get(i).getName());
+		ArrayList<User> u = Main.getApli().getDifusionGroup(UserSend,userReceive );
+		if(u!=null){
+			for (int i  =0; i< u.size();i++){
+				names.add(u.get(i).getName());
+			}
+		}else{
+			names.add("No existe grupo de relacion");
 		}
+
 		ListResult.getItems().addAll(names);
 		ListResult.setVisible(true);
+		grup.setVisible(false);
 	}
 
 	@FXML
 	void listUser(ActionEvent event) {
 		if(ListUserCombobox.getSelectionModel().getSelectedIndex()>-1) {
-			int a = ListUserCombobox.getSelectionModel().getSelectedIndex();
-			UserStarLabel.setText(nameUsers.get(a));
-			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(option).getValue();
-//			String name = Main.getApli().getNextProbableRelation(selec)..getName();
+			selecUser = ListUserCombobox.getSelectionModel().getSelectedIndex();
+			UserStarLabel.setText(nameUsers.get(selecUser));
 		}
 	}
 
 	@FXML
 	void options(ActionEvent event) {
+		returnOption=0;
 		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
 			option = ComboBoxOptions.getSelectionModel().getSelectedIndex();
 			labelOptions.setText(listOptions.get(option));
@@ -284,6 +314,10 @@ public class AnalyzeController implements Initializable {
 		for (int i = 0; i < Main.getApli().getGraphHashtag().getVerticesL().size(); i++) {
 			nameUsers.add(Main.getApli().getGraphHashtag().getVerticesL().get(i).getValue().getName());
 		}
+		ListReciveComboBox.getItems().clear();
+		ListSendComboBox.getItems().clear();
+		sendLabel.setText("");
+		receiveLabel.setText("");
 		ListReciveComboBox.getItems().addAll(nameUsers);
 		ListSendComboBox.getItems().addAll(nameUsers);
 		grup.setVisible(true);
@@ -295,6 +329,9 @@ public class AnalyzeController implements Initializable {
 		for (int i = 0; i < Main.getApli().getGraphHashtag().getVerticesL().size(); i++) {
 			nameUsers.add(Main.getApli().getGraphHashtag().getVerticesL().get(i).getValue().getName());
 		}
+		UserStarLabel.setText("");
+		resulLabel.setText("");
+		ListUserCombobox.getItems().clear();
 		ListUserCombobox.getItems().addAll(nameUsers);
 		relation.setVisible(true);
 	}
@@ -302,12 +339,18 @@ public class AnalyzeController implements Initializable {
 	private void goFilter() {
 		String[] a = {"Tecnologia","Deportes","Politica"};
 		types = new ArrayList<>(Arrays.asList(a));
+		ComboboxType.getItems().clear();
 		ComboboxType.getItems().addAll(types);
 		nameUsers = new ArrayList<>();
 		for (int i = 0; i < Main.getApli().getGraphHashtag().getVerticesL().size(); i++) {
 			nameUsers.add(Main.getApli().getGraphHashtag().getVerticesL().get(i).getValue().getName());
 		}
+		pointsreferents.setText("");
+		labelType.setText("");
+		labelListUsers.setText("");
+		ComboboxUsers.getItems().clear();
 		ComboboxUsers.getItems().addAll(nameUsers);
+		ListResult.setVisible(false);
 		nearGrade.setVisible(true);
 	}
 
@@ -328,20 +371,32 @@ public class AnalyzeController implements Initializable {
 
 	@FXML
 	void returnStart(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/Start.fxml"));
-		Parent viewCampo = loader.load();
-		Scene scene = new Scene(viewCampo);
-		Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		windowCampo.setScene(scene);
-		windowCampo.show();
+		if(returnOption==-1){
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/Start.fxml"));
+			Parent viewCampo = loader.load();
+			Scene scene = new Scene(viewCampo);
+			Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			windowCampo.setScene(scene);
+			windowCampo.show();
+		}else{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/Analyze.fxml"));
+			Parent viewCampo = loader.load();
+			Scene scene = new Scene(viewCampo);
+			Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			windowCampo.setScene(scene);
+			windowCampo.show();
+		}
 	}
 
 	@FXML
 	void type(ActionEvent event) {
 		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
 			selecCategory = ComboboxType.getSelectionModel().getSelectedIndex();
-			labelType.setText(types.get(selecCategory));
+			if(selecCategory!=-1){
+				labelType.setText(types.get(selecCategory));
+			}
 		}
 	}
 

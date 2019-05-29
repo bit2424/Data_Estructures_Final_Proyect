@@ -62,6 +62,16 @@ public class StartController implements Initializable {
 				searchData("/Persistence/Users/BillGates");
 				searchData("/Persistence/Users/DonaldJTrump");
 				searchData("/Persistence/Users/ElonMusk");
+				searchData("/Persistence/Users/User4");
+				searchData("/Persistence/Users/User5");
+				searchData("/Persistence/Users/User6");
+				searchData("/Persistence/Users/User7");
+				searchData("/Persistence/Users/User8");
+				searchData("/Persistence/Users/User9");
+				searchData("/Persistence/Users/User10");
+				searchData("/Persistence/Users/User11");
+				searchData("/Persistence/Users/User12");
+				searchData("/Persistence/Users/User13");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

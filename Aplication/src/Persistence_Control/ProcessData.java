@@ -40,13 +40,11 @@ public class ProcessData {
 
 		menciones = new HashMap<>();
 
-		System.out.println("Intentandolo");
-
 		run();
 	}
 
 
-	
+
 	/**
 	 * run - Metodo para proceasar la informacion del usuario y crear un nuevo Usuario
 	 * pre : primer_link queda inicializado
@@ -59,81 +57,81 @@ public class ProcessData {
 	 */
 	public void run() throws IOException, URISyntaxException {
 
-			ArrayList<String> Texto_Bruto = new ArrayList<>();
-			File fl = new File("."+nombre_archivo);
-			FileReader read = new FileReader(fl);
-			BufferedReader rd = new BufferedReader(read);
-			String nombre_Usuario = "";
-			String dato = "";
-			String seguidores = "";
-			String seguidos = "";
-			
-			int contador = 0;
+		ArrayList<String> Texto_Bruto = new ArrayList<>();
+		File fl = new File("."+nombre_archivo);
+		FileReader read = new FileReader(fl);
+		BufferedReader rd = new BufferedReader(read);
+		String nombre_Usuario = "";
+		String dato = "";
+		String seguidores = "";
+		String seguidos = "";
 
-			int forSure = 0;
+		int contador = 0;
 
-			while(dato != null && forSure != 2) {
+		int forSure = 0;
 
-			    if(dato.trim().compareTo("Who to follow �  Refresh � View all") == 0){
-			        forSure++;
-                }
+		while(dato != null && forSure != 2) {
 
-
-				dato = dato.trim();
-
-				if(dato.length()>=2 && dato.substring(0, 1).compareToIgnoreCase("@") == 0 && user_Name.equals("LOL")) {
-					user_Name = dato;
-					System.out.println("Nombre: " +dato);
-				} else if(contador == 27) {
-					seguidos = dato;
-				}else if(contador == 30) {
-					seguidores = dato;
-				}
-				
-				dato = rd.readLine();
-				Texto_Bruto.add(dato);
-				contador++;
+			if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
+				forSure++;
 			}
-	
 
-			contador = 0;
+
+			dato = dato.trim();
+
+			if(dato.length()>=2 && dato.substring(0, 1).compareToIgnoreCase("@") == 0 && user_Name.equals("LOL")) {
+				user_Name = dato;
+			} else if(contador == 27) {
+				seguidos = dato;
+			}else if(contador == 30) {
+				seguidores = dato;
+			}
+
+			dato = rd.readLine();
+			Texto_Bruto.add(dato);
+			contador++;
+		}
+
+
+		contador = 0;
+		dato = Texto_Bruto.get(contador);
+
+		Object a[] = new Object[2];
+
+		int cantidad = 0;
+
+		forSure = 0;
+
+		while(dato != null && forSure!=2) {
+			if(dato.trim().compareTo("Who to follow ·  Refresh · View all") == 0){
+				forSure++;
+			}
+
+			if(dato.compareTo("Verified account") == 0) {
+				a = recopilarTweet(Texto_Bruto,contador+1,nombre_Usuario);
+				int resul[] = (int[])a[0];
+				contador = (int)a[1];
+				Puntaje_Usuario[0] += resul[0];
+				Puntaje_Usuario[1] += resul[1];
+				Puntaje_Usuario[2] += resul[2];
+				cantidad++;
+			}
+			contador++;
 			dato = Texto_Bruto.get(contador);
-			
-			Object a[] = new Object[2];
-			
-			int cantidad = 0;
-
-			forSure = 0;
-
-			while(dato != null && forSure!=2) {
-                if(dato.trim().compareTo("Who to follow �  Refresh � View all") == 0){
-                    forSure++;
-                }
-				if(dato.compareTo("Verified account") == 0) {
-					a = recopilarTweet(Texto_Bruto,contador+1,nombre_Usuario);
-					int resul[] = (int[])a[0];
-					contador = (int)a[1]; 
-					Puntaje_Usuario[0] += resul[0];
-					Puntaje_Usuario[1] += resul[1];
-					Puntaje_Usuario[2] += resul[2];
-					cantidad++;
-				}
-				contador++;
-				dato = Texto_Bruto.get(contador);
-			}
+		}
 
 
 
-			rd.close();
+		rd.close();
 
-			
+
 	}
-	
-
-	
 
 
-	
+
+
+
+
 	/**
 	 * recopilarTweet - Metodo para crear un Tweet
 	 * @param t - El ArrayList de String con todo el texto plano del usurio separado por " "	t != null
@@ -145,22 +143,21 @@ public class ProcessData {
 	private Object[] recopilarTweet(ArrayList<String> t, int c, String n) throws URISyntaxException {
 		String dato = t.get(c);
 		int Cont_en_Tweet = 0;
-		
+
 		String fecha = "";
 		String likes = "";
 		String reTweets = "";
 		boolean seguir = false;
-		
+
 		int Puntaje_Tweet[] = new int[3];
-		
+
 		while(!seguir && dato != null && dato.compareTo("Verified account") != 0 && dato.trim().compareTo("Who to follow �  Refresh � View all") != 0) {
 			String herramienta[] = dato.split(" ");
 			if(herramienta.length >= 6 && herramienta[herramienta.length-1].compareTo("message") == 0 && herramienta[herramienta.length-2].compareTo("Direct") == 0) {
 				herramienta = t.get(c-1).split(" ");
 				reTweets = herramienta[2];
 				likes = herramienta[4];
-				seguir = true;	
-				//System.out.println("No agregado por Herramienta   //// "+dato+ " LOL "+ herramienta[5] + " LOL "+herramienta[9]);
+				seguir = true;
 			}else if(Cont_en_Tweet == 2) {
 				fecha = dato;
 				int puntos[] = identificarPalabra(dato);
@@ -182,18 +179,18 @@ public class ProcessData {
 			Cont_en_Tweet++;
 			dato = t.get(c);
 		}
-		
 
-		
+
+
 		Object fin[] = {Puntaje_Tweet,c-1};
-		
+
 		return fin;
 	}
-	
+
 	/**
 	 * identificarPalabra - Metodo para identificar que tipo de palabra se va a a�adir al tweet y su respectivo puntaje
 	 * @param s - Es un String con la palabra a identificar
-	 * @return salida un arreglo de enteros 
+	 * @return salida un arreglo de enteros
 	 * @throws URISyntaxException
 	 */
 	private int[] identificarPalabra(String s) throws URISyntaxException {
@@ -202,6 +199,7 @@ public class ProcessData {
 		salida[1] = 0;
 		salida[2] = 0;
 		if(s.length()>=2 && s.substring(0, 1).compareToIgnoreCase("@") == 0) {
+
 			menciones.put(s.substring(1,s.length()),0);
 		}else if(s.length()>=1 && s.substring(0, 1).compareToIgnoreCase("#") == 0){
 			if(hashtags.containsKey(s)) {
@@ -224,8 +222,8 @@ public class ProcessData {
 				salida[2] = 1;
 			}
 
-		}                
-		
+		}
+
 		return salida;
 	}
 

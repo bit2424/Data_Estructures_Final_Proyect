@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Stack;
 
 public class Application1 {
 
@@ -54,7 +55,6 @@ public class Application1 {
 
             //Tu version
 
-            e.printStackTrace();
 
             String names[] = {"./Aplication/Persistence/Dictionaries/Politics_Dictionary", "./Aplication/Persistence/Dictionaries/Tecnology_Dictionary", "./Aplication/Persistence/Dictionaries/Sports_Dictionary"};
 
@@ -74,7 +74,6 @@ public class Application1 {
         String dato = rd.readLine();
 
         while (dato != null) {
-            System.out.println("Cargando   Datos  "+ dato);
             String info[] = dato.split(",");
             for (int I = 0; I < info.length; I++) {
                 selected.put(info[I].toLowerCase(), 0);
@@ -94,12 +93,9 @@ public class Application1 {
 
         try {
             hilo = new ProcessData("/Persistence/Users/nuevo", raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
-            System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
-                    + hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
             graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-            System.out.println(graphHashtag.getNumberOfVertices());
             joinEdges(graphHashtag.getNumberOfVertices() - 1);
         } catch (Exception e) {
             try {
@@ -109,12 +105,9 @@ public class Application1 {
             } catch (URISyntaxException e1) {
                 e1.printStackTrace();
             }
-            System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
-                    + hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
             graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
             graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-            System.out.println(graphHashtag.getNumberOfVertices());
             joinEdges(graphHashtag.getNumberOfVertices() - 1);
         }
 
@@ -130,16 +123,13 @@ public class Application1 {
             for (String key : newUser.getAt().keySet()) {
                 if (aux.getAt().containsKey(key)) {
                     relationAt++;
-                    System.out.println(key + " We found this in common");
                 }
             }
             for (String key : newUser.getHashtag().keySet()) {
                 if (aux.getHashtag().containsKey(key)) {
                     relationHash++;
-                    System.out.println(key + " We found this in common");
                 }
             }
-
             if (relationHash > 0) {
                 graphHashtag.insertEdge(index, i, relationHash);
             }
@@ -154,8 +144,6 @@ public class Application1 {
                 weight = weight / a;
                 graphRelations.insertEdge(index, i, weight);
             }
-
-            System.out.println(relationAt + " Aristas @  peso --- " + relationHash + "  Aristas # peso");
         }
     }
 
@@ -169,34 +157,41 @@ public class Application1 {
     }
 
     //Requerimiento 6
-	public User getNextProbableRelation(User user){
-		ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
-		HashMap<User,ArrayList<VertexL<User,Double>>> store = new HashMap<>();
-		int i = 0;
-		for(int I = 0;I<aux.size();I++){
-			store.put(aux.get(I).getValue(),aux.get(I).getAdjacencyList());
-			if(aux.get(I).getValue().equals(user)){
-				i = I;
-			}
-		}
+    public User getNextProbableRelation(User user){
+        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+        HashMap<User,ArrayList<VertexL<User,Double>>> store = new HashMap<>();
+        int i = 0;
+        for(int I = 0;I<aux.size();I++){
+            store.put(aux.get(I).getValue(),aux.get(I).getAdjacencyList());
+            User a = aux.get(I).getValue();
+            if(a.compareTo(user) == 0){
+                i = I;
+            }
+        }
 
-		ArrayList<VertexL<User,Double>> close =  aux.get(i).getAdjacencyList();
-		ArrayList<VertexL<User,Double>> closeOnes = new ArrayList<>();
-		RBTree<Double,User> keeper  = new RBTree<>();
+        ArrayList<VertexL<User,Double>> close =  aux.get(i).getAdjacencyList();
+        ArrayList<VertexL<User,Double>> closeOnes = new ArrayList<>();
+        RBTree<Double,User> keeper  = new RBTree<>();
 
-		for(int K = 0; K < close.size();K++){
-			closeOnes = store.get(close.get(K).getValue());
+        Double val = 0d;
+        for(int K = 0; K < close.size();K++){
+            closeOnes = store.get(close.get(K).getValue());
 
-			for(int M = 0; M<closeOnes.size(); M++){
-				Double val = graphRelations.getEdges(K,M).get(0).getWeight();
-				keeper.insert(val,closeOnes.get(M).getValue());
-			}
-		}
+            for(int M = 0; M<closeOnes.size(); M++){
+                if(graphRelations.getEdges(K,M).size()>0){
+                    val = graphRelations.getEdges(K,M).get(0).getWeight();
+                    keeper.insert(val,closeOnes.get(M).getValue());
+                }else{
+                    val = -1d;
+                    keeper.insert(val,closeOnes.get(M).getValue());
+                }
+            }
+        }
 
-		User result = keeper.search(keeper.getMax());
+        User result = keeper.search(keeper.getMax());
 
-		return result;
-	}
+        return result;
+    }
 
     //Requerimiento 7
     public ArrayList<User> getDifusionGroup(User uSend, User uRecive) {
@@ -205,11 +200,11 @@ public class Application1 {
         int iS = 0;
 
         for (int I = 0; I < aux.size(); I++) {
-            if (aux.get(I).getValue().equals(uSend)) {
+            if (aux.get(I).getValue().compareTo(uRecive) == 0) {
                 iR = I;
             }
 
-            if (aux.get(I).getValue().equals(uRecive)) {
+            if (aux.get(I).getValue().compareTo(uSend) == 0) {
                 iS = I;
             }
         }
@@ -217,12 +212,20 @@ public class Application1 {
         int[] parents = (int[]) graphRelations.Dijsktra(iS)[1];
 
         ArrayList<User> result = new ArrayList<>();
-        result.add(uRecive);
+        Stack<User> temp = new Stack<>();
         int actual_parent = parents[iR];
 
+        temp.push(uRecive);
+
         while (actual_parent != -1) {
-            result.add(aux.get(actual_parent).getValue());
+            temp.push(aux.get(actual_parent).getValue());
             actual_parent = parents[actual_parent];
+        }
+
+        int a = temp.size();
+
+        for (int I = 0;I<a;I++){
+            result.add(temp.pop());
         }
 
         if (result.size() == 1) {
@@ -237,16 +240,20 @@ public class Application1 {
 
 
 
-	public HashMap<User,Integer> usersUpScore(int score,User ref,int category){
-        int search = graphRelations.getVerticesL().indexOf(ref);
-
+    public HashMap<User,Integer> usersUpScore(int score,User ref,int category){
+        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
+        int i = 0;
+        for(int I = 0;I<aux.size();I++){
+            if(aux.get(I).getValue().compareTo(ref) == 0){
+                i = I;
+            }
+        }
         try {
-            graphRelations.BFS(search);
+            graphRelations.BFS(i);
         } catch (UnderflowException e) {
             e.printStackTrace();
         }
 
-        ArrayList<VertexL<User,Double>> aux = graphRelations.getVerticesL();
 
         HashMap<User,Integer> result = new HashMap<>();
 
@@ -259,7 +266,7 @@ public class Application1 {
         }
 
         return result;
-	}
+    }
 
 
 
@@ -299,7 +306,7 @@ public class Application1 {
 
     //Requrimiento 2
     //Retorno el usuario y su puntaje
-    public HashMap<User,Integer> getClasificatedUsers(int category){
+    public ArrayList<AdjacencyMatrixGraph.pair> getClasificatedUsers(int category){
         ArrayList<VertexL<User,Double>> refUsers = graphRelations.getVerticesL();
         ArrayList<AdjacencyMatrixGraph.pair> outputUsers = new ArrayList<>();
         HashMap<User,Integer> result = new HashMap<>();
@@ -307,45 +314,37 @@ public class Application1 {
 
         for(int I = 0;I<refUsers.size();I++){
             outputUsers.add(new AdjacencyMatrixGraph.pair(I,refUsers.get(I).getValue().getPoints()[category]));
+            System.out.println(refUsers.get(I).getValue().getName());
         }
 
         Collections.sort(outputUsers);
 
-        for(int I = 0; I< outputUsers.size(); I++){
-            result.put(refUsers.get(outputUsers.get(I).getObjeto()).getValue(),(int)outputUsers.get(I).getDistancia());
-        }
 
-        return result;
+        return outputUsers;
     }
 
+
     public void registerData(String link) throws IOException, URISyntaxException {
-		try {
-			hilo = new ProcessData(link, raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
-			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
-					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
-			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			System.out.println(graphHashtag.getNumberOfVertices());
-			joinEdges(graphHashtag.getNumberOfVertices() - 1);
-		} catch (Exception e) {
-			try {
-				hilo = new ProcessData("/Aplication"+link, raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			} catch (URISyntaxException e1) {
-				e1.printStackTrace();
-			}
-			System.out.println(hilo.getUser_Name() + "  " + hilo.getPuntaje_Usuario()[0] + " Tecnologia   " + hilo.getPuntaje_Usuario()[1] + "  Deporte   "
-					+ hilo.getPuntaje_Usuario()[2] + "   Politica   " + hilo.getHashtags().size() + " Cantidad de  #      " + hilo.getMenciones().size() + "  Cantidad de  @");
-			graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
-			System.out.println(graphHashtag.getNumberOfVertices());
-			joinEdges(graphHashtag.getNumberOfVertices() - 1);
-		}
-	}
+        try {
+            hilo = new ProcessData(link, raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+            graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+            graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+            graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+            joinEdges(graphHashtag.getNumberOfVertices() - 1);
+        } catch (Exception e) {
+            try {
+                hilo = new ProcessData("/Aplication"+link, raiz_relevantesS, raiz_relevantesP, raiz_relevantesT);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+            graphHashtag.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+            graphAt.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+            graphRelations.insertVertex(new User(hilo.getUser_Name(), hilo.getPuntaje_Usuario(), hilo.getHashtags(), hilo.getMenciones()));
+            joinEdges(graphHashtag.getNumberOfVertices() - 1);
+        }
+    }
 
 
 }
-

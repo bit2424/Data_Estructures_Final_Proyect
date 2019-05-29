@@ -16,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import view.Main;
 
+import javax.swing.*;
+
 public class NewUserController {
 
 	@FXML
@@ -36,8 +38,7 @@ public class NewUserController {
     	bw.write(dataText.getText());
     	bw.close();
     	Main.getApli().registerUser();
-//    	System.out.print("Termino");
-    	System.out.println(Main.getApli().getGraphHashtag().getVerticesL().get(0).getValue().getName() +"   "+ Main.getApli().getGraphAt().getVerticesL().get(0).getValue().getName());
+		JOptionPane.showMessageDialog(null,"Se agrego el usuario con exito");
     }
 
     @FXML

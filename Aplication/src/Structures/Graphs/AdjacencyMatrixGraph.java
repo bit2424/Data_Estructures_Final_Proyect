@@ -231,8 +231,13 @@ public class AdjacencyMatrixGraph<V extends Comparable<V>, E extends Comparable<
         }
 
         @Override
-        public int compareTo(pair pair) {
-            return (int)(this.distancia-pair.distancia);
+        public int compareTo(pair p) {
+            if(this.distancia>p.distancia){
+                return  1;
+            }else if(this.distancia<p.distancia){
+                return -1;
+            }
+            return 0;
         }
     }
 
