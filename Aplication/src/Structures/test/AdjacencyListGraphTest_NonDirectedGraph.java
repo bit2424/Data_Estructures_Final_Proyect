@@ -814,7 +814,7 @@ public class AdjacencyListGraphTest_NonDirectedGraph {
         assertEquals(-1, pred[4]);
         assertEquals(4, pred[5]);
 
-        // Case 4: Begin the path from a vertex which does not exist.
+        // Case 3: Begin the path from a vertex which does not exist.
         setupScene1();
         try{
             a = nondirectedGraph.Dijsktra(90);
