@@ -99,6 +99,7 @@ public class AnalyzeController implements Initializable {
 	private int[] sendAndReceide;
 	private int selecCategory=-1;
 	private int selecUser=-1;
+	private int returnOption=-1;
 
 
 	@FXML
@@ -106,8 +107,6 @@ public class AnalyzeController implements Initializable {
 		if(ListReciveComboBox.getSelectionModel().getSelectedIndex()>-1) {
 			sendAndReceide[1] = ListReciveComboBox.getSelectionModel().getSelectedIndex();
 			receiveLabel.setText(nameUsers.get(sendAndReceide[1]));
-			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(option).getValue();
-//			String name = Main.getApli().getNextProbableRelation(selec)..getName();
 		}
 	}
 
@@ -116,8 +115,6 @@ public class AnalyzeController implements Initializable {
 		if(ListSendComboBox.getSelectionModel().getSelectedIndex()>-1) {
 			sendAndReceide[0] = ListSendComboBox.getSelectionModel().getSelectedIndex();
 			sendLabel.setText(nameUsers.get(sendAndReceide[0]));
-			User selec = Main.getApli().getGraphHashtag().getVerticesL().get(option).getValue();
-//			String name = Main.getApli().getNextProbableRelation(selec)..getName();
 		}
 	}
 	@FXML
@@ -194,7 +191,7 @@ public class AnalyzeController implements Initializable {
 		ArrayList<String> n  = new ArrayList<>();
 		ArrayList<ArrayList<User>> u  = Main.getApli().getArCoincidentUsers();
 		for(int i=0; i<u.size();i++){
-			n.add("Grupo #"+(i+1));
+			n.add("Grupo # "+(i+1));
 			for(int j=0; j< u.get(i).size();j++){
 				n.add(u.get(i).get(j).getName());
 			}
@@ -206,7 +203,7 @@ public class AnalyzeController implements Initializable {
 		ArrayList<String> n  = new ArrayList<>();
 		ArrayList<ArrayList<User>> u  = Main.getApli().getHashCoincidentUsers();
 		for(int i=0; i<u.size();i++){
-			n.add("Grupo #"+(i+1));
+			n.add("Grupo # "+(i+1));
 			for(int j=0; j< u.get(i).size();j++){
 				n.add(u.get(i).get(j).getName());
 			}
@@ -268,6 +265,7 @@ public class AnalyzeController implements Initializable {
 
 	@FXML
 	void options(ActionEvent event) {
+		returnOption=0;
 		if(ComboBoxOptions.getSelectionModel().getSelectedIndex()>-1) {
 			option = ComboBoxOptions.getSelectionModel().getSelectedIndex();
 			labelOptions.setText(listOptions.get(option));
@@ -368,13 +366,23 @@ public class AnalyzeController implements Initializable {
 
 	@FXML
 	void returnStart(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/Analyze.fxml"));
-		Parent viewCampo = loader.load();
-		Scene scene = new Scene(viewCampo);
-		Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		windowCampo.setScene(scene);
-		windowCampo.show();
+		if(returnOption==-1){
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/Start.fxml"));
+			Parent viewCampo = loader.load();
+			Scene scene = new Scene(viewCampo);
+			Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			windowCampo.setScene(scene);
+			windowCampo.show();
+		}else{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/Analyze.fxml"));
+			Parent viewCampo = loader.load();
+			Scene scene = new Scene(viewCampo);
+			Stage windowCampo = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			windowCampo.setScene(scene);
+			windowCampo.show();
+		}
 	}
 
 	@FXML
